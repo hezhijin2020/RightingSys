@@ -13,11 +13,35 @@ namespace RightingSys.WinForm
 {
     public partial class MainForm :DevExpress.XtraBars.Ribbon.RibbonForm,IMainForm
     {
+
+        #region  声明变量
+
+        private RightingSys.BLL.RightingSysManager _appRight = new RightingSys.BLL.RightingSysManager();
+        private int AlertHoldTime = 3;
+        //private bool TriggerPageChanged = false;
+        //private DevExpress.XtraBars.Ribbon.RibbonPage FunctionPage = null;
+        private bool CurrentUserIsAdmin = false;
+        //private static DataTable dtUserFunction = null;
+        private static List<Models.ACL_Role_Function> ListUserFuntions = null;
+        private RightingSys.WinForm.SubForm.pageSystem.LoginForm LoginForm = null;
+        private BaseForm currentForm;
+
+        public bool LoginedIn { get; set; } = false;
+
+        public bool MenuInited { get; set; } = false;
+
+
+        #endregion
         public MainForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 子窗体激活事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmMain_MdiChildActivate(object sender, System.EventArgs e)
         {
             this.currentForm = (base.ActiveMdiChild as BaseForm);
@@ -31,38 +55,17 @@ namespace RightingSys.WinForm
             this.SetEditPageVisible(true);
             this.MainRibbon.SelectedPage = this.pageEditor;
         }
-
-        public int GetMenuHeight()
-        {
-            return this.MainRibbon.Height;
-        }
+       
+        /// <summary>
+        /// 获取所有的子窗体
+        /// </summary>
+        /// <returns></returns>
         public Form[] GetMDIChildren()
         {
             return base.MdiChildren;
         }
 
-        #region  声明变量
-
-        private RightingSys.BLL.RightingSysManager _appRight = new RightingSys.BLL.RightingSysManager();
-        private int AlertHoldTime = 3;
-        private bool TriggerPageChanged = false;
-        private DevExpress.XtraBars.Ribbon.RibbonPage FunctionPage=null;
-        private bool CurrentUserIsAdmin = false;
-        private static DataTable dtUserFunction = null;
-        private static List<Models.ACL_Role_Function> ListUserFuntions =null;
-        private RightingSys.WinForm.SubForm.pageSystem.LoginForm LoginForm=null;
-        private BaseForm currentForm;
-
-        private bool _MenuInited=false;
-
-        private bool _LoginedIn = false;
-        public bool LoginedIn { get => _LoginedIn; set => _LoginedIn = value; }
-        public bool MenuInited { get => _MenuInited; set => _MenuInited = value; }
-
-
-        #endregion
-
-        #region  信息提示
+        #region  显示子窗体方法
         public void MdiShow(BaseForm frm, object FuncId)
         {
             this.MdiShow(frm, FuncId, false);
@@ -106,8 +109,7 @@ namespace RightingSys.WinForm
             }
             catch (System.Exception ex)
             {
-                //DBhelper.clsPublic.ShowException(ex, this.Text);
-                //DBhelper.OpSysLog.WriteErrorLog(Text, ex.Message, DBhelper.Global.LoginName);
+                clsPublic.ShowException(ex, this.Text);
             }
         }
 
@@ -136,33 +138,26 @@ namespace RightingSys.WinForm
             }
             catch (System.Exception ex)
             {
-                //DBhelper.clsPublic.ShowException(ex, this.Text);
-                // DBhelper.OpSysLog.WriteErrorLog(Text, ex.Message, DBhelper.Global.LoginName);
+                clsPublic.ShowException(ex, this.Text);
             }
         }
         #endregion
 
         #region 用户中权限获取、启用、授权提示方法
 
+        /// <summary>
+        /// 编辑工具栏是否启用方法
+        /// </summary>
+        /// <param name="Visible"></param>
         public void SetEditPageVisible(bool Visible)
         {
             this.pageEditor.Visible = Visible;
         }
-        public void RestorePage()
-        {
-            try
-            {
-                this.TriggerPageChanged = false;
-                if (this.FunctionPage != null)
-                {
-                    this.MainRibbon.SelectedPage = this.FunctionPage;
-                }
-            }
-            finally
-            {
-                this.TriggerPageChanged = true;
-            }
-        }
+        
+        /// <summary>
+        /// 设置工具栏显式功能按钮
+        /// </summary>
+        /// <param name="btns">功能按钮集合</param>
         public void SetFeatureButton(params FeatureButton[] btns)
         {
             if (btns != null)
@@ -175,14 +170,38 @@ namespace RightingSys.WinForm
                 }
             }
         }
+
+        /// <summary>
+        /// 禁用工个栏所有的功能按钮
+        /// </summary>
         public void DisableButtons()
         {
             base.Invoke(new EventHandler(delegate
             {
-                this.barAddNew.Enabled = (this.barQuery.Enabled = (this.barModify.Enabled = (this.barDelete.Enabled = (this.barCancel.Enabled = (this.barSave.Enabled = (this.barApprove.Enabled = (this.barUnApprove.Enabled = (this.barImport.Enabled = (this.barExport.Enabled = (this.barPreview.Enabled = (this.barPrint.Enabled = (this.barFirst.Enabled = (this.barPrevious.Enabled = (this.barNext.Enabled = (this.barLast.Enabled = false)))))))))))))));
+                this.barAddNew.Enabled = 
+                this.barQuery.Enabled = 
+                this.barModify.Enabled = 
+                this.barDelete.Enabled = 
+                this.barCancel.Enabled = 
+                this.barSave.Enabled = 
+                this.barApprove.Enabled = 
+                this.barUnApprove.Enabled = 
+                this.barImport.Enabled = 
+                this.barExport.Enabled = 
+                this.barPreview.Enabled = 
+                this.barPrint.Enabled = 
+                this.barFirst.Enabled = 
+                this.barPrevious.Enabled = 
+                this.barNext.Enabled = 
+                this.barLast.Enabled = false;
             }));
         }
 
+        /// <summary>
+        /// 操作功能权限验证
+        /// </summary>
+        /// <param name="FuncId">功能Id</param>
+        /// <returns></returns>
         public bool OperFuncVeifyNew(Guid FuncId)
         {
             if (this.CurrentUserIsAdmin)
@@ -191,37 +210,37 @@ namespace RightingSys.WinForm
             }
             if (MainForm.ListUserFuntions == null)
             {
-                MainForm.ListUserFuntions = this.InitUserFunctionNew(clsSession._SystemId, clsSession._UserId, clsSession._DepartmentId);
+                MainForm.ListUserFuntions = this.InitUserFunctionNew(
+                    Models.SqlHelper.Session._SystemId,
+                    Models.SqlHelper.Session._UserId,
+                    Models.SqlHelper.Session._DepartmentId);
             }
             return MainForm.ListUserFuntions.FirstOrDefault(s=>s.FunctionId==FuncId)!= null;
         }
 
-        //public bool OperFuncVeify(string pfunctionKey)
-        //{
-        //    if (this.CurrentUserIsAdmin)
-        //    {
-        //        return true;
-        //    }
-        //    if (MainForm.dtUserFunction == null)
-        //    {
-        //        MainForm.dtUserFunction = this.InitUserFunction(clsSession._SystemId, clsSession._UserId, clsSession._DepartmentId);
-        //    }
-        //    return MainForm.dtUserFunction.Rows.Find(new System.Guid(pfunctionKey)) != null;
-        //}
-        //public bool UserHasRight(string guidFuncId)
-        //{
-        //    return this.UserHasRight(guidFuncId, FeatureButton.None);
-        //}
+        /// <summary>
+        /// 检查用户可用的功能权限
+        /// </summary>
+        /// <param name="FuncId">功能ID</param>
+        /// <returns></returns>
         public bool UserHasRightNew(Guid FuncId)
         {
             return this.UserHasRightNew(FuncId, FeatureButton.None);
         }
+
+        /// <summary>
+        /// 检查用户可用的功能操作权限
+        /// </summary>
+        /// <param name="guidFuncId">功能ID</param>
+        /// <param name="opCode">操作码</param>
+        /// <returns></returns>
         public bool UserHasRightNew(Guid guidFuncId, FeatureButton opCode)
         {
             if (this.CurrentUserIsAdmin)
             {
                 return true;
             }
+
             List<int> Opcodes= this.GetUserOpCodeNew(guidFuncId);
 
             foreach(int m in Opcodes) {
@@ -242,37 +261,21 @@ namespace RightingSys.WinForm
                 }
             }
             return false;
-            
         }
-        //public bool UserHasRight(string guidFuncId, FeatureButton opCode)
-        //{
-        //    if (this.CurrentUserIsAdmin)
-        //    {
-        //        return true;
-        //    }
-        //    MainForm.dtUserFunction.Rows.Find(System.Guid.Parse(guidFuncId));
-        //    int userOpCode = this.GetUserOpCode(guidFuncId);
-        //    if (userOpCode < 0)
-        //    {
-        //        return false;
-        //    }
-        //    int ia = (userOpCode & (int)opCode);
-        //    bool flag = (userOpCode & (int)opCode) == (int)opCode;
-        //    if (!flag && (opCode.Equals(FeatureButton.First) || opCode.Equals(FeatureButton.Last) || opCode.Equals(FeatureButton.Previous) || opCode.Equals(FeatureButton.Next)))
-        //    {
-        //        int num = 2;
-        //        flag = ((userOpCode & num) == num);
-        //    }
-        //    return flag;
-        //}
 
+        /// <summary>
+        /// 没有操作权限
+        /// </summary>
+        /// <param name="guidFuncId">功能Id</param>
         public void ShowNoRight(string guidFuncId)
         {
-
-            MessageBox.Show("没权访问", Text);
-            //string funcName = PosRighting.GetFuncName(guidFuncId);
-           // clsPublic.ShowMessage(MSG_TYPE.ALERT, string.Format(YSPOS.MainForm_NoRight_OneParameter, funcName), this.Text);
+             clsPublic.ShowMessage("权限不足");
         }
+
+        /// <summary>
+        /// 没有操作权限
+        /// </summary>
+        /// <param name="guidFuncId">功能Id</param>
         public void ShowNoRight(string guidFuncId, FeatureButton opCode)
         {
             if (opCode == FeatureButton.None)
@@ -282,32 +285,32 @@ namespace RightingSys.WinForm
             }
         }
 
+        /// <summary>
+        /// 获该用户指定功能的操作权限
+        /// </summary>
+        /// <param name="FuncId">功能Id</param>
+        /// <returns></returns>
         public List<int> GetUserOpCodeNew(Guid FuncId)
         {
             List<int> Opcodes = new List<int>();
             if (MainForm.ListUserFuntions == null)
             {
-                this.InitUserFunctionNew(clsSession._SystemId, clsSession._UserId, clsSession._DepartmentId);
+                this.InitUserFunctionNew(
+                    Models.SqlHelper.Session._SystemId,
+                    Models.SqlHelper.Session._UserId,
+                    Models.SqlHelper.Session._DepartmentId);
             }
             Opcodes = MainForm.ListUserFuntions.FindAll(s => s.FunctionId == FuncId).Select(s => s.OpCode).ToList(); ;
             
             return Opcodes;
         }
 
-        //public int GetUserOpCode(string guidFuncId)
-        //{
-        //    if (MainForm.dtUserFunction == null)
-        //    {
-        //        this.InitUserFunction(clsSession._SystemId, clsSession._UserId,clsSession._DepartmentId);
-        //    }
-        //    DataRow dataRow = MainForm.dtUserFunction.Rows.Find(System.Guid.Parse(guidFuncId));
-        //    if (dataRow == null)
-        //    {
-        //        return -1;
-        //    }
-        //    return System.Convert.ToInt32(dataRow["OpCode"]);
-
-        //}
+   
+        /// <summary>
+        /// 根据操作码设置工具栏按钮
+        /// </summary>
+        /// <param name="code">操作码</param>
+        /// <param name="enabled">是否起用</param>
         public void SetButtonEnableByCode(FeatureButton code, bool enabled)
         {
             if (code <= FeatureButton.Import)
@@ -416,9 +419,6 @@ namespace RightingSys.WinForm
                 }
                 this.barLast.Enabled = enabled;
             }
-
-
-
         }
         #endregion
 
@@ -697,6 +697,9 @@ namespace RightingSys.WinForm
                 
             });
         }
+        /// <summary>
+        /// 关闭所有子窗体
+        /// </summary>
         private void CloseAllWin()
         {
             foreach (BaseForm sub in base.MdiChildren)
@@ -704,20 +707,32 @@ namespace RightingSys.WinForm
                 sub.Dispose();
             }
         }
+
+        /// <summary>
+        /// 关闭程序前事件 1、写入日志 2、退出所线程
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (this._LoginedIn)
+            if (this.LoginedIn)
             {
                 clsPublicLogs.AddNewLoginLog(false);
             }
             Application.ExitThread();
             Application.Exit();
         }
+
+        /// <summary>
+        /// 主窗体加载事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            InitialUserSkin();
-            CloseAllWin();
-            Menu_Null();
+            InitialUserSkin();//初始化主题
+            CloseAllWin();//关闭所有子窗体
+            Menu_Null();//初始化受权
             if (this.LoginForm != null)
             {
                 this.LoginForm = null;
@@ -729,7 +744,6 @@ namespace RightingSys.WinForm
             }
             catch (System.Exception ex)
             {
-               // DBhelper.OpSysLog.WriteErrorLog(this.Text, ex.Message);
                   clsPublic.ShowException(ex, this.Text);
             }
             finally
@@ -740,51 +754,58 @@ namespace RightingSys.WinForm
                     this.LoginForm = null;
                 }
             }
-            this.TriggerPageChanged = true;
             this.MainRibbon.SelectedPage = this.pageSystem;
             this.SetEditPageVisible(false);
         }
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
         public void Init()
         {
-            MainForm.ListUserFuntions = null;
-            this.InitUserFuncNew();
-            this.Menu_Init();
+            MainForm.ListUserFuntions = null; //i清空权限
+            this.InitUserFuncNew();//获取权限列表
+            this.Menu_Init();//初始化菜单
         }
+
+        /// <summary>
+        /// 初始化用户方法
+        /// </summary>
+        public void InitUserFuncNew()
+        {
+            this.InitUserFunctionNew(
+                Models.SqlHelper.Session._SystemId,
+                Models.SqlHelper.Session._UserId,
+                Models.SqlHelper.Session._DepartmentId);
+        }
+
+        /// <summary>
+        /// 根据系统ID、用户ID、部门Id获取权限列表
+        /// </summary>
+        /// <param name="pSystemId">系统ID</param>
+        /// <param name="pUserId">用户ID</param>
+        /// <param name="pDepartmentId">部门Id</param>
+        /// <returns></returns>
         public List<Models.ACL_Role_Function> InitUserFunctionNew(Guid pSystemId, Guid pUserId, Guid pDepartmentId)
         {
             MainForm.ListUserFuntions = _appRight.GetUserFunctionList(pSystemId, pUserId, pDepartmentId);
             return MainForm.ListUserFuntions;
         }
-        public DataTable InitUserFunction(Guid pSystemId, Guid pUserId,Guid pDepartmentId)
-        {
-            MainForm.dtUserFunction = _appRight.GetUserFunction(pSystemId,pUserId,pDepartmentId);
-            //MainForm.dtUserFunction.PrimaryKey = new DataColumn[]
-            //{
-            //    MainForm.dtUserFunction.Columns["FunctionId"]
-            //};
-            return MainForm.dtUserFunction;
-        }
-        private void InitUserFunc()
-        {
-            this.InitUserFunction(clsSession._SystemId,clsSession._UserId,clsSession._DepartmentId);
-            
-        }
-
-        public void InitUserFuncNew()
-        {
-            this.InitUserFunctionNew(clsSession._SystemId, clsSession._UserId, clsSession._DepartmentId);
-        }
+        
+        /// <summary>
+        /// 菜单的初始化
+        /// </summary>
         private void Menu_Init()
         {
             base.Invoke(new EventHandler(delegate
             {
-                if (clsSession._UserId != null && clsSession._UserId != Guid.Empty)
+                if (Models.SqlHelper.Session._UserId != null && Models.SqlHelper.Session._UserId != Guid.Empty)
                 {
-                    this.StatusLoginName.Caption = "用户：" + clsSession._LoginName;
+                    this.StatusLoginName.Caption = "用户：" + Models.SqlHelper.Session._LoginName;
                     this.statusLogintime.Caption = DateTime.Now.ToString("yyyy年MM月dd HH:mm:ss dddd");
-                    this.statusIP.Caption = "  登录IP：" + clsSession._IPAddress;
-                    this.statusMac.Caption = "  登录MAC：" + clsSession._MACAddress;
-                    this.statusFullName.Caption = "  真实姓名：" + clsSession._FullName;
+                    this.statusIP.Caption = "  登录IP：" + Models.SqlHelper.Session._IPAddress;
+                    this.statusMac.Caption = "  登录MAC：" + Models.SqlHelper.Session._MACAddress;
+                    this.statusFullName.Caption = "  真实姓名：" + Models.SqlHelper.Session._FullName;
                     try
                     {
                         this.Menu_Visible();
@@ -797,14 +818,18 @@ namespace RightingSys.WinForm
                 }
             }));
         }
+
+         /// <summary>
+         /// 没有权限菜单初始化
+         /// </summary>
         private void Menu_Null()
         {
             base.Invoke(new EventHandler(delegate
             {
                 this.StatusLoginName.Caption = "用户：未验证";
                 this.statusLogintime.Caption = DateTime.Now.ToString("yyyy年MM月dd HH:mm:ss dddd");
-                this.statusIP.Caption = "  登录IP：" + clsSession._IPAddress;
-                this.statusMac.Caption = "  登录MAC：" + clsSession._MACAddress;
+                this.statusIP.Caption = "  登录IP：" + Models.SqlHelper.Session._IPAddress;
+                this.statusMac.Caption = "  登录MAC：" + Models.SqlHelper.Session._MACAddress;
                 this.statusFullName.Caption = "  真实姓名：未验证";
                 foreach (RibbonPage ribbonPage in this.MainRibbon.Pages)
                 {
@@ -829,6 +854,10 @@ namespace RightingSys.WinForm
                 }
             }));
         }
+
+        /// <summary>
+        /// 菜单栏是否显示受权
+        /// </summary>
         private void Menu_Visible()
         {
             try
@@ -890,6 +919,11 @@ namespace RightingSys.WinForm
                 //this.PageFund.Visible = false;
             }
         }
+
+        /// <summary>
+        /// RibbonPageGroup 分组框是否显示
+        /// </summary>
+        /// <param name="rpg"> 分组框</param>
         private void DealPageGroupVisible(RibbonPageGroup rpg)
         {
             if (rpg == null)
@@ -921,9 +955,10 @@ namespace RightingSys.WinForm
             Application.ExitThread();
             Application.Exit();
         }
+
         private void btnLogout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!this._LoginedIn)
+            if (!this.LoginedIn)
             {
                 this.FrmMain_Load(null, null);
                 return;
@@ -932,12 +967,11 @@ namespace RightingSys.WinForm
             {
                 return;
             }
-           // appLogs.Add_LoginLog("用户注销");
             this.CloseAllWin();
-            clsSession.SessionIntial();
+            Models.SqlHelper.Session.SessionIntial();
             this.Menu_Null();
             this.FrmMain_Load(null, null);
-            this._LoginedIn = false;
+            this.LoginedIn = false;
         }
         private void btnOuSetup_ItemClick(object sender, ItemClickEventArgs e)
         {

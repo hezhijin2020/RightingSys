@@ -212,7 +212,6 @@
       <DependentUpon>FModifyUserPwd.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\cls\clsPublic.cs" />
-    <Compile Include="Utility\cls\clsSession.cs" />
     <Compile Include="Utility\cls\FeatureButton.cs" />
     <Compile Include="Utility\cls\IMainForm.cs" />
     <Compile Include="Utility\CustomControls\CustomGridControl.cs">

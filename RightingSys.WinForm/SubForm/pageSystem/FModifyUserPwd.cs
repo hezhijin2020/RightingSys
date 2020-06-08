@@ -7,20 +7,35 @@ namespace RightingSys.WinForm.SubForm.pageSystem
     public partial class FModifyUserPwd : BaseForm
     {
         RightingSys.BLL.RightingSysManager _appRight;
+
+        /// <summary>
+        /// 带参数的构造函数
+        /// </summary>
+        /// <param name="appRight"></param>
         public FModifyUserPwd(RightingSys.BLL.RightingSysManager appRight)
         {
             InitializeComponent();
             _appRight = appRight;
         }
 
+        /// <summary>
+        /// 取消修改密码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void sbtnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// 修改密码确定事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void sbtnSave_Click(object sender, EventArgs e)
         {
-            Guid userid = clsSession._UserId;
+            Guid userid = Models.SqlHelper.Session._UserId;
             string oldpwd = txtOldPwd.Text.Trim();
             string newpwd = txtNewPwd1.Text.Trim();
             if (oldpwd == "")

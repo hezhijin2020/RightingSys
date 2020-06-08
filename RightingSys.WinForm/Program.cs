@@ -29,6 +29,12 @@ namespace RightingSys.WinForm
                 Application.SetCompatibleTextRenderingDefault(false);
                 Program.AppMutex= new Mutex(true, "RightingSys", out Program.IsRun);
 
+                //初始化会话信息
+                Models.SqlHelper.Session = new Models.clsSession();
+                Models.SqlHelper.Session._IPAddress = clsPublic.getLocalIP();
+                Models.SqlHelper.Session._MACAddress = clsPublic.getLocalMac();
+                Models.SqlHelper.Session._IniConigPath = Application.StartupPath + "\\AppConfig.ini";
+
                 if (Program.IsNeedUpdate())
                 {
                     StartUpdate();
@@ -84,7 +90,7 @@ namespace RightingSys.WinForm
                 string FileName = Application.StartupPath + "\\UpdateList.xml";
                 XmlFiles xdoc = new XmlFiles(FileName);
                 string version = xdoc.GetNodeValue("AutoUpdate/Application/Version");
-                result = systemMg.IsNeedUpdate(clsSession._SystemId, version);
+                result = systemMg.IsNeedUpdate(Models.SqlHelper.Session._SystemId, version);
             }
             catch (Exception ex)
             {

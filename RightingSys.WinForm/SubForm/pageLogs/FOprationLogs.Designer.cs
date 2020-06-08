@@ -30,7 +30,6 @@
         {
             this.gcData = new RightingSys.WinForm.Utility.CustomControls.CustomGridControl();
             this.gvData = new RightingSys.WinForm.Utility.CustomControls.CustomGridView();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -40,9 +39,10 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.gcData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -62,7 +62,7 @@
             this.gcData.Location = new System.Drawing.Point(12, 113);
             this.gcData.MainView = this.gvData;
             this.gcData.Name = "gcData";
-            this.gcData.Size = new System.Drawing.Size(496, 35);
+            this.gcData.Size = new System.Drawing.Size(689, 113);
             this.gcData.TabIndex = 0;
             this.gcData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvData});
@@ -103,16 +103,6 @@
             this.gvData.OptionsView.EnableAppearanceOddRow = true;
             this.gvData.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             this.gvData.OptionsView.ShowGroupPanel = false;
-            // 
-            // groupControl1
-            // 
-            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl1.Location = new System.Drawing.Point(12, 12);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(496, 95);
-            this.groupControl1.TabIndex = 1;
-            this.groupControl1.Text = "筛选条件";
             // 
             // gridColumn1
             // 
@@ -184,6 +174,14 @@
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 7;
             // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "数据表";
+            this.gridColumn12.FieldName = "OperationTable";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 8;
+            // 
             // gridColumn10
             // 
             this.gridColumn10.Caption = "SQL语句";
@@ -200,19 +198,21 @@
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 10;
             // 
-            // gridColumn12
+            // groupControl1
             // 
-            this.gridColumn12.Caption = "数据表";
-            this.gridColumn12.FieldName = "OperationTable";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 8;
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl1.Location = new System.Drawing.Point(12, 12);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(689, 95);
+            this.groupControl1.TabIndex = 1;
+            this.groupControl1.Text = "筛选条件";
             // 
             // FOprationLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 160);
+            this.ClientSize = new System.Drawing.Size(713, 238);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.gcData);
             this.Name = "FOprationLogs";

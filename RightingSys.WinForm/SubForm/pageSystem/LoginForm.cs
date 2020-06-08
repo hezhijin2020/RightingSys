@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using RightingSys.WinForm.Utility.cls;
@@ -57,6 +58,8 @@ namespace RightingSys.WinForm.SubForm.pageSystem
             }
         }
 
+
+
         /// <summary>
         /// 登录方法
         /// </summary>
@@ -74,16 +77,6 @@ namespace RightingSys.WinForm.SubForm.pageSystem
                     return false;
                 }
 
-                DataRow dataRow = dataTable.Rows[0];
-                clsSession._UserId = clsPublic.GetObjGUID(dataRow["Id"]);
-                clsSession._LoginName = clsPublic.GetObjectString(dataRow["LoginName"]);
-                clsSession._FullName = clsPublic.GetObjectString(dataRow["FullName"]);
-                //clsSession._RoleID = clsPublic.GetObjGUID(dataRow["RoleID"]);
-                //clsSession._RoleName= clsPublic.GetObjectString(dataRow["RoleName"]);
-                clsSession._DepartmentId = clsPublic.GetObjGUID(dataRow["DepartmentId"]);
-                clsSession._DepartmentName = clsPublic.GetObjectString(dataRow["DepartmentName"]);
-
-
                 //if (_appRight.BlackIPIsLogin(clsSession._UserID))
                 //{
                 //    appLogs.LogOpInfo("用户登录", DateTime.Now);
@@ -96,15 +89,22 @@ namespace RightingSys.WinForm.SubForm.pageSystem
                 //    return false ;
                 //}
 
+                DataRow dataRow = dataTable.Rows[0];
+                Models.SqlHelper.Session._UserId = clsPublic.GetObjGUID(dataRow["Id"]);
+                Models.SqlHelper.Session._LoginName = clsPublic.GetObjectString(dataRow["LoginName"]);
+                Models.SqlHelper.Session._FullName = clsPublic.GetObjectString(dataRow["FullName"]);
+                Models.SqlHelper.Session._DepartmentId = clsPublic.GetObjGUID(dataRow["DepartmentId"]);
+                Models.SqlHelper.Session._DepartmentName = clsPublic.GetObjectString(dataRow["DepartmentName"]);
+
                 return true;
             }
             catch (Exception ex)
             {
-                //appLogs.LogError("登录出错", ex);
-                clsPublic.ShowMessage("系统出错", this.Text);
+                clsPublic.ShowMessage("系统出错,错误信息："+ex.Message, this.Text);
                 return false;
             }
         }
+        
 
         /// <summary>
         /// 窗体加载事件
@@ -114,9 +114,11 @@ namespace RightingSys.WinForm.SubForm.pageSystem
         private void FLogin_Load(object sender, EventArgs e)
         {
             clsPublic.ReadLoginConfig();//读取用户信息
-            txtLoginName.Text = clsSession._LoginName;
-            CheckRemPwd.Checked = clsSession._IsRemPwd;
-            txtLoginPwd.Text = clsSession._IsRemPwd? clsSession._LoginPwd:"";
+
+            //设置读取的用户信息
+            txtLoginName.Text = Models.SqlHelper.Session._LoginName;
+            CheckRemPwd.Checked = Models.SqlHelper.Session._IsRemPwd;
+            txtLoginPwd.Text = Models.SqlHelper.Session._IsRemPwd? Models.SqlHelper.Session._LoginPwd:"";
         }
     }
 }

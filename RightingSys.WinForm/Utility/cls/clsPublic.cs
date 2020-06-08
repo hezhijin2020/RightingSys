@@ -50,11 +50,11 @@ namespace RightingSys.WinForm.Utility.cls
         {
             get
             {
-                if (!clsPublic.FileExists(clsSession._IniConigPath))
+                if (!clsPublic.FileExists(Models.SqlHelper.Session._IniConigPath))
                 {
-                    File.Create(clsSession._IniConigPath);
+                    File.Create(Models.SqlHelper.Session._IniConigPath);
                 }
-                return clsSession._IniConigPath;
+                return Models.SqlHelper.Session._IniConigPath;
             }
         }
 
@@ -3479,7 +3479,7 @@ namespace RightingSys.WinForm.Utility.cls
                 clsPublic._AlertMsgbox = new AlertControl();
                 clsPublic._AlertMsgbox.AutoFormDelay = 2000;
             }
-            clsPublic._AlertMsgbox.Show(frm, (Caption.Trim() == "") ? clsSession._SystemName : Caption, Content);
+            clsPublic._AlertMsgbox.Show(frm, (Caption.Trim() == "") ? Models.SqlHelper.Session._SystemName : Caption, Content);
         }
 
         /// <summary>
@@ -3500,7 +3500,7 @@ namespace RightingSys.WinForm.Utility.cls
         /// <param name="Caption">提示框名称</param>
         public static void ShowException(System.Exception ex, string Caption="")
         {
-            DevExpress.XtraEditors.XtraMessageBox.Show(ex.Message, (Caption.Trim() == "") ? clsSession._SystemName : Caption, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
+            DevExpress.XtraEditors.XtraMessageBox.Show(ex.Message, (Caption.Trim() == "") ? Models.SqlHelper.Session._SystemName : Caption, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
         }
 
         /// <summary>
@@ -3511,7 +3511,7 @@ namespace RightingSys.WinForm.Utility.cls
         /// <returns></returns>
         public static void ShowException(string Content, string Caption="")
         {
-            DevExpress.XtraEditors.XtraMessageBox.Show(Content, (Caption.Trim() == "") ? clsSession._SystemName : Caption, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
+            DevExpress.XtraEditors.XtraMessageBox.Show(Content, (Caption.Trim() == "") ? Models.SqlHelper.Session._SystemName : Caption, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
         }
 
         /// <summary>
@@ -3538,7 +3538,7 @@ namespace RightingSys.WinForm.Utility.cls
         /// <param name="Caption">提示框名称</param>
         public static void ShowMessage(string Content, string Caption="")
         {
-            DevExpress.XtraEditors.XtraMessageBox.Show(Content, (Caption.Trim() == "") ? clsSession._SystemName: Caption, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Asterisk);
+            DevExpress.XtraEditors.XtraMessageBox.Show(Content, (Caption.Trim() == "") ? Models.SqlHelper.Session._SystemName: Caption, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Asterisk);
         }
 
         /// <summary>
@@ -3562,7 +3562,7 @@ namespace RightingSys.WinForm.Utility.cls
             {
                 icon = System.Windows.Forms.MessageBoxIcon.Asterisk;
             }
-            DevExpress.XtraEditors.XtraMessageBox.Show(Content, (Caption.Trim() == "") ? clsSession._SystemName : Caption, System.Windows.Forms.MessageBoxButtons.OK, icon);
+            DevExpress.XtraEditors.XtraMessageBox.Show(Content, (Caption.Trim() == "") ? Models.SqlHelper.Session._SystemName : Caption, System.Windows.Forms.MessageBoxButtons.OK, icon);
         }
      
         #endregion
@@ -4684,23 +4684,22 @@ namespace RightingSys.WinForm.Utility.cls
         {
             try
             {
-                if (clsSession._IsRemPwd)
+                if (Models.SqlHelper.Session._IsRemPwd)
                 {
                     clsPublic.IniWriteValue("UserConfig", "RemPwd", "1");
-                    clsPublic.IniWriteValue("UserConfig", "LoginName", clsSession._LoginName);
-                    clsPublic.IniWriteValueEncrypt("UserConfig", "LoginPwd", clsSession._LoginPwd);
+                    clsPublic.IniWriteValue("UserConfig", "LoginName", Models.SqlHelper.Session._LoginName);
+                    clsPublic.IniWriteValueEncrypt("UserConfig", "LoginPwd", Models.SqlHelper.Session._LoginPwd);
                 }
                 else
                 {
                     clsPublic.IniWriteValue("UserConfig", "RemPwd", "0");
-                    clsPublic.IniWriteValue("UserConfig", "LoginName", clsSession._LoginName);
+                    clsPublic.IniWriteValue("UserConfig", "LoginName", Models.SqlHelper.Session._LoginName);
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception("用户配置信息入写出错", ex);
             }
-            
         }
 
         /// <summary>
@@ -4710,11 +4709,11 @@ namespace RightingSys.WinForm.Utility.cls
         {
             try
             {
-                clsSession._IsRemPwd= clsPublic.IniReadValue("UserConfig", "RemPwd", "0")=="1";
-                clsSession._LoginName = clsPublic.IniReadValue("UserConfig", "LoginName", "");
-                if (clsSession._IsRemPwd )
+                Models.SqlHelper.Session._IsRemPwd= clsPublic.IniReadValue("UserConfig", "RemPwd", "0")=="1";
+                Models.SqlHelper.Session._LoginName = clsPublic.IniReadValue("UserConfig", "LoginName", "");
+                if (Models.SqlHelper.Session._IsRemPwd )
                 {
-                    clsSession._LoginPwd = clsPublic.IniReadValueDecrypt("UserConfig", "LoginPwd", "");
+                    Models.SqlHelper.Session._LoginPwd = clsPublic.IniReadValueDecrypt("UserConfig", "LoginPwd", "");
                 }
             }
             catch(Exception ex)
@@ -4754,7 +4753,7 @@ namespace RightingSys.WinForm.Utility.cls
 
                 PageHeaderFooter phf = link.PageHeaderFooter as PageHeaderFooter;
                 phf.Header.Content.Clear();
-                phf.Header.Content.AddRange(new string[] { "操作人员：" +cls.clsSession._LoginName, title, string.Format("打印时间:{0}", DateTime.Now.ToString("yyyy-MM-dd")) });
+                phf.Header.Content.AddRange(new string[] { "操作人员：" + Models.SqlHelper.Session._LoginName, title, string.Format("打印时间:{0}", DateTime.Now.ToString("yyyy-MM-dd")) });
                 phf.Header.Font = new System.Drawing.Font("宋体", 14, System.Drawing.FontStyle.Bold);
                 phf.Header.LineAlignment = BrickAlignment.Center;
                 link.CreateMarginalFooterArea += new CreateAreaEventHandler(link_CreateMarginalFooterArea);

@@ -98,10 +98,10 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             model.StartIP = txtStartIP.Text;
             model.EndIP = txtEndIP.Text;
             model.Description = txtRemark.Text;
-            model.SystemId = clsSession._SystemId;
+            model.SystemId = Models.SqlHelper.Session._SystemId;
             model.CreateTime = DateTime.Now;
-            model.OperatorName = clsSession._LoginName;
-            model.OperatorId = clsSession._UserId;
+            model.OperatorName = Models.SqlHelper.Session._LoginName;
+            model.OperatorId = Models.SqlHelper.Session._UserId;
             if (this.Text.Contains("新增"))
             {
                 model.Id = Guid.NewGuid();

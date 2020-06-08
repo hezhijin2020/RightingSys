@@ -66,7 +66,7 @@ namespace RightingSys.BLL
         /// <returns></returns>
         public bool DeleteByDayNum(int dayNum)
         {
-            string where = string.Format("WHERE CreateTime>'{0}'", System.DateTime.Now.Date.AddDays(dayNum));
+            string where = string.Format("WHERE CreateTime<'{0}'", System.DateTime.Now.Date.AddDays(dayNum));
             return Sev.Delete(where);
         }
     }

@@ -87,7 +87,13 @@ namespace RightingSys.WinForm.Utility.cls
         #region  LogOpration
         public static void LogOpInfo(string OpName,DateTime OpDate)
         {
-            string msg = string.Format(" --[操作名称]：{0} --[操作时间]：{1} --[用户]：{2} --[网卡MAC]：{3} --[网络IP]：{4} ",OpName,OpDate.ToString("yyyy-MM-dd HH:mm:ss"),clsSession._LoginName,clsSession._MACAddress,clsSession._IPAddress);
+            string msg = string.Format(" --[操作名称]：{0} --[操作时间]：{1} --[用户]：{2} --[网卡MAC]：{3} --[网络IP]：{4} ",
+                OpName,
+                OpDate.ToString("yyyy-MM-dd HH:mm:ss"), 
+                Models.SqlHelper.Session._LoginName, 
+                Models.SqlHelper.Session._MACAddress,
+                Models.SqlHelper.Session._IPAddress);
+
             if (LogOpration.IsInfoEnabled)
             {
                 LogOpration.Info(msg);
@@ -216,15 +222,15 @@ namespace RightingSys.WinForm.Utility.cls
 
                 SqlParameter s1 = new SqlParameter("@Id",Guid.NewGuid());
                 SqlParameter s2 = new SqlParameter("@LogName", LogName);
-                SqlParameter s3 = new SqlParameter("@UserId", clsSession._UserId);
-                SqlParameter s4 = new SqlParameter("@LoginName", clsSession._LoginName);
-                SqlParameter s5 = new SqlParameter("@FullName", clsSession._FullName);
-                SqlParameter s6 = new SqlParameter("@DepartmentName", clsSession._DepartmentName);
-                SqlParameter s7 = new SqlParameter("@DepartmentId", clsSession._DepartmentId);
-                SqlParameter s8 = new SqlParameter("@LoginIP",clsSession._IPAddress);
-                SqlParameter s9 = new SqlParameter("@LoginMac", clsSession._MACAddress);
-                SqlParameter s10 = new SqlParameter("@SystemId", clsSession._SystemId);
-                SqlParameter s11 = new SqlParameter("@SystemName", clsSession._SystemName);
+                SqlParameter s3 = new SqlParameter("@UserId", Models.SqlHelper.Session._UserId);
+                SqlParameter s4 = new SqlParameter("@LoginName", Models.SqlHelper.Session._LoginName);
+                SqlParameter s5 = new SqlParameter("@FullName", Models.SqlHelper.Session._FullName);
+                SqlParameter s6 = new SqlParameter("@DepartmentName", Models.SqlHelper.Session._DepartmentName);
+                SqlParameter s7 = new SqlParameter("@DepartmentId", Models.SqlHelper.Session._DepartmentId);
+                SqlParameter s8 = new SqlParameter("@LoginIP", Models.SqlHelper.Session._IPAddress);
+                SqlParameter s9 = new SqlParameter("@LoginMac", Models.SqlHelper.Session._MACAddress);
+                SqlParameter s10 = new SqlParameter("@SystemId", Models.SqlHelper.Session._SystemId);
+                SqlParameter s11 = new SqlParameter("@SystemName", Models.SqlHelper.Session._SystemName);
                 Models.SqlHelper.ExecuteNoQuery(sqlText, new SqlParameter[] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11 });
                 LogOpInfo(LogName, DateTime.Now);
             }
@@ -281,15 +287,15 @@ namespace RightingSys.WinForm.Utility.cls
                 Models.SqlHelper.ExecuteNoQuery(sqlText, new SqlParameter[] {
                  new SqlParameter("@Id",Guid.NewGuid())
                 ,new SqlParameter("@LogName",LogName )
-                ,new SqlParameter("@UserId", clsSession._UserId)
-                ,new SqlParameter("@LoginName", clsSession._LoginName)
-                ,new SqlParameter("@FullName", clsSession._FullName)
-                ,new SqlParameter("@DepartmentName", clsSession._DepartmentName)
-                ,new SqlParameter("@DepartmentId", clsSession._DepartmentId)
-                ,new SqlParameter("@LoginIP",clsSession._IPAddress)
-                ,new SqlParameter("@LoginMac", clsSession._MACAddress)
-                ,new SqlParameter("@SystemId", clsSession._SystemId)
-                ,new SqlParameter("@SystemName", clsSession._SystemName)
+                ,new SqlParameter("@UserId", Models.SqlHelper.Session._UserId)
+                ,new SqlParameter("@LoginName", Models.SqlHelper.Session._LoginName)
+                ,new SqlParameter("@FullName", Models.SqlHelper.Session._FullName)
+                ,new SqlParameter("@DepartmentName", Models.SqlHelper.Session._DepartmentName)
+                ,new SqlParameter("@DepartmentId", Models.SqlHelper.Session._DepartmentId)
+                ,new SqlParameter("@LoginIP",Models.SqlHelper.Session._IPAddress)
+                ,new SqlParameter("@LoginMac", Models.SqlHelper.Session._MACAddress)
+                ,new SqlParameter("@SystemId", Models.SqlHelper.Session._SystemId)
+                ,new SqlParameter("@SystemName", Models.SqlHelper.Session._SystemName)
                 ,new SqlParameter("@OperationType", OperatorType)
                 ,new SqlParameter("@OperationTable", TableName)
                 ,new SqlParameter("@SqlCommand", SqlCommand) });
