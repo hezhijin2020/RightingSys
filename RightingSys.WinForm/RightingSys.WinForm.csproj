@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8A85B688-3F86-4829-82A9-CCBDD4E6C4FD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RightingSys.WinForm</RootNamespace>
+    <AssemblyName>RightingSys</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPivotGrid.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="libzkfpcsharp, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\libzkfpcsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Utility\cls\BitmapFormat.cs" />
+    <Compile Include="Utility\cls\clsPublicLogs.cs" />
+    <Compile Include="AppPublic\AutoService\FileUnit.cs" />
+    <Compile Include="AppPublic\AutoService\IniFiles.cs" />
+    <Compile Include="AppPublic\AutoService\XMLFile.cs" />
+    <Compile Include="AppPublic\AutoService\XmlFiles.cs" />
+    <Compile Include="Utility\ToolForm\UserFingerAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utility\ToolForm\UserFingerAdd.Designer.cs">
+      <DependentUpon>UserFingerAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\ToolForm\UserFingerMatching.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utility\ToolForm\UserFingerMatching.Designer.cs">
+      <DependentUpon>UserFingerMatching.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\FBlackIP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\FBlackIP.Designer.cs">
+      <DependentUpon>FBlackIP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\FBlackIP_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\FBlackIP_User.Designer.cs">
+      <DependentUpon>FBlackIP_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\FunctionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\FunctionForm.Designer.cs">
+      <DependentUpon>FunctionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\SystemVersionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\SystemVersionForm.Designer.cs">
+      <DependentUpon>SystemVersionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageLogs\FOprationLogs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageLogs\FOprationLogs.Designer.cs">
+      <DependentUpon>FOprationLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageLogs\FLoginLogs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageLogs\FLoginLogs.Designer.cs">
+      <DependentUpon>FLoginLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\DepartmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\DepartmentForm.Designer.cs">
+      <DependentUpon>DepartmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\RoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\RoleForm.Designer.cs">
+      <DependentUpon>RoleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\SystemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\SystemForm.Designer.cs">
+      <DependentUpon>SystemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\SystemEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\SystemEditForm.Designer.cs">
+      <DependentUpon>SystemEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\UserForm.Designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\UserEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageBaseinfo\UserEditForm.Designer.cs">
+      <DependentUpon>UserEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageSystem\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageSystem\LoginForm.designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaimForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaimForm.Designer.cs">
+      <DependentUpon>MaimForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubForm\pageSystem\FModifyUserPwd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageSystem\FModifyUserPwd.Designer.cs">
+      <DependentUpon>FModifyUserPwd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\cls\clsPublic.cs" />
+    <Compile Include="Utility\cls\clsSession.cs" />
+    <Compile Include="Utility\cls\FeatureButton.cs" />
+    <Compile Include="Utility\cls\IMainForm.cs" />
+    <Compile Include="Utility\CustomControls\CustomGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utility\CustomControls\CustomGridLookUpEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utility\ToolForm\F_Func_Selectlist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utility\ToolForm\F_Func_Selectlist.Designer.cs">
+      <DependentUpon>F_Func_Selectlist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\ToolForm\F_UserForBlackIP_Selectlist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utility\ToolForm\F_UserForBlackIP_Selectlist.Designer.cs">
+      <DependentUpon>F_UserForBlackIP_Selectlist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\ToolForm\F_UserForOu_Selectlist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utility\ToolForm\F_UserForOu_Selectlist.Designer.cs">
+      <DependentUpon>F_UserForOu_Selectlist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\ToolForm\RoleByDepartment_SelectList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utility\ToolForm\RoleByDepartment_SelectList.Designer.cs">
+      <DependentUpon>RoleByDepartment_SelectList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\ToolForm\RoleByUser_Selectlist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utility\ToolForm\RoleByUser_Selectlist.Designer.cs">
+      <DependentUpon>RoleByUser_Selectlist.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Utility\ToolForm\UserFingerAdd.resx">
+      <DependentUpon>UserFingerAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utility\ToolForm\UserFingerMatching.resx">
+      <DependentUpon>UserFingerMatching.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utility\ToolForm\F_Func_Selectlist.resx">
+      <DependentUpon>F_Func_Selectlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utility\ToolForm\F_UserForBlackIP_Selectlist.resx">
+      <DependentUpon>F_UserForBlackIP_Selectlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utility\ToolForm\F_UserForOu_Selectlist.resx">
+      <DependentUpon>F_UserForOu_Selectlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utility\ToolForm\RoleByDepartment_SelectList.resx">
+      <DependentUpon>RoleByDepartment_SelectList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utility\ToolForm\RoleByUser_Selectlist.resx">
+      <DependentUpon>RoleByUser_Selectlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="SubForm\pageBaseinfo\FBlackIP.resx">
+      <DependentUpon>FBlackIP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageBaseinfo\FBlackIP_User.resx">
+      <DependentUpon>FBlackIP_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageBaseinfo\FunctionForm.resx">
+      <DependentUpon>FunctionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageBaseinfo\SystemVersionForm.resx">
+      <DependentUpon>SystemVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageLogs\FOprationLogs.resx">
+      <DependentUpon>FOprationLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageLogs\FLoginLogs.resx">
+      <DependentUpon>FLoginLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageBaseinfo\DepartmentForm.resx">
+      <DependentUpon>DepartmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageBaseinfo\RoleForm.resx">
+      <DependentUpon>RoleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageBaseinfo\SystemForm.resx">
+      <DependentUpon>SystemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageBaseinfo\SystemEditForm.resx">
+      <DependentUpon>SystemEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageBaseinfo\UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageBaseinfo\UserEditForm.resx">
+      <DependentUpon>UserEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageSystem\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaimForm.resx">
+      <DependentUpon>MaimForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SubForm\pageSystem\FModifyUserPwd.resx">
+      <DependentUpon>FModifyUserPwd.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SubForm\pageHelper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RightingSys.BLL\RightingSys.BLL.csproj">
+      <Project>{02858f09-9e1d-4ec2-abec-d3345cbf18eb}</Project>
+      <Name>RightingSys.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RightingSys.Models\RightingSys.Models.csproj">
+      <Project>{573722d7-dc67-48d9-9498-455ef282ede3}</Project>
+      <Name>RightingSys.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Utility\image\logo1.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
