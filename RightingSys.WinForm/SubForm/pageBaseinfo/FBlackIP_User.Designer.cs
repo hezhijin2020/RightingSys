@@ -45,8 +45,8 @@
             this.gcUser = new DevExpress.XtraGrid.GridControl();
             this.gvUser = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sbtnSave = new DevExpress.XtraEditors.SimpleButton();
             this.sbtnClose = new DevExpress.XtraEditors.SimpleButton();
             this.IsEnabled = new DevExpress.XtraEditors.CheckEdit();
@@ -81,7 +81,7 @@
             this.panelControl1.Controls.Add(this.cboxType);
             this.panelControl1.Location = new System.Drawing.Point(14, 14);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(488, 215);
+            this.panelControl1.Size = new System.Drawing.Size(257, 236);
             this.panelControl1.TabIndex = 0;
             // 
             // txtRemark
@@ -91,7 +91,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRemark.Location = new System.Drawing.Point(63, 164);
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(405, 31);
+            this.txtRemark.Size = new System.Drawing.Size(174, 52);
             this.txtRemark.TabIndex = 10;
             // 
             // txtEndIP
@@ -103,7 +103,7 @@
             this.txtEndIP.Properties.Mask.EditMask = "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]" +
     "?\\d)))";
             this.txtEndIP.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-            this.txtEndIP.Size = new System.Drawing.Size(405, 20);
+            this.txtEndIP.Size = new System.Drawing.Size(174, 20);
             this.txtEndIP.TabIndex = 8;
             // 
             // txtStartIP
@@ -115,7 +115,7 @@
             this.txtStartIP.Properties.Mask.EditMask = "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]" +
     "?\\d)))";
             this.txtStartIP.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-            this.txtStartIP.Size = new System.Drawing.Size(405, 20);
+            this.txtStartIP.Size = new System.Drawing.Size(174, 20);
             this.txtStartIP.TabIndex = 7;
             // 
             // txtName
@@ -124,7 +124,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.Location = new System.Drawing.Point(63, 15);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(405, 20);
+            this.txtName.Size = new System.Drawing.Size(174, 20);
             this.txtName.TabIndex = 5;
             // 
             // labelControl5
@@ -181,7 +181,7 @@
             "黑名单",
             "白名单"});
             this.cboxType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboxType.Size = new System.Drawing.Size(405, 20);
+            this.cboxType.Size = new System.Drawing.Size(174, 20);
             this.cboxType.TabIndex = 6;
             // 
             // panelControl2
@@ -191,15 +191,15 @@
             this.panelControl2.Controls.Add(this.sbtnRemove);
             this.panelControl2.Controls.Add(this.sbtnAdd);
             this.panelControl2.Controls.Add(this.gcUser);
-            this.panelControl2.Location = new System.Drawing.Point(508, 14);
+            this.panelControl2.Location = new System.Drawing.Point(277, 14);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(224, 215);
+            this.panelControl2.Size = new System.Drawing.Size(276, 236);
             this.panelControl2.TabIndex = 1;
             // 
             // sbtnRemove
             // 
             this.sbtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.sbtnRemove.Location = new System.Drawing.Point(80, 172);
+            this.sbtnRemove.Location = new System.Drawing.Point(76, 199);
             this.sbtnRemove.Name = "sbtnRemove";
             this.sbtnRemove.Size = new System.Drawing.Size(63, 27);
             this.sbtnRemove.TabIndex = 5;
@@ -209,7 +209,7 @@
             // sbtnAdd
             // 
             this.sbtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.sbtnAdd.Location = new System.Drawing.Point(11, 172);
+            this.sbtnAdd.Location = new System.Drawing.Point(7, 199);
             this.sbtnAdd.Name = "sbtnAdd";
             this.sbtnAdd.Size = new System.Drawing.Size(63, 27);
             this.sbtnAdd.TabIndex = 4;
@@ -224,45 +224,51 @@
             this.gcUser.Location = new System.Drawing.Point(6, 6);
             this.gcUser.MainView = this.gvUser;
             this.gcUser.Name = "gcUser";
-            this.gcUser.Size = new System.Drawing.Size(212, 154);
+            this.gcUser.Size = new System.Drawing.Size(264, 187);
             this.gcUser.TabIndex = 0;
             this.gcUser.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvUser});
             // 
             // gvUser
             // 
+            this.gvUser.Appearance.Row.Options.UseTextOptions = true;
+            this.gvUser.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUser.Appearance.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gvUser.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3});
+            this.gridColumn3,
+            this.gridColumn2});
             this.gvUser.GridControl = this.gcUser;
             this.gvUser.Name = "gvUser";
+            this.gvUser.OptionsBehavior.Editable = false;
             this.gvUser.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "User_ID";
-            this.gridColumn1.FieldName = "User_ID";
+            this.gridColumn1.Caption = "Id";
+            this.gridColumn1.FieldName = "Id";
             this.gridColumn1.Name = "gridColumn1";
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "BlackIP_ID";
-            this.gridColumn2.FieldName = "BlackIP_ID";
-            this.gridColumn2.Name = "gridColumn2";
             // 
             // gridColumn3
             // 
             this.gridColumn3.Caption = "用户";
-            this.gridColumn3.FieldName = "UserDesc";
+            this.gridColumn3.FieldName = "LoginName";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 0;
             // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "姓名";
+            this.gridColumn2.FieldName = "FullName";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
             // sbtnSave
             // 
             this.sbtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnSave.Location = new System.Drawing.Point(550, 267);
+            this.sbtnSave.Location = new System.Drawing.Point(376, 261);
             this.sbtnSave.Name = "sbtnSave";
             this.sbtnSave.Size = new System.Drawing.Size(82, 27);
             this.sbtnSave.TabIndex = 2;
@@ -272,7 +278,7 @@
             // sbtnClose
             // 
             this.sbtnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnClose.Location = new System.Drawing.Point(645, 267);
+            this.sbtnClose.Location = new System.Drawing.Point(471, 261);
             this.sbtnClose.Name = "sbtnClose";
             this.sbtnClose.Size = new System.Drawing.Size(82, 27);
             this.sbtnClose.TabIndex = 3;
@@ -282,7 +288,7 @@
             // IsEnabled
             // 
             this.IsEnabled.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.IsEnabled.Location = new System.Drawing.Point(14, 235);
+            this.IsEnabled.Location = new System.Drawing.Point(14, 262);
             this.IsEnabled.Name = "IsEnabled";
             this.IsEnabled.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsEnabled.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
@@ -296,7 +302,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(746, 308);
+            this.ClientSize = new System.Drawing.Size(567, 297);
             this.Controls.Add(this.IsEnabled);
             this.Controls.Add(this.sbtnClose);
             this.Controls.Add(this.sbtnSave);
@@ -343,7 +349,7 @@
         private DevExpress.XtraEditors.SimpleButton sbtnRemove;
         private DevExpress.XtraEditors.SimpleButton sbtnAdd;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
     }
 }

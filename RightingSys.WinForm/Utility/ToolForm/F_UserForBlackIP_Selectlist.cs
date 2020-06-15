@@ -1,93 +1,56 @@
-﻿using DevExpress.XtraTreeList.Nodes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using RightingSys.WinForm.Utility.cls;
 
 namespace RightingSys.WinForm.Utility.ToolForm
 {
+    /// <summary>
+    /// 防火墙过滤规则用户选择框
+    /// </summary>
     public partial class F_UserForBlackIP_Selectlist : Form
     {
+        /// <summary>
+        /// 声明变量
+        /// </summary>
         BLL.BlackIPManager manager = new BLL.BlackIPManager();
-        BLL.RightingSysManager rightingSysManager = new BLL.RightingSysManager();
-        DataTable dtAll = null;
-        private Guid _BlackIPId = Guid.Empty;
-        public F_UserForBlackIP_Selectlist(Guid BlackIPId)
+        BLL.DepartmentManager deptMg = new BLL.DepartmentManager();
+        BLL.UserManager userMg = new BLL.UserManager();
+        List<Models.ACL_User> ltSource = new List<Models.ACL_User>();
+
+        public List<Models.ACL_User> selectData { get; private set; }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public F_UserForBlackIP_Selectlist()
         {
             InitializeComponent();
-            _BlackIPId = BlackIPId;
-            Initial();
+            tlDepartment.DataSource = deptMg.GetAllList();
+            gcData.DataSource = ltSource = userMg.GetAllList();
         }
 
-        private void Initial()
+        /// <summary>
+        /// 带参构造函数
+        /// </summary>
+        /// <param name="BlackIPId">规则Id</param>
+        public F_UserForBlackIP_Selectlist(Guid BlackIPId):this()
         {
-           // tl_OU.DataSource = rightingSysManager;
-           // tl_Role.DataSource = bll.GetRoleInfo();
-            //dtAll = bll.FillTableUserForBlackIP(_BlackIP_ID);
-            gcUser.DataSource = dtAll;
+            gvData.SetSelectRow(manager.GetUserByBlackIP(BlackIPId).ToList<object>());//设置以前选择的行
         }
         
-        #region 组织机构和角色树焦点改变事件,筛选用户信息
-        private void tl_OU_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        /// <summary>
+        /// 部门焦点改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tlDepartment_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-            if (e.Node != null && dtAll != null)
+            if (e.Node != null && ltSource != null)
             {
-                dtAll.DefaultView.RowFilter = string.Format("OUID='{0}' or IsCheck=True ", e.Node.GetValue("ID"));
-                gcUser.DataSource = dtAll.DefaultView;
-            }
-        }
-
-        private void tl_Role_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
-        {
-            if (e.Node != null && dtAll != null)
-            {
-                dtAll.DefaultView.RowFilter = string.Format("RoleID='{0}' or IsCheck=True", e.Node.GetValue("ID"));
-                gcUser.DataSource = dtAll.DefaultView;
-            }
-        }
-
-        private void GetNodChildrenID(TreeListNode node, ref string strListID)
-        {
-            strListID = strListID + ",'" + node.GetValue("ID") + "'";
-
-            foreach (TreeListNode n in node.Nodes)
-            {
-                GetNodChildrenID(n, ref strListID);
-            }
-        }
-        #endregion
-
-        private void tabPaneView_SelectedPageChanged(object sender, DevExpress.XtraBars.Navigation.SelectedPageChangedEventArgs e)
-        {
-            if (e.Page.PageText == "tabpage_Dept")
-            {
-                tl_OU.FocusedNode = null;
-            }
-            else
-            {
-                tl_Role.FocusedNode = null;
-            }
-        }
-
-        private void gvUser_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.Value == null) return;
-
-            if (e.Column.FieldName == "Deleted")
-            {
-                if (e.Value.ToString() == "0")
-                { e.DisplayText = ""; }
-                else
-                { e.DisplayText = "已删除"; }
-            }
-            if (e.Column.FieldName == "Enabled")
-            {
-                if (e.Value.ToString() == "0")
-                { e.DisplayText = "未启用"; }
-                else
-                { e.DisplayText = "已启用"; }
+                List<object> objlt = gvData.GetSelectRowToObject();
+                gcData.DataSource = ltSource.FindAll(a => a.DepartmentId == (Guid)e.Node.GetValue("Id")).Concat(objlt).Distinct();
+                gvData.SetSelectRow(objlt);
             }
         }
         
@@ -108,23 +71,18 @@ namespace RightingSys.WinForm.Utility.ToolForm
         /// <param name="e"></param>
         private void sbtnFinish_Click(object sender, EventArgs e)
         {
-            //DataRow[] rows=  dtAll.Select("IsCheck=True");
-            //if (rows.Count() > 0)
-            //{
-            //    List<string> UserList = new List<string>();
-            //    foreach (DataRow r in rows)
-            //    {
-            //        UserList.Add(r["UserID"].ToString());
-            //    }
-
-            //  if( bll.AddUserForBlackIP(_BlackIP_ID, UserList))
-            //    {
-            //        base.DialogResult = DialogResult.OK;
-            //        clsPublic.ShowMessage("成功", Text);
-            //        return;
-            //    }
-            //}
-            //base.DialogResult = DialogResult.Cancel;
+            List<object> ltObjs= gvData.GetSelectRowToObject();
+            selectData = new List<Models.ACL_User>();
+            if (ltObjs != null && ltObjs.Count > 0)
+            {
+                foreach (object item in ltObjs)
+                {
+                    selectData.Add((Models.ACL_User)item);
+                }
+                base.DialogResult = DialogResult.OK;
+                return;
+            }
+            base.DialogResult = DialogResult.Cancel;
         }
     }
 }

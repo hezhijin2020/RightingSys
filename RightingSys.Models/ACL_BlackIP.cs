@@ -13,7 +13,7 @@ namespace RightingSys.Models
         /// <summary>
         /// 类型
         /// </summary>
-        public bool AuthorizeType { get; set; }
+        public string AuthorizeType { get; set; }
 
         /// <summary>
         /// 开始IP
@@ -55,6 +55,6 @@ namespace RightingSys.Models
         /// <summary>
         /// 用户列表
         /// </summary>
-        public List<Models.ACL_BlackIP_User> Details { get; set; }
+        public List<Models.ACL_User> Details { get; set; }
     }
 }

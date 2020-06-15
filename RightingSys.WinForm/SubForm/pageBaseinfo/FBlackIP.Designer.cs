@@ -28,141 +28,172 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gcBlackIP = new DevExpress.XtraGrid.GridControl();
-            this.gvBlackIP = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.gcBlackIP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvBlackIP)).BeginInit();
+            this.gcData = new RightingSys.WinForm.Utility.CustomControls.CustomGridControl();
+            this.gvData = new RightingSys.WinForm.Utility.CustomControls.CustomGridView();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.gcData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvData)).BeginInit();
             this.SuspendLayout();
             // 
-            // gcBlackIP
+            // gcData
             // 
-            this.gcBlackIP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gcData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcBlackIP.Location = new System.Drawing.Point(12, 12);
-            this.gcBlackIP.MainView = this.gvBlackIP;
-            this.gcBlackIP.Name = "gcBlackIP";
-            this.gcBlackIP.Size = new System.Drawing.Size(568, 157);
-            this.gcBlackIP.TabIndex = 0;
-            this.gcBlackIP.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvBlackIP});
+            this.gcData.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.gcData.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.gcData.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.gcData.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.gcData.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            this.gcData.EmbeddedNavigator.TextStringFormat = "记录 {0} / {1}";
+            this.gcData.Location = new System.Drawing.Point(12, 12);
+            this.gcData.MainView = this.gvData;
+            this.gcData.Name = "gcData";
+            this.gcData.Size = new System.Drawing.Size(640, 106);
+            this.gcData.TabIndex = 1;
+            this.gcData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvData});
             // 
-            // gvBlackIP
+            // gvData
             // 
-            this.gvBlackIP.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn4,
-            this.gridColumn5,
-            this.gridColumn6,
-            this.gridColumn7,
-            this.gridColumn8});
-            this.gvBlackIP.GridControl = this.gcBlackIP;
-            this.gvBlackIP.Name = "gvBlackIP";
-            this.gvBlackIP.OptionsBehavior.Editable = false;
-            this.gvBlackIP.OptionsView.ColumnAutoWidth = false;
-            this.gvBlackIP.OptionsView.ShowGroupPanel = false;
-            this.gvBlackIP.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gvBlackIP_CustomColumnDisplayText);
+            this.gvData.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gvData.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvData.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn16,
+            this.gridColumn9,
+            this.gridColumn10,
+            this.gridColumn11,
+            this.gridColumn12,
+            this.gridColumn13,
+            this.gridColumn14,
+            this.gridColumn15,
+            this.gridColumn17});
+            this.gvData.EmptyForegroundText = null;
+            this.gvData.GridControl = this.gcData;
+            this.gvData.IndicatorWidth = 28;
+            this.gvData.LocatedColumn = null;
+            this.gvData.Name = "gvData";
+            this.gvData.OptionsBehavior.Editable = false;
+            this.gvData.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseUp;
+            this.gvData.OptionsCustomization.AllowColumnMoving = false;
+            this.gvData.OptionsDetail.EnableMasterViewMode = false;
+            this.gvData.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Classic;
+            this.gvData.OptionsNavigation.EnterMoveNextColumn = true;
+            this.gvData.OptionsPrint.AutoWidth = false;
+            this.gvData.OptionsSelection.CheckBoxSelectorColumnWidth = 35;
+            this.gvData.OptionsSelection.MultiSelect = true;
+            this.gvData.OptionsSelection.UseIndicatorForSelection = false;
+            this.gvData.OptionsView.ColumnAutoWidth = false;
+            this.gvData.OptionsView.EnableAppearanceEvenRow = true;
+            this.gvData.OptionsView.EnableAppearanceOddRow = true;
+            this.gvData.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+            this.gvData.OptionsView.ShowGroupPanel = false;
+            //this.gvData.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gvData_CustomColumnDisplayText);
             // 
-            // gridColumn1
+            // gridColumn16
             // 
-            this.gridColumn1.Caption = "名称";
-            this.gridColumn1.FieldName = "Name";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn16.Caption = "Id";
+            this.gridColumn16.FieldName = "Id";
+            this.gridColumn16.Name = "gridColumn16";
             // 
-            // gridColumn2
+            // gridColumn9
             // 
-            this.gridColumn2.Caption = "授权类型";
-            this.gridColumn2.FieldName = "AuthorizeType";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn9.Caption = "名称";
+            this.gridColumn9.FieldName = "BlackIPName";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 0;
             // 
-            // gridColumn3
+            // gridColumn10
             // 
-            this.gridColumn3.Caption = "是否启用";
-            this.gridColumn3.FieldName = "IsEnabled";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn10.Caption = "授权类型";
+            this.gridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.gridColumn10.FieldName = "AuthorizeType";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 1;
             // 
-            // gridColumn4
+            // gridColumn11
             // 
-            this.gridColumn4.Caption = "开始IP";
-            this.gridColumn4.FieldName = "IPStart";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn11.Caption = "开始IP";
+            this.gridColumn11.FieldName = "StartIP";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 2;
             // 
-            // gridColumn5
+            // gridColumn12
             // 
-            this.gridColumn5.Caption = "结束IP";
-            this.gridColumn5.FieldName = "IPEnd";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn12.Caption = "结束IP";
+            this.gridColumn12.FieldName = "EndIP";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 3;
             // 
-            // gridColumn6
+            // gridColumn13
             // 
-            this.gridColumn6.Caption = "备注";
-            this.gridColumn6.FieldName = "Note";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
+            this.gridColumn13.Caption = "备注";
+            this.gridColumn13.FieldName = "Description";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 4;
             // 
-            // gridColumn7
+            // gridColumn14
             // 
-            this.gridColumn7.Caption = "创建人";
-            this.gridColumn7.FieldName = "Creator";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn14.Caption = "创建人";
+            this.gridColumn14.FieldName = "OperatorName";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 5;
             // 
-            // gridColumn8
+            // gridColumn15
             // 
-            this.gridColumn8.Caption = "创建时间";
-            this.gridColumn8.FieldName = "CreateTime";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn15.Caption = "创建时间";
+            this.gridColumn15.FieldName = "CreateTime";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 6;
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "是否启用";
+            this.gridColumn17.FieldName = "IsRemoved";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 7;
             // 
             // FBlackIP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 181);
-            this.Controls.Add(this.gcBlackIP);
+            this.ClientSize = new System.Drawing.Size(664, 130);
+            this.Controls.Add(this.gcData);
             this.Name = "FBlackIP";
             this.Text = "黑白名单列表";
-            //this.Load += new System.EventHandler(this.FBlackIP_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gcBlackIP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvBlackIP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvData)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DevExpress.XtraGrid.GridControl gcBlackIP;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvBlackIP;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private Utility.CustomControls.CustomGridControl gcData;
+        private Utility.CustomControls.CustomGridView gvData;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
     }
 }

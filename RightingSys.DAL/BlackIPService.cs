@@ -23,21 +23,23 @@ namespace RightingSys.DAL
                                 ,[AuthorizeType]
                                 ,[StartIP]
                                 ,[EndIP]
-                                ,[OpreatorId]
-                                ,[OpreatorName]
+                                ,[OperatorId]
+                                ,[OperatorName]
                                 ,[Description]
                                 ,[SystemId]
-                                ,[SystemName])
+                                ,[SystemName]
+                                ,[IsRemoved])
                          values(  @Id
                                 , @BlackIPName
                                 , @AuthorizeType
                                 , @StartIP
                                 , @EndIP
-                                , @OpreatorId
-                                , @OpreatorName
+                                , @OperatorId
+                                , @OperatorName
                                 , @Description
                                 , @SystemId
-                                , @SystemName)";
+                                , @SystemName
+                                ,@IsRemoved)";
             SqlParameter[] Params1 = new SqlParameter[] {
                 new SqlParameter("@Id",model.Id),
                 new SqlParameter("@BlackIPName",model.BlackIPName),
@@ -48,12 +50,12 @@ namespace RightingSys.DAL
                  new SqlParameter("@OperatorName",model.OperatorName),
                 new SqlParameter("@Description",model.Description),
                  new SqlParameter("@SystemId",model.SystemId),
-                new SqlParameter("@SystemName",model.SystemName)
-
+                new SqlParameter("@SystemName",model.SystemName),
+                new SqlParameter("@IsRemoved",model.IsRemoved)
             };
             sqlDic.Add(Params1,sqlText1);
 
-            foreach (Models.ACL_BlackIP_User s in model.Details)
+            foreach (Models.ACL_User s in model.Details)
             {
                 string SqlText2 = @"INSERT INTO [RightingSys].[dbo].[ACL_BlackIP_User]
                                    ([Id]
@@ -72,12 +74,12 @@ namespace RightingSys.DAL
                                    ,@UserSimpleCode
                                    ,@DepartmentName)";
                 SqlParameter[] Params2 = new SqlParameter[] {
-                new SqlParameter("@Id",s.Id),
-                new SqlParameter(@"BlackIPId",s.BlackIPId),
-                new SqlParameter(@"UserId",s.UserId),
+                new SqlParameter("@Id",Guid.NewGuid()),
+                new SqlParameter(@"BlackIPId",model.Id),
+                new SqlParameter(@"UserId",s.Id),
                 new SqlParameter("@LoginName",s.LoginName),
-                new SqlParameter("@UserName", s.UserName),
-                new SqlParameter(@"UserSimpleCode", s.UserSimpleCode),
+                new SqlParameter("@UserName", s.FullName),
+                new SqlParameter(@"UserSimpleCode", s.SimpleCode),
                 new SqlParameter(@"DepartmentName", s.DepartmentName)};
 
                 sqlDic.Add(Params2, SqlText2);
@@ -95,19 +97,22 @@ namespace RightingSys.DAL
         /// <returns></returns>
         public bool Modify(Models.ACL_BlackIP model)
         {
-            string sqlText = @"UPDATE [RightingSys].[dbo].[ACL_BlackIP]
+            Dictionary<SqlParameter[], string> sqlDic = new Dictionary<SqlParameter[], string>();
+
+            string sqlText1 = @"UPDATE [RightingSys].[dbo].[ACL_BlackIP]
                SET [BlackIPName] = @BlackIPName
                   ,[AuthorizeType] = @AuthorizeType
                   ,[StartIP] = @StartIP
                   ,[EndIP] = @EndIP
-                  ,[OpreatorId] = @OpreatorId
-                  ,[OpreatorName] = @OpreatorName
+                  ,[OperatorId] = @OperatorId
+                  ,[OperatorName] = @OperatorName
                   ,[Description] = @Description
                   ,[SystemId] = @SystemId
                   ,[SystemName] = @SystemName
+                  ,[IsRemoved]=@IsRemoved
             WHERE[Id] = @Id";
-                        //clsPublic.appLogs.Add_OperationLog("修改黑白名单列表", DateTime.Now, "ACL_BlackIP", "修改", sqlText);
-            return Models.SqlHelper.ExecuteNoQuery(sqlText, new SqlParameter[] {
+
+            SqlParameter[] Params1 = new SqlParameter[] {
                  new SqlParameter("@Id",model.Id),
                 new SqlParameter("@BlackIPName",model.BlackIPName),
                  new SqlParameter("@AuthorizeType",model.AuthorizeType),
@@ -117,8 +122,46 @@ namespace RightingSys.DAL
                  new SqlParameter("@OperatorName",model.OperatorName),
                 new SqlParameter("@Description",model.Description),
                  new SqlParameter("@SystemId",model.SystemId),
-                new SqlParameter("@SystemName",model.SystemName)
-            })>0;
+                new SqlParameter("@SystemName",model.SystemName),
+                 new SqlParameter("@IsRemoved",model.IsRemoved)
+
+            };
+            sqlDic.Add(Params1, sqlText1);
+
+            string sqlText3 = "DELETE FROM [RightingSys].[dbo].[ACL_BlackIP_User] WHERE BlackIPId=@BlackIPId";
+            SqlParameter[] Params3 = new SqlParameter[] { new SqlParameter("@BlackIPId", model.Id) };
+            sqlDic.Add(Params3, sqlText3);
+
+            foreach (Models.ACL_User s in model.Details)
+            {
+                string SqlText2 = @"INSERT INTO [RightingSys].[dbo].[ACL_BlackIP_User]
+                                   ([Id]
+                                   ,[BlackIPId]
+                                   ,[UserId]
+                                   ,[LoginName]
+                                   ,[UserName]
+                                   ,[UserSimpleCode]
+                                   ,[DepartmentName])
+                             VALUES
+                                   (@Id
+                                   ,@BlackIPId
+                                   ,@UserId
+                                   ,@LoginName
+                                   ,@UserName
+                                   ,@UserSimpleCode
+                                   ,@DepartmentName)";
+                SqlParameter[] Params2 = new SqlParameter[] {
+                new SqlParameter("@Id",Guid.NewGuid()),
+                new SqlParameter(@"BlackIPId",model.Id),
+                new SqlParameter(@"UserId",s.Id),
+                new SqlParameter("@LoginName",s.LoginName),
+                new SqlParameter("@UserName", s.FullName),
+                new SqlParameter(@"UserSimpleCode", s.SimpleCode),
+                new SqlParameter(@"DepartmentName", s.DepartmentName)};
+
+                sqlDic.Add(Params2, SqlText2);
+            }
+            return Models.SqlHelper.ExecuteTransaction1(sqlDic) > 0;
         }
 
         /// <summary>
@@ -211,8 +254,8 @@ namespace RightingSys.DAL
                  ,[AuthorizeType]
                  ,[StartIP]
                  ,[EndIP]
-                 ,[OpreatorId]
-                 ,[OpreatorName]
+                 ,[OperatorId]
+                 ,[OperatorName]
                  ,[Description]
                  ,[SystemId]
                  ,[SystemName]
@@ -229,13 +272,13 @@ namespace RightingSys.DAL
         /// </summary>
         /// <param name="BlackIPId">规则Id</param>
         /// <returns></returns>
-        public List<Models.ACL_BlackIP_User> GetUserByBlackIP(Guid BlackIPId)
+        public List<Models.ACL_User> GetUserByBlackIP(Guid BlackIPId)
         {
-            string sqlText = string.Format(@"select a.Id,a.BlackIPId,a.UserId,b.FullName UserName,b.LoginName,b.SimpleCode,c.DepartmentName
-                   from ACL_BlackIP_User as a inner join ACL_User as b on a.UserId=b.Id
-                                               left join ACL_Department as c on b.DepartmentId=c.Id
-                   where BlackIPId='{0}' ", BlackIPId);
-            return Models.SqlHelper.DataTableToList<Models.ACL_BlackIP_User>( Models.SqlHelper.ExecuteDataTable(sqlText)).ToList();
+            string sqlText = string.Format(@" select a.*,b.DepartmentName
+            from ACL_User as a left join ACL_Department as b on a.DepartmentId = b.Id
+                               inner join ACL_BlackIP_User as c on a.Id=c.UserId
+            where a.IsRemoved = 0  and c.BlackIPId='{0}'", BlackIPId);
+            return Models.SqlHelper.DataTableToList<Models.ACL_User>( Models.SqlHelper.ExecuteDataTable(sqlText)).ToList();
         }
 
         #region 列表关联用户

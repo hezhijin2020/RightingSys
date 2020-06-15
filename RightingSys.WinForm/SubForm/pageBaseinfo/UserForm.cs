@@ -9,22 +9,33 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
 {
     public partial class UserForm : BaseForm
     {
+        #region 声明变量
         RightingSys.BLL.UserManager userMg = new RightingSys.BLL.UserManager();
         RightingSys.BLL.DepartmentManager deptMg = new RightingSys.BLL.DepartmentManager();
+        RightingSys.BLL.RoleManager roleMg = new BLL.RoleManager();
         RightingSys.BLL.FingerPrintManager fingerMg = new RightingSys.BLL.FingerPrintManager();
         List<Models.ACL_User> dtAll = null;
+        #endregion
+
         public UserForm()
         {
             InitializeComponent();
             Initial();
         }
+
+        /// <summary>
+        /// 控件初始化方法
+        /// </summary>
         private void Initial()
         {
             tlDepartment.DataSource = deptMg.GetAllList();
-            //tl_Role.DataSource = bll.GetRoleInfo();
+            tlRole.DataSource = roleMg.GetAllList();
             Query();
         }
 
+        /// <summary>
+        /// 初始化工具栏按钮
+        /// </summary>
         public override void InitFeatureButton()
         {
             base.SetFeatureButton(new FeatureButton[] {
@@ -38,6 +49,9 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                 FeatureButton.Print });
         }
        
+        /// <summary>
+        /// 新增方法
+        /// </summary>
         public override void AddNew()
         {
             UserEditForm sub = new UserEditForm();
@@ -45,11 +59,17 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             Query();
         }
 
+        /// <summary>
+        /// 查询方法
+        /// </summary>
         public override void Query()
         {
             gcUser.DataSource = dtAll = userMg.GetAllList();
         }
 
+        /// <summary>
+        /// 修改方法
+        /// </summary>
         public override void Modify()
         {
             object obj_ID = gvUser.GetFocusedRowCellValue("Id");
@@ -63,6 +83,9 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             }
         }
 
+        /// <summary>
+        /// 删除方法
+        /// </summary>
         public override void Delete()
         {
             object obj_ID = gvUser.GetFocusedRowCellValue("Id");
@@ -76,6 +99,9 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             }
         }
 
+        /// <summary>
+        /// 导入方法
+        /// </summary>
         public override void Import()
         {
             clsPublic.GetOpenXlsFileName("");
@@ -97,23 +123,38 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
 
         }
 
+        /// <summary>
+        /// 导出方法
+        /// </summary>
         public override void Export()
         {
             clsPublic.DevExprot(gcUser);
         }
 
+        /// <summary>
+        /// 预览用户信息
+        /// </summary>
         public override void Preview()
         {
             clsPublic.DevPreview(gcUser,"用户信息",true);
         }
 
+        /// <summary>
+        /// 打印用户信息
+        /// </summary>
         public override void Print()
         {
             base.Print();
         }
 
         #region 组织机构和角色树焦点改变事件,筛选用户信息
-        private void tl_OU_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+
+        /// <summary>
+        /// 部门焦点改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tlDepartment_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             if (e.Node != null&&dtAll!=null)
             {
@@ -121,15 +162,26 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             }
         }
 
+        /// <summary>
+        /// 角色焦点改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tl_Role_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             if (e.Node != null && dtAll != null)
             {
-                //dtAll.DefaultView.RowFilter = string.Format("RoleID='{0}'", e.Node.GetValue("ID"));
-                //gcUser.DataSource = dtAll.DefaultView;
+                Guid RoleId=(Guid)e.Node.GetValue("Id");
+                gcUser.DataSource = userMg.GetListByRoleId(RoleId);
             }
         }
-
+     
+        
+        /// <summary>
+        /// 获取所有子节点的Id列表
+        /// </summary>
+        /// <param name="node">节点</param>
+        /// <param name="strListID">ID列表</param>
         private void GetNodChildrenID(TreeListNode node,ref string strListID)
         {
             strListID= strListID+",'" + node.GetValue("Id") + "'" ;
@@ -139,8 +191,15 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                 GetNodChildrenID(n, ref strListID);
             }
         }
+
         #endregion
 
+
+        /// <summary>
+        /// 选择查看方式更改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabPaneView_SelectedPageChanged(object sender, DevExpress.XtraBars.Navigation.SelectedPageChangedEventArgs e)
         {
             if (e.Page.PageText == "tabpage_Dept")
@@ -152,7 +211,14 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                 tlRole.FocusedNode = null;
             }
         }
-        
+
+        #region 指纹信息登记
+
+        /// <summary>
+        /// 用户指纹登记
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuFingerAdd_Click(object sender, EventArgs e)
         {
             Guid UserID =clsPublic.GetObjGUID(gvUser.GetFocusedRowCellValue("Id"));
@@ -165,6 +231,11 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             }
         }
 
+        /// <summary>
+        /// 清除用户指纹
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuFingerClear_Click(object sender, EventArgs e)
         {
             Guid UserID = clsPublic.GetObjGUID(gvUser.GetFocusedRowCellValue("UserId"));
@@ -178,6 +249,11 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             }
         }
 
+        /// <summary>
+        /// 指纹验证
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuFingerVerification_Click(object sender, EventArgs e)
         {
             Guid UserID = clsPublic.GetObjGUID(gvUser.GetFocusedRowCellValue("Id"));
@@ -187,11 +263,18 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                 cap.ShowDialog();
             }
         }
-
+        
+        /// <summary>
+        /// 指纹匹配
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuFingerMatching_Click(object sender, EventArgs e)
         {
            UserFingerMatching cap = new UserFingerMatching();
            cap.ShowDialog();
         }
+
+        #endregion
     }
 }

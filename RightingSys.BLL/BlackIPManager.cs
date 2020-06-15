@@ -68,7 +68,7 @@ namespace RightingSys.BLL
         /// <returns></returns>
         public List<Models.ACL_BlackIP> GetAllList()
         {
-            return Sev.GetAllList().Where(a => a.IsRemoved == false).ToList() ;
+            return Sev.GetAllList().ToList() ;
         }
 
 
@@ -77,10 +77,9 @@ namespace RightingSys.BLL
         /// </summary>
         /// <param name="BlackIPId">规则Id</param>
         /// <returns></returns>
-        public List<Models.ACL_BlackIP_User> GetUserByBlackIP(Guid BlackIPId)
+        public List<Models.ACL_User> GetUserByBlackIP(Guid BlackIPId)
         {
             return Sev.GetUserByBlackIP(BlackIPId);
         }
-
     }
 }

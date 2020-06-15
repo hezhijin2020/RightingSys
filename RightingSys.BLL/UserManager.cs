@@ -36,7 +36,7 @@ namespace RightingSys.BLL
 
         public List<Models.ACL_User> GetAllList()
         {
-            
+
             return Sev.GetAllList().ToList();
         }
 
@@ -45,5 +45,15 @@ namespace RightingSys.BLL
             return Sev.GetOneById(Id);
         }
 
+
+        /// <summary>
+        /// 获取指定权限的用户列表 
+        /// </summary>
+        /// <param name="RoleId">角色ID</param>
+        /// <returns></returns>
+        public List<Models.ACL_User> GetListByRoleId(Guid RoleId)
+        {
+           return Sev.GetListByRoleId(RoleId).ToList();
+        }
     }
 }

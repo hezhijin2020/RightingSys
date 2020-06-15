@@ -104,5 +104,23 @@ where a.IsRemoved = 0 ";
             list = Models.SqlHelper.DataTableToList<Models.ACL_User>(dt).ToList();
             return list[0];
         }
+
+
+        /// <summary>
+        /// 获取指定权限的用户列表 
+        /// </summary>
+        /// <param name="RoleId">角色ID</param>
+        /// <returns></returns>
+        public IList<Models.ACL_User> GetListByRoleId(Guid RoleId)
+        {
+            List<Models.ACL_User> list = new List<Models.ACL_User>();
+
+            string sqlText =string.Format( @"select b.* 
+                    from ACL_Role_User as a inner join ACL_User as b on a.UserId=b.Id
+					where a.RoleId='{0}'",RoleId);
+            System.Data.DataTable dt = Models.SqlHelper.ExecuteDataTable(sqlText);
+            list = Models.SqlHelper.DataTableToList<Models.ACL_User>(dt).ToList();
+            return list;
+        }
     }
 }

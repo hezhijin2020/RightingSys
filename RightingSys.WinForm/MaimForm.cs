@@ -18,10 +18,7 @@ namespace RightingSys.WinForm
 
         private RightingSys.BLL.RightingSysManager _appRight = new RightingSys.BLL.RightingSysManager();
         private int AlertHoldTime = 3;
-        //private bool TriggerPageChanged = false;
-        //private DevExpress.XtraBars.Ribbon.RibbonPage FunctionPage = null;
         private bool CurrentUserIsAdmin = false;
-        //private static DataTable dtUserFunction = null;
         private static List<Models.ACL_Role_Function> ListUserFuntions = null;
         private RightingSys.WinForm.SubForm.pageSystem.LoginForm LoginForm = null;
         private BaseForm currentForm;
@@ -697,6 +694,7 @@ namespace RightingSys.WinForm
                 
             });
         }
+
         /// <summary>
         /// 关闭所有子窗体
         /// </summary>
@@ -987,7 +985,7 @@ namespace RightingSys.WinForm
         }
         private void btnBlackIPorUser_ItemClick(object sender, ItemClickEventArgs e)
         {
-           //MdiShow(new RightingSys.WinForm.SubForm.FingerPrint.MealForm(), btnBlackIP.Tag);
+            MdiShow(new RightingSys.WinForm.SubForm.pageBaseinfo.FBlackIP(), btnBlackIP.Tag);
         }
         private void btnLoginLog_ItemClick(object sender, ItemClickEventArgs e)
         {

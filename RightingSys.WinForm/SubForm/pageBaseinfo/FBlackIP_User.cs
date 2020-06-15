@@ -1,6 +1,7 @@
 ﻿using RightingSys.WinForm.Utility.cls;
 using RightingSys.WinForm.Utility.ToolForm;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace RightingSys.WinForm.SubForm.pageBaseinfo
@@ -20,7 +21,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         {
             InitializeComponent();
             this.Text = "新增--" + this.Text;
-            this.panelControl2.Enabled = false;
+            //this.panelControl2.Enabled = false;
         }
 
         /// <summary>
@@ -36,11 +37,11 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             if (model != null)
             {
                 txtName.Text = model.BlackIPName;
-                cboxType.SelectedItem = model.AuthorizeType!=true ? "黑名单" : "白名单";
+                cboxType.SelectedItem = model.AuthorizeType;
                 txtStartIP.Text = model.StartIP;
                 txtEndIP.Text = model.EndIP;
                 txtRemark.Text = model.Description;
-                IsEnabled.Checked = model.IsRemoved ? false : true;
+                IsEnabled.Checked = model.IsRemoved;
                 gcUser.DataSource = manager.GetUserByBlackIP(model.Id);
             }
             else {
@@ -93,15 +94,17 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             
             
             model.BlackIPName = txtName.Text.Trim();
-            model.AuthorizeType = cboxType.Text == "黑名单" ;
+            model.AuthorizeType = cboxType.SelectedItem.ToString() ;
             model.IsRemoved = IsEnabled.Checked;
             model.StartIP = txtStartIP.Text;
             model.EndIP = txtEndIP.Text;
             model.Description = txtRemark.Text;
             model.SystemId = Models.SqlHelper.Session._SystemId;
+            model.SystemName = Models.SqlHelper.Session._SystemName;
             model.CreateTime = DateTime.Now;
             model.OperatorName = Models.SqlHelper.Session._LoginName;
             model.OperatorId = Models.SqlHelper.Session._UserId;
+            model.Details = (List<Models.ACL_User>)gcUser.DataSource;
             if (this.Text.Contains("新增"))
             {
                 model.Id = Guid.NewGuid();
@@ -139,7 +142,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             F_UserForBlackIP_Selectlist sub = new F_UserForBlackIP_Selectlist(model.Id);
             if (sub.ShowDialog() == DialogResult.OK)
             {
-                Query();
+                gcUser.DataSource = sub.selectData;
             }
         }
 
@@ -153,12 +156,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             object Id = gvUser.GetFocusedRowCellValue("Id");
             if (Id != null)
             {
-                var _Id = clsPublic.GetObjGUID(Id);
-                if (manager.RemoveUserForBlackIP(_Id))
-                {
-                    clsPublic.ShowMessage("移除成功",Text);
-                    Query();
-                }
+                gvUser.DeleteRow(gvUser.FocusedRowHandle);
             }
         }
     }

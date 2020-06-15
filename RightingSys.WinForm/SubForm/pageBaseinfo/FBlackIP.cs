@@ -39,7 +39,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         /// </summary>
         public override void Modify()
         {
-            object id = gvBlackIP.GetFocusedRowCellValue("Id");
+            object id = gvData.GetFocusedRowCellValue("Id");
             if (id != null)
             {
                 var BlackIPId = clsPublic.GetObjGUID(id);
@@ -58,7 +58,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         /// </summary>
         public override void Delete()
         {
-            object id = gvBlackIP.GetFocusedRowCellValue("Id");
+            object id = gvData.GetFocusedRowCellValue("Id");
             if (id != null)
             {
                 if (blackIPManager.Delete(clsPublic.GetObjGUID(id)))
@@ -76,24 +76,8 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         /// </summary>
         public override void Query()
         {
-            gcBlackIP.DataSource = lsSource= blackIPManager.GetAllList();
+            gcData.DataSource = lsSource= blackIPManager.GetAllList();
         }
 
-        /// <summary>
-        /// 自定义显示
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void gvBlackIP_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.Column.FieldName == "AuthorizeType")
-            {
-                e.DisplayText =e.Value.ToString() =="1" ?"白名单" : "黑名单";
-            }
-            if (e.Column.FieldName == "IsEnabled")
-            {
-                e.DisplayText = e.Value.ToString() == "1" ? "已启用" : "未启用";
-            }
-        }
     }
 }

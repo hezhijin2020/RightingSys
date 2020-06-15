@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.Data.Filtering.Helpers;
 using DevExpress.Data.Filtering;
@@ -148,6 +148,11 @@ namespace RightingSys.WinForm.Utility.CustomControls
            this.FocusedRowHandle = 0;
            // 设置行号宽度
            this.IndicatorWidth = 28;
+
+            //单元格水平和垂直居中
+            this.Appearance.Row.TextOptions.HAlignment = HorzAlignment.Center;
+            this.Appearance.Row.TextOptions.VAlignment = VertAlignment.Center;
+
            // 可编辑列设定
           // SetEditableColumns();
          }
@@ -226,7 +231,43 @@ namespace RightingSys.WinForm.Utility.CustomControls
            }
            return list;
          }
-     
+
+        /// <summary>
+        /// 获取GridView的选中行数据集
+        /// </summary>
+        /// <returns></returns>
+        public List<object> GetSelectRowToObject()
+        {
+            List<object> list = new List<object>();
+            var rowIds = this.GetSelectedRows();
+            foreach (var id in rowIds)
+            {
+                object row = this.GetRow(id);
+                if (row == null) continue;
+                list.Add(row);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 设置选种的行
+        /// </summary>
+        /// <param name="selectlist"></param>
+        public void SetSelectRow(List<object> objlt)
+        {
+            for(int i=0; i<this.RowCount;i++)
+            {
+               object rowobj=  this.GetRow(i);
+                if (objlt.Any(a => a.Equals(rowobj)))
+                {
+                    this.SelectRow(i);
+                }
+            }
+        }
+
+
+
+
          /// <summary>
          /// 获取GridView的选中行数据集（数据源是 DataTable）
          /// </summary>
@@ -234,7 +275,6 @@ namespace RightingSys.WinForm.Utility.CustomControls
          public DataTable GetSelectedDataRows() {
            var dt = (this.DataSource as DataView).Table.Clone();
            var rowIds = this.GetSelectedRows();
-     
            foreach (var id in rowIds) {
              var row = (this.GetRow(id) as DataRowView).Row;
              if (row == null) continue;

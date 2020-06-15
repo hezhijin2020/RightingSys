@@ -98,12 +98,12 @@
             this.tabpage_Dept.Caption = "tabpage_Dept";
             this.tabpage_Dept.Controls.Add(this.tlDepartment);
             this.tabpage_Dept.Name = "tabpage_Dept";
-            this.tabpage_Dept.PageText = "按组织机构查看";
+            this.tabpage_Dept.PageText = "按部门查看";
             this.tabpage_Dept.Size = new System.Drawing.Size(211, 198);
             // 
             // tlDepartment
             // 
-            this.tlDepartment.Caption = "组织机构列表";
+            this.tlDepartment.Caption = "部门列表";
             this.tlDepartment.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn1});
             this.tlDepartment.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -118,7 +118,7 @@
             this.tlDepartment.ParentFieldName = "ParentId";
             this.tlDepartment.Size = new System.Drawing.Size(211, 198);
             this.tlDepartment.TabIndex = 0;
-            this.tlDepartment.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tl_OU_FocusedNodeChanged);
+            this.tlDepartment.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlDepartment_FocusedNodeChanged);
             // 
             // treeListColumn1
             // 
