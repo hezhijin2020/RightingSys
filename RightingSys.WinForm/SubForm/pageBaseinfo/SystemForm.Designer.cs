@@ -75,7 +75,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             this.mygcData.Location = new System.Drawing.Point(12, 12);
             this.mygcData.MainView = this.mygvData;
             this.mygcData.Name = "mygcData";
-            this.mygcData.Size = new System.Drawing.Size(794, 138);
+            this.mygcData.Size = new System.Drawing.Size(434, 138);
             this.mygcData.TabIndex = 1;
             this.mygcData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.mygvData});
@@ -123,7 +123,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             this.gridColumn8.FieldName = "SystemName";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 1;
+            this.gridColumn8.VisibleIndex = 0;
             this.gridColumn8.Width = 122;
             // 
             // gridColumn9
@@ -132,7 +132,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             this.gridColumn9.FieldName = "SimpleCode";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 2;
+            this.gridColumn9.VisibleIndex = 1;
             // 
             // gridColumn10
             // 
@@ -140,15 +140,15 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             this.gridColumn10.FieldName = "Version";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 3;
+            this.gridColumn10.VisibleIndex = 2;
             // 
             // gridColumn11
             // 
             this.gridColumn11.Caption = "更新时间";
-            this.gridColumn11.FieldName = "UpdateTime";
+            this.gridColumn11.FieldName = "LastTime";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 4;
+            this.gridColumn11.VisibleIndex = 3;
             // 
             // gridColumn12
             // 
@@ -156,7 +156,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             this.gridColumn12.FieldName = "URL";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 5;
+            this.gridColumn12.VisibleIndex = 4;
             this.gridColumn12.Width = 233;
             // 
             // gridColumn13
@@ -165,14 +165,14 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             this.gridColumn13.FieldName = "SystemDescription";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 6;
+            this.gridColumn13.VisibleIndex = 5;
             this.gridColumn13.Width = 175;
             // 
             // SystemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 162);
+            this.ClientSize = new System.Drawing.Size(458, 162);
             this.Controls.Add(this.mygcData);
             this.Name = "SystemForm";
             this.Text = "系统定义";

@@ -1,4 +1,4 @@
-﻿using RightingSys.WinForm.AppPublic;
+﻿
 using System;
 using System.Data.SqlClient;
 

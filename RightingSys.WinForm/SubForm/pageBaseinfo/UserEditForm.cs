@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RightingSys.WinForm.Utility.cls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -62,14 +63,14 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                     model.Id = Guid.NewGuid();
                     if (userMg.AddNew(model))
                     {
-                        MessageBox.Show("保存成功！");
+                        clsPublic.ShowMessage("保存成功！");
                         base.DialogResult = DialogResult.OK;
                     }
                 }
                 else {
                     if (userMg.Modify(model))
                     {
-                        MessageBox.Show("修改成功！");
+                        clsPublic.ShowMessage("修改成功！");
                         base.DialogResult = DialogResult.OK;
                     }
                 }
@@ -87,7 +88,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         {
             if (txtLoginName.Text.Trim() == "" || txtFullName.Text.Trim() == null || tlDepartment.EditValue == null)
             {
-                MessageBox.Show("用户信息不能为空，请返回检查！");
+                clsPublic.ShowMessage("用户信息不能为空，请返回检查！");
                 txtLoginName.Focus();
                 return false;
             }
@@ -97,7 +98,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                 {
                     if (userMg.ExistsByName(txtLoginName.Text.Trim()))
                     {
-                        MessageBox.Show("用户信息不能为空，请返回检查！");
+                        clsPublic.ShowMessage("用户信息不能为空，请返回检查！");
                         txtLoginName.Focus();
                         return false;
                     }

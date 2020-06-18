@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraTreeList.Nodes;
+using RightingSys.WinForm.Utility.cls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -67,12 +68,12 @@ namespace RightingSys.WinForm.Utility.ToolForm
             SetTreeListNodesCheckeed(tl_OU.Nodes,ref list);
             if (roleMg.AddNewDepartmentByRoleId(_RoleId, list))
             {
-                MessageBox.Show("完成！", Text);
+                clsPublic.ShowMessage("完成！", Text);
                 base.DialogResult = DialogResult.OK;
             }
             else
             {
-                MessageBox.Show("失败！", Text);
+                clsPublic.ShowMessage("失败！", Text);
                 base.DialogResult = DialogResult.Cancel;
             }
         }

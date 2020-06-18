@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
 using System.Diagnostics;
+using System.IO;
 using System.Xml;
 
-namespace RightingSys.WinForm.AppPublic.AutoService
+namespace RightingSys.WinForm.Utility.AutoService
 {
     public class XMLFile
     {

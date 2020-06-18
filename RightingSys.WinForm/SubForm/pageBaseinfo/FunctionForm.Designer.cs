@@ -47,10 +47,15 @@
             this.treeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.gcDataRole = new RightingSys.WinForm.Utility.CustomControls.CustomGridControl();
+            this.gvDataRole = new RightingSys.WinForm.Utility.CustomControls.CustomGridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tlFunc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSortCode.Properties)).BeginInit();
@@ -59,6 +64,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFuncHandle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tlPID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcDataRole)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDataRole)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl1
@@ -71,7 +78,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.groupControl2);
             this.splitContainerControl1.Panel2.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(688, 342);
+            this.splitContainerControl1.Size = new System.Drawing.Size(688, 389);
             this.splitContainerControl1.SplitterPosition = 216;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -97,7 +104,7 @@
             this.tlFunc.OptionsView.ShowColumns = false;
             this.tlFunc.OptionsView.ShowIndicator = false;
             this.tlFunc.ParentFieldName = "ParentId";
-            this.tlFunc.Size = new System.Drawing.Size(215, 324);
+            this.tlFunc.Size = new System.Drawing.Size(215, 371);
             this.tlFunc.TabIndex = 7;
             this.tlFunc.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlFunc_FocusedNodeChanged);
             // 
@@ -114,9 +121,10 @@
             this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl2.Location = new System.Drawing.Point(5, 294);
+            this.groupControl2.Controls.Add(this.gcDataRole);
+            this.groupControl2.Location = new System.Drawing.Point(5, 264);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(454, 44);
+            this.groupControl2.Size = new System.Drawing.Size(454, 121);
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "包含的角色";
             // 
@@ -137,7 +145,7 @@
             this.groupControl1.Controls.Add(this.tlPID);
             this.groupControl1.Location = new System.Drawing.Point(5, 14);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(454, 274);
+            this.groupControl1.Size = new System.Drawing.Size(454, 244);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "功能详细信息";
             // 
@@ -277,11 +285,76 @@
             this.treeListColumn2.Visible = true;
             this.treeListColumn2.VisibleIndex = 1;
             // 
+            // gcDataRole
+            // 
+            this.gcDataRole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gcDataRole.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.gcDataRole.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.gcDataRole.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.gcDataRole.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.gcDataRole.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            this.gcDataRole.EmbeddedNavigator.TextStringFormat = "记录 {0} / {1}";
+            this.gcDataRole.Location = new System.Drawing.Point(26, 34);
+            this.gcDataRole.MainView = this.gvDataRole;
+            this.gcDataRole.Name = "gcDataRole";
+            this.gcDataRole.Size = new System.Drawing.Size(406, 67);
+            this.gcDataRole.TabIndex = 0;
+            this.gcDataRole.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvDataRole});
+            // 
+            // gvDataRole
+            // 
+            this.gvDataRole.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gvDataRole.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvDataRole.Appearance.Row.Options.UseTextOptions = true;
+            this.gvDataRole.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvDataRole.Appearance.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gvDataRole.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2});
+            this.gvDataRole.EmptyForegroundText = null;
+            this.gvDataRole.GridControl = this.gcDataRole;
+            this.gvDataRole.IndicatorWidth = 28;
+            this.gvDataRole.LocatedColumn = null;
+            this.gvDataRole.Name = "gvDataRole";
+            this.gvDataRole.OptionsBehavior.Editable = false;
+            this.gvDataRole.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseUp;
+            this.gvDataRole.OptionsCustomization.AllowColumnMoving = false;
+            this.gvDataRole.OptionsDetail.EnableMasterViewMode = false;
+            this.gvDataRole.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Classic;
+            this.gvDataRole.OptionsNavigation.EnterMoveNextColumn = true;
+            this.gvDataRole.OptionsPrint.AutoWidth = false;
+            this.gvDataRole.OptionsSelection.CheckBoxSelectorColumnWidth = 35;
+            this.gvDataRole.OptionsSelection.MultiSelect = true;
+            this.gvDataRole.OptionsSelection.UseIndicatorForSelection = false;
+            this.gvDataRole.OptionsView.ColumnAutoWidth = false;
+            this.gvDataRole.OptionsView.EnableAppearanceEvenRow = true;
+            this.gvDataRole.OptionsView.EnableAppearanceOddRow = true;
+            this.gvDataRole.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+            this.gvDataRole.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Id";
+            this.gridColumn1.FieldName = "Id";
+            this.gridColumn1.Name = "gridColumn1";
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "名称";
+            this.gridColumn2.FieldName = "RoleName";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
+            this.gridColumn2.Width = 101;
+            // 
             // FunctionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 342);
+            this.ClientSize = new System.Drawing.Size(688, 389);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "FunctionForm";
             this.Text = "功能管理";
@@ -289,6 +362,7 @@
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tlFunc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
@@ -298,6 +372,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFuncHandle.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tlPID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcDataRole)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDataRole)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -323,5 +399,9 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.TextEdit txtSortCode;
+        private Utility.CustomControls.CustomGridControl gcDataRole;
+        private Utility.CustomControls.CustomGridView gvDataRole;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
     }
 }

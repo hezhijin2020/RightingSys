@@ -1,6 +1,5 @@
 ﻿
 using DevExpress.XtraTreeList.Nodes;
-using RightingSys.WinForm.AppPublic;
 using RightingSys.WinForm.Utility.cls;
 using RightingSys.WinForm.Utility.ToolForm;
 using System;
@@ -21,10 +20,15 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             InitializeComponent();
             Query();
         }
+        
         public override void InitFeatureButton()
         {
             base.SetFeatureButton(new FeatureButton[] { FeatureButton.Add,FeatureButton.Delete,FeatureButton.Query});
         }
+
+        /// <summary>
+        /// 新增功能
+        /// </summary>
         public override void AddNew()
         {
             txtID.Text = "新ID";
@@ -36,6 +40,10 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             sbtnSave.Enabled = true;
             model = new Models.ACL_Function();
         }
+
+        /// <summary>
+        /// 删除功能
+        /// </summary>
         public override void Delete()
         {
             TreeListNode node = tlFunc.FocusedNode;
@@ -43,60 +51,68 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             {
                 if (node.Nodes.Count > 0)
                 {
-                    MessageBox.Show("该功能下面有子功能，不能删除！");
+                    clsPublic.ShowMessage("该功能下面有子功能，不能删除！");
                 }
                 else
                 {
                     Guid Id = (Guid)node.GetValue("Id");
                     if (funcManage.ExistsRoleById(Id))
                     {
-                        MessageBox.Show("该功能已被引用，不能删除！");
+                        clsPublic.ShowMessage("该功能已被引用，不能删除！");
                         return;
                     }
                     else
                     {
-                        if (MessageBox.Show("是否删除该功能，删除将不能恢复？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (clsPublic.GetMessageBoxYesNoResult("是否删除该功能，删除将不能恢复？", "提示"))
                         {
                             if (funcManage.Delete(Id))
                             {
                                 Query();
-                                MessageBox.Show("删除成功！");
+                                clsPublic.ShowMessage("删除成功！");
                             }
                             else
                             {
-                                MessageBox.Show("删除失败！");
+                                clsPublic.ShowMessage("删除失败！");
                             }
                         }
                     }
                 }
             }
         }
+
+        /// <summary>
+        /// 查询刷新功能
+        /// </summary>
         public override void Query()
         {
             dtAll =funcManage.GetTbFunctionTree();
             tlPID.Properties.DataSource=tlFunc.DataSource = dtAll;
             tlFunc.ExpandAll();
         }
+
+        /// <summary>
+        /// 保存功能
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void sbtnSave_Click(object sender, EventArgs e)
         {
             if (txtName.Text.Trim() == ""||tlPID.EditValue==null)
             {
-                MessageBox.Show("机构名和上级机构不能为空", "提示");
+                clsPublic.ShowMessage("机构名和上级机构不能为空", "提示");
                 txtName.Focus();
                 return;
             }
             else
             {
-
-              
                 if (model == null)
                 {
-                    MessageBox.Show("请点新增或选择要修改的功能节点在点保存！");return;
+                    clsPublic.ShowMessage("请点新增或选择要修改的功能节点在点保存！");return;
                 }
 
                 if (model.Id == (Guid)tlPID.EditValue)
                 {
-                    MessageBox.Show("节点的父节点不能为当前节点！", "提示");
+                    clsPublic.ShowMessage("节点的父节点不能为当前节点！", "提示");
                     tlPID.Focus();
                     return;
                 }
@@ -111,12 +127,12 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                     if (funcManage.AddNew(model))
                     {
                         Query();
-                        MessageBox.Show("新增成功", "提示");
+                        clsPublic.ShowMessage("新增成功", "提示");
                     }
                     else
                     {
                         Query();
-                        MessageBox.Show("修改失败", "提示");
+                        clsPublic.ShowMessage("修改失败", "提示");
                     }
                 }
                 else
@@ -125,19 +141,26 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                     if (funcManage.Modify(model))
                     {
                         Query();
-                        MessageBox.Show("修改成功", "提示");
+                        clsPublic.ShowMessage("修改成功", "提示");
                     }
                     else
                     {
-                        MessageBox.Show("修改失败", "提示");
+                        clsPublic.ShowMessage("修改失败", "提示");
                     }
                 }
             }
         }
+
+        /// <summary>
+        /// 功能节点焦点改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tlFunc_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             if (e.Node != null)
             {
+                #region 功能管理
                 TreeListNode node = e.Node;
                 object Id = e.Node.GetValue("Id");
                 model = funcManage.GetOneFuncionById((Guid)Id);
@@ -156,11 +179,22 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                 {
                     sbtnSave.Enabled = true;
                 }
+                #endregion
+
+                #region 功能角色
+                gcDataRole.DataSource= funcManage.GetRoleListByFuncId(clsPublic.GetObjGUID(Id));
+                #endregion
+
             }
         }
+
+        /// <summary>
+        /// 功能操作菜单事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtFuncHandle_Click(object sender, EventArgs e)
         {
-
             F_Func_Selectlist sub = new F_Func_Selectlist(txtFuncHandle.Tag);
             if (sub.ShowDialog() == DialogResult.OK)
             {
@@ -168,6 +202,5 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                 txtFuncHandle.Text = sub.SelectText;
             }
         }
-
     }
 }

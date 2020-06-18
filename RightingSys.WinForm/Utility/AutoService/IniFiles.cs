@@ -1,13 +1,12 @@
-using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace RightingSys.WinForm.AppPublic.AutoService
+namespace RightingSys.WinForm.Utility.AutoService
 {
-	/// <summary>
-	/// IniFiles 的摘要说明。
-	/// </summary>
-	public class IniFiles
+    /// <summary>
+    /// IniFiles 的摘要说明。
+    /// </summary>
+    public class IniFiles
 	{
 		public string path; 
 		[DllImport("kernel32")] 

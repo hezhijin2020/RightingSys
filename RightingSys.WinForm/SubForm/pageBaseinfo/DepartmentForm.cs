@@ -21,6 +21,10 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         {
             base.SetFeatureButton(new FeatureButton[] { FeatureButton.Add,FeatureButton.Delete,FeatureButton.Query});
         }
+
+        /// <summary>
+        /// 新增方法
+        /// </summary>
         public override void AddNew()
         {
             model = new Models.ACL_Department();
@@ -32,6 +36,10 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             txtHandNo.EditValue = "";
             sbtnSave.Enabled = true;
         }
+
+        /// <summary>
+        /// 删除方法
+        /// </summary>
         public override void Delete()
         {
             TreeListNode node = tlDepartment.FocusedNode;
@@ -39,19 +47,19 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             {
                 if (node.Nodes.Count > 0)
                 {
-                    MessageBox.Show("该机构下面有子机构，不能删除！");
+                    clsPublic.ShowMessage("该机构下面有子机构，不能删除！");
                 }
                 else
                 {
                    Guid DepartmentId= (Guid)node.GetValue("Id");
                     if (deptMg.ExistsUserById(DepartmentId))
                     {
-                        MessageBox.Show("该机构下面有用户，不能删除！");
+                        clsPublic.ShowMessage("该机构下面有用户，不能删除！");
                         return;
                     }
                     else
                     {
-                        if(MessageBox.Show("是否删除该机构，删除将不能恢复？","提示",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+                        if(clsPublic.GetMessageBoxYesNoResult("是否删除该机构，删除将不能恢复？","提示"))
                         {
                             if (deptMg.Delete(DepartmentId))
                             {
@@ -59,29 +67,38 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                                 dtAll.Remove(model);
                                 tlDepartment.RefreshDataSource();
                                 tlPID.Properties.TreeList.RefreshDataSource();
-                                MessageBox.Show("删除成功！");
+                                clsPublic.ShowMessage("删除成功！");
                             }
                             else
                             {
-                                MessageBox.Show("删除失败！");
+                                clsPublic.ShowMessage("删除失败！");
                             }
                         }
                     }
                 }
             }
         }
+
+        /// <summary>
+        /// 查询方法
+        /// </summary>
         public override void Query()
         {
             dtAll = deptMg.GetAllList();
-            //dtAll.Sort((a, b) => a.SortCode.CompareTo(b.SortCode));
             tlDepartment.DataSource = tlPID.Properties.DataSource = dtAll;
             tlDepartment.ExpandAll(); 
         }
+
+        /// <summary>
+        /// 新增修改保存方法
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void sbtnSave_Click(object sender, EventArgs e)
         {
             if (txtName.Text.Trim() == "" || tlPID.EditValue == null)
             {
-                MessageBox.Show("机构名和上级机构不能为空", "提示");
+                clsPublic.ShowMessage("机构名和上级机构不能为空", "提示");
                 txtName.Focus();
                 return;
             }
@@ -89,7 +106,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             {
                 if (model.Id == (Guid)tlPID.EditValue)
                 {
-                    MessageBox.Show("节点的父节点不能为当前节点！", "提示");
+                    clsPublic.ShowMessage("节点的父节点不能为当前节点！", "提示");
                     tlPID.Focus();
                     return;
                 }
@@ -100,13 +117,6 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                 model.CreateTime = clsPublic.ToDateTime(txtCreatTime.Text.Trim());
                 model.SortCode = txtSortCode.Text;
      
-
-                //if (cboxCategory.EditValue.ToString() == "公司" || cboxCategory.EditValue.ToString() == "集团")
-                //{
-                //    model.CompanyName = model.Name;
-                //    model.Company_ID = model.ID;
-                //}
-
                 if (!clsPublic.IsGuid(txtID.Text))
                 {
                     model.Id = Guid.NewGuid();
@@ -115,11 +125,11 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                         dtAll.Add(model);
                         tlDepartment.RefreshDataSource();
                         tlPID.Properties.TreeList.RefreshDataSource();
-                        MessageBox.Show("新增成功", "提示");
+                        clsPublic.ShowMessage("新增成功", "提示");
                     }
                     else
                     {
-                        MessageBox.Show("修改失败", "提示");
+                        clsPublic.ShowMessage("新增失败", "提示");
                     }
                 }
                 else
@@ -129,11 +139,12 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                     {
                         tlDepartment.RefreshDataSource();
                         tlPID.Properties.TreeList.RefreshDataSource();
-                        MessageBox.Show("修改成功", "提示");
+                        clsPublic.ShowMessage("修改成功", "提示");
                     }
                     else
                     {
-                        MessageBox.Show("修改失败", "提示");
+                        
+                        clsPublic.ShowMessage("修改失败", "提示");
                     }
                 }
             }
@@ -155,8 +166,8 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                txtSortCode.Text = model.SortCode;
                 tlPID.EditValue = model.ParentId;
 
-                //gcRole.DataSource = bll.GetRoleForOu(clsPublic.GetObjGUID(ID));
-                //gcUser.DataSource = bll.GetUserForOu(clsPublic.GetObjGUID(ID));
+                gcDataRole.DataSource = deptMg.GetRoleListByDepartmentId(clsPublic.GetObjGUID(ID));
+                gcDataUser.DataSource = deptMg.GetUserListByDepartmentId(clsPublic.GetObjGUID(ID));
 
                 if (node.GetValue("DepartmentName").ToString() != "株洲紫气东来商贸有限公司")
                 {

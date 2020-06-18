@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RightingSys.WinForm.Utility.cls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,7 +36,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             bool count = false;
             if (txtsysName.Text.Trim()=="")
             {
-                MessageBox.Show("系统名称不能为空！",Text);
+                clsPublic.ShowMessage("系统名称不能为空！",Text);
                 txtsysName.Focus();
                 return count;
             }
@@ -43,7 +44,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             {
                 if (systemMg.ExistsByName(txtsysName.Text.Trim()))
                 {
-                    MessageBox.Show("系统名称已经存在！", Text);
+                    clsPublic.ShowMessage("系统名称已经存在！", Text);
                     txtsysName.Focus();
                     return count;
                 }
@@ -59,11 +60,11 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             {
                 model.Id = Guid.NewGuid();
                 count = systemMg.AddNew(model);
-                MessageBox.Show("新增成功！", Text);
+                clsPublic.ShowMessage("新增成功！", Text);
             }
             else {
                 count = systemMg.Modify(model);
-                MessageBox.Show("修改成功！", Text);
+                clsPublic.ShowMessage("修改成功！", Text);
             }
             return count;
         }

@@ -61,9 +61,9 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             object id = gvData.GetFocusedRowCellValue("Id");
             if (id != null)
             {
-                if (blackIPManager.Delete(clsPublic.GetObjGUID(id)))
+                if (clsPublic.GetMessageBoxYesNoResult("是否删除该记录？", Text))
                 {
-                    if (clsPublic.GetMessageBoxYesNoResult("是否删除该记录？", Text))
+                    if (blackIPManager.Delete(clsPublic.GetObjGUID(id)))
                     {
                         clsPublic.ShowMessage("删除成功", Text);
                     }

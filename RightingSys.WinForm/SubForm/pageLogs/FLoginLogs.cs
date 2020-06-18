@@ -52,15 +52,15 @@ namespace RightingSys.WinForm.SubForm.pageLogs
         /// </summary>
         public override void Delete()
         {
-            if (MessageBox.Show("您确定删除90天前的日志吗？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (clsPublic.GetMessageBoxYesNoResult("您确定删除90天前的日志吗？", "询问"))
             {
                 if (LoginLog.DeleteByDayNum(-90))
                 {
-                    MessageBox.Show("删除成功", "提示");
+                    clsPublic.ShowMessage("删除成功", "提示");
                 }
                 else
                 {
-                    MessageBox.Show("90天前没有日志供删除", "提示");
+                    clsPublic.ShowMessage("90天前没有日志供删除", "提示");
                 }
             }
         }

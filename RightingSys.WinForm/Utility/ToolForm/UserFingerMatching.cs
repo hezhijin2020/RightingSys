@@ -70,12 +70,12 @@ namespace RightingSys.WinForm.Utility.ToolForm
                 if (nCount<= 0)
                 {
                     zkfp2.Terminate();//释放资源
-                    MessageBox.Show("没有连接设备！");
+                    clsPublic.ShowMessage("没有连接设备！");
                 }
             }
             else
             {
-                MessageBox.Show("初始化失败" + ret + " !");
+                clsPublic.ShowMessage("初始化失败" + ret + " !");
             }
         }
         private void bnOpen_Click(object sender, EventArgs e)
@@ -83,12 +83,12 @@ namespace RightingSys.WinForm.Utility.ToolForm
             int ret = zkfp.ZKFP_ERR_OK;
             if (IntPtr.Zero == (mDevHandle = zkfp2.OpenDevice(0)))//打开设备，并获取返回值，指示是否成功！
             {
-                MessageBox.Show("打开设备失败");
+                clsPublic.ShowMessage("打开设备失败");
                 return;
             }
             if (IntPtr.Zero == (mDBHandle = zkfp2.DBInit()))//初始化算法库，并获取返回值，指示是否成功！
             {
-                MessageBox.Show("初始化数据库失败");
+                clsPublic.ShowMessage("初始化数据库失败");
                 zkfp2.CloseDevice(mDevHandle);// 关闭设备
                 mDevHandle = IntPtr.Zero;
                 return;

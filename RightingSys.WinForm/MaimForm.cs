@@ -1053,5 +1053,10 @@ namespace RightingSys.WinForm
         {
             //MdiShow(new RightingSys.WinForm.SubForm.FingerPrint.OrderMealAnalysisForm(), btnMenuManager.Tag);
         }
+
+        private void btnAbout_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MdiShow2(new RightingSys.WinForm.SubForm.pageHelper.AboutForm());
+        }
     }
 }

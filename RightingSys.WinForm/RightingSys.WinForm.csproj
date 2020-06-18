@@ -95,12 +95,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SubForm\pageHelper\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageHelper\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility\cls\BitmapFormat.cs" />
     <Compile Include="Utility\cls\clsPublicLogs.cs" />
-    <Compile Include="AppPublic\AutoService\FileUnit.cs" />
-    <Compile Include="AppPublic\AutoService\IniFiles.cs" />
-    <Compile Include="AppPublic\AutoService\XMLFile.cs" />
-    <Compile Include="AppPublic\AutoService\XmlFiles.cs" />
+    <Compile Include="Utility\AutoService\FileUnit.cs" />
+    <Compile Include="Utility\AutoService\IniFiles.cs" />
+    <Compile Include="Utility\AutoService\XMLFile.cs" />
+    <Compile Include="Utility\AutoService\XmlFiles.cs" />
     <Compile Include="Utility\ToolForm\UserFingerAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +256,9 @@
     <Compile Include="Utility\ToolForm\RoleByUser_Selectlist.Designer.cs">
       <DependentUpon>RoleByUser_Selectlist.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SubForm\pageHelper\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utility\ToolForm\UserFingerAdd.resx">
       <DependentUpon>UserFingerAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -351,9 +360,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SubForm\pageHelper\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\RightingSys.BLL\RightingSys.BLL.csproj">
       <Project>{02858f09-9e1d-4ec2-abec-d3345cbf18eb}</Project>

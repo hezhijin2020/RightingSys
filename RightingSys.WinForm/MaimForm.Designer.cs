@@ -368,6 +368,7 @@
             this.btnAbout.Name = "btnAbout";
             this.btnAbout.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnAbout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAbout_ItemClick);
             // 
             // btnCalc
             // 
@@ -413,7 +414,7 @@
             // 
             // btnOuSetup
             // 
-            this.btnOuSetup.Caption = "组织机构管理";
+            this.btnOuSetup.Caption = "部门管理";
             this.btnOuSetup.Id = 13;
             this.btnOuSetup.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnOuSetup.ImageOptions.Image")));
             this.btnOuSetup.Name = "btnOuSetup";
@@ -687,16 +688,16 @@
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.btnSystemSetup);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnBlackIP);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "系统设置";
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnBlackIP);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnMenuManager);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnFiledRightingSetup);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "其它";
             // 
             // pageSystemLogs
             // 
@@ -725,7 +726,6 @@
             this.grouptool.ItemLinks.Add(this.btnAbout);
             this.grouptool.ItemLinks.Add(this.btnCalc, true);
             this.grouptool.ItemLinks.Add(this.btnNotepad);
-            this.grouptool.ItemLinks.Add(this.btnstikynot);
             this.grouptool.Name = "grouptool";
             this.grouptool.Text = "小工具";
             // 

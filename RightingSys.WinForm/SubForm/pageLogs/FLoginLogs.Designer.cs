@@ -44,21 +44,22 @@ namespace RightingSys.WinForm.SubForm.pageLogs
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.lkupSystem = new RightingSys.WinForm.Utility.CustomControls.CustomGridLookUpEdit();
             this.customGridLookUpEdit1View = new RightingSys.WinForm.Utility.CustomControls.CustomGridView();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lkupUser = new RightingSys.WinForm.Utility.CustomControls.CustomGridLookUpEdit();
             this.gvDataUser = new RightingSys.WinForm.Utility.CustomControls.CustomGridView();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dStartday = new DevExpress.XtraEditors.DateEdit();
             this.dEndday = new DevExpress.XtraEditors.DateEdit();
-            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.dataNavigator1 = new DevExpress.XtraEditors.DataNavigator();
             ((System.ComponentModel.ISupportInitialize)(this.gcData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -87,7 +88,7 @@ namespace RightingSys.WinForm.SubForm.pageLogs
             this.gcData.Location = new System.Drawing.Point(12, 79);
             this.gcData.MainView = this.gvData;
             this.gcData.Name = "gcData";
-            this.gcData.Size = new System.Drawing.Size(621, 155);
+            this.gcData.Size = new System.Drawing.Size(621, 198);
             this.gcData.TabIndex = 0;
             this.gcData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvData});
@@ -238,7 +239,6 @@ namespace RightingSys.WinForm.SubForm.pageLogs
             this.lkupSystem.Size = new System.Drawing.Size(155, 20);
             this.lkupSystem.TabIndex = 0;
             this.lkupSystem.Tag = false;
-            //this.lkupSystem.EditValueChanged += new System.EventHandler(this.lkupSystem_EditValueChanged);
             // 
             // customGridLookUpEdit1View
             // 
@@ -254,6 +254,36 @@ namespace RightingSys.WinForm.SubForm.pageLogs
             this.customGridLookUpEdit1View.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Classic;
             this.customGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.customGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "名称";
+            this.gridColumn11.FieldName = "SystemName";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 0;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "简称";
+            this.gridColumn12.FieldName = "SimpleCode";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 1;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "描述";
+            this.gridColumn15.FieldName = "SystemDescription";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 2;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "gridColumn16";
+            this.gridColumn16.FieldName = "Id";
+            this.gridColumn16.Name = "gridColumn16";
             // 
             // labelControl3
             // 
@@ -320,6 +350,14 @@ namespace RightingSys.WinForm.SubForm.pageLogs
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 0;
             // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "用户";
+            this.gridColumn17.FieldName = "LoginName";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 1;
+            // 
             // gridColumn13
             // 
             this.gridColumn13.Caption = "姓名";
@@ -362,49 +400,28 @@ namespace RightingSys.WinForm.SubForm.pageLogs
             this.dEndday.Size = new System.Drawing.Size(100, 20);
             this.dEndday.TabIndex = 3;
             // 
-            // gridColumn11
+            // dataNavigator1
             // 
-            this.gridColumn11.Caption = "名称";
-            this.gridColumn11.FieldName = "SystemName";
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 0;
-            // 
-            // gridColumn12
-            // 
-            this.gridColumn12.Caption = "简称";
-            this.gridColumn12.FieldName = "SimpleCode";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 1;
-            // 
-            // gridColumn15
-            // 
-            this.gridColumn15.Caption = "描述";
-            this.gridColumn15.FieldName = "SystemDescription";
-            this.gridColumn15.Name = "gridColumn15";
-            this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 2;
-            // 
-            // gridColumn16
-            // 
-            this.gridColumn16.Caption = "gridColumn16";
-            this.gridColumn16.FieldName = "Id";
-            this.gridColumn16.Name = "gridColumn16";
-            // 
-            // gridColumn17
-            // 
-            this.gridColumn17.Caption = "用户";
-            this.gridColumn17.FieldName = "LoginName";
-            this.gridColumn17.Name = "gridColumn17";
-            this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 1;
+            this.dataNavigator1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataNavigator1.CustomButtons.AddRange(new DevExpress.XtraEditors.NavigatorCustomButton[] {
+            new DevExpress.XtraEditors.NavigatorCustomButton(),
+            new DevExpress.XtraEditors.NavigatorCustomButton(),
+            new DevExpress.XtraEditors.NavigatorCustomButton(),
+            new DevExpress.XtraEditors.NavigatorCustomButton(),
+            new DevExpress.XtraEditors.NavigatorCustomButton()});
+            this.dataNavigator1.Location = new System.Drawing.Point(12, 285);
+            this.dataNavigator1.Name = "dataNavigator1";
+            this.dataNavigator1.Size = new System.Drawing.Size(621, 24);
+            this.dataNavigator1.TabIndex = 2;
+            this.dataNavigator1.Text = "dataNavigator1";
             // 
             // FLoginLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 246);
+            this.ClientSize = new System.Drawing.Size(645, 321);
+            this.Controls.Add(this.dataNavigator1);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.gcData);
             this.Name = "FLoginLogs";
@@ -457,5 +474,6 @@ namespace RightingSys.WinForm.SubForm.pageLogs
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraEditors.DataNavigator dataNavigator1;
     }
 }

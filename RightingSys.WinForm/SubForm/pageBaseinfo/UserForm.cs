@@ -64,7 +64,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         /// </summary>
         public override void Query()
         {
-            gcUser.DataSource = dtAll = userMg.GetAllList();
+            gcData.DataSource = dtAll = userMg.GetAllList();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         /// </summary>
         public override void Modify()
         {
-            object obj_ID = gvUser.GetFocusedRowCellValue("Id");
+            object obj_ID = gvData.GetFocusedRowCellValue("Id");
             if (obj_ID != null)
             {
                 UserEditForm sub = new UserEditForm((Guid)obj_ID);
@@ -88,13 +88,13 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         /// </summary>
         public override void Delete()
         {
-            object obj_ID = gvUser.GetFocusedRowCellValue("Id");
+            object obj_ID = gvData.GetFocusedRowCellValue("Id");
             if (obj_ID != null)
             {
-                if (MessageBox.Show("是否删除该用户？", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes && userMg.Delete((Guid)obj_ID))
+                if (clsPublic.GetMessageBoxYesNoResult("是否删除该用户？", "") && userMg.Delete((Guid)obj_ID))
                 {
                     Query();
-                    MessageBox.Show("删除成功");
+                    clsPublic.ShowMessage("删除成功");
                 }
             }
         }
@@ -128,7 +128,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         /// </summary>
         public override void Export()
         {
-            clsPublic.DevExprot(gcUser);
+            clsPublic.DevExprot(gcData);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         /// </summary>
         public override void Preview()
         {
-            clsPublic.DevPreview(gcUser,"用户信息",true);
+            clsPublic.DevPreview(gcData,"用户信息",true);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         {
             if (e.Node != null&&dtAll!=null)
             {
-                gcUser.DataSource = dtAll.FindAll(s=>s.DepartmentId==(Guid)e.Node.GetValue("Id"));
+                gcData.DataSource = dtAll.FindAll(s=>s.DepartmentId==(Guid)e.Node.GetValue("Id"));
             }
         }
 
@@ -172,7 +172,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             if (e.Node != null && dtAll != null)
             {
                 Guid RoleId=(Guid)e.Node.GetValue("Id");
-                gcUser.DataSource = userMg.GetListByRoleId(RoleId);
+                gcData.DataSource = userMg.GetListByRoleId(RoleId);
             }
         }
      
@@ -221,9 +221,9 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         /// <param name="e"></param>
         private void MenuFingerAdd_Click(object sender, EventArgs e)
         {
-            Guid UserID =clsPublic.GetObjGUID(gvUser.GetFocusedRowCellValue("Id"));
-            string FullName = clsPublic.GetObjectString(gvUser.GetFocusedRowCellValue("FullName"));
-            string DepartmentName = clsPublic.GetObjectString(gvUser.GetFocusedRowCellValue("DepartmentName"));
+            Guid UserID =clsPublic.GetObjGUID(gvData.GetFocusedRowCellValue("Id"));
+            string FullName = clsPublic.GetObjectString(gvData.GetFocusedRowCellValue("FullName"));
+            string DepartmentName = clsPublic.GetObjectString(gvData.GetFocusedRowCellValue("DepartmentName"));
             if (UserID != Guid.Empty)
             {
                 UserFingerAdd cap = new UserFingerAdd(UserID,FullName,DepartmentName);
@@ -238,7 +238,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         /// <param name="e"></param>
         private void MenuFingerClear_Click(object sender, EventArgs e)
         {
-            Guid UserID = clsPublic.GetObjGUID(gvUser.GetFocusedRowCellValue("UserId"));
+            Guid UserID = clsPublic.GetObjGUID(gvData.GetFocusedRowCellValue("UserId"));
             if (UserID != Guid.Empty)
             {
                 if (clsPublic.GetMessageBoxYesNoResult("是否清除该用户的指纹信息？",Text)&&fingerMg.Delete(UserID))
@@ -256,7 +256,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         /// <param name="e"></param>
         private void MenuFingerVerification_Click(object sender, EventArgs e)
         {
-            Guid UserID = clsPublic.GetObjGUID(gvUser.GetFocusedRowCellValue("Id"));
+            Guid UserID = clsPublic.GetObjGUID(gvData.GetFocusedRowCellValue("Id"));
             if (UserID != Guid.Empty)
             {
                 UserFingerMatching cap = new UserFingerMatching(UserID);

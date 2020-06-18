@@ -32,17 +32,15 @@
             this.tlDepartment = new DevExpress.XtraTreeList.TreeList();
             this.col_Name = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.gcRole = new DevExpress.XtraGrid.GridControl();
-            this.gvRole = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.gcUser = new DevExpress.XtraGrid.GridControl();
-            this.gvUser = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gcDataRole = new RightingSys.WinForm.Utility.CustomControls.CustomGridControl();
+            this.gvDataRole = new RightingSys.WinForm.Utility.CustomControls.CustomGridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.gcDataUser = new RightingSys.WinForm.Utility.CustomControls.CustomGridControl();
+            this.gvDataUser = new RightingSys.WinForm.Utility.CustomControls.CustomGridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
@@ -66,12 +64,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.tlDepartment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcRole)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvRole)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcDataRole)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDataRole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcDataUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDataUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtHandNo.Properties)).BeginInit();
@@ -94,7 +92,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.groupControl2);
             this.splitContainerControl1.Panel2.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(771, 376);
+            this.splitContainerControl1.Size = new System.Drawing.Size(687, 428);
             this.splitContainerControl1.SplitterPosition = 224;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -104,7 +102,7 @@
             this.tlDepartment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlDepartment.Caption = "组织机构列表";
+            this.tlDepartment.Caption = "部门列表";
             this.tlDepartment.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.col_Name});
             this.tlDepartment.KeyFieldName = "Id";
@@ -120,7 +118,7 @@
             this.tlDepartment.OptionsView.ShowColumns = false;
             this.tlDepartment.OptionsView.ShowIndicator = false;
             this.tlDepartment.ParentFieldName = "ParentId";
-            this.tlDepartment.Size = new System.Drawing.Size(213, 351);
+            this.tlDepartment.Size = new System.Drawing.Size(213, 403);
             this.tlDepartment.TabIndex = 6;
             this.tlDepartment.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlOU_FocusedNodeChanged);
             // 
@@ -136,110 +134,154 @@
             // 
             this.groupControl3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl3.Controls.Add(this.gcRole);
-            this.groupControl3.Location = new System.Drawing.Point(310, 200);
+            this.groupControl3.Controls.Add(this.gcDataRole);
+            this.groupControl3.Location = new System.Drawing.Point(226, 277);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(229, 167);
+            this.groupControl3.Size = new System.Drawing.Size(229, 142);
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "包含角色";
             // 
-            // gcRole
+            // gcDataRole
             // 
-            this.gcRole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcRole.Location = new System.Drawing.Point(6, 28);
-            this.gcRole.MainView = this.gvRole;
-            this.gcRole.Name = "gcRole";
-            this.gcRole.Size = new System.Drawing.Size(217, 133);
-            this.gcRole.TabIndex = 9;
-            this.gcRole.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvRole});
+            this.gcDataRole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcDataRole.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.gcDataRole.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.gcDataRole.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.gcDataRole.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.gcDataRole.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            this.gcDataRole.EmbeddedNavigator.TextStringFormat = "记录 {0} / {1}";
+            this.gcDataRole.Location = new System.Drawing.Point(2, 21);
+            this.gcDataRole.MainView = this.gvDataRole;
+            this.gcDataRole.Name = "gcDataRole";
+            this.gcDataRole.Size = new System.Drawing.Size(225, 119);
+            this.gcDataRole.TabIndex = 0;
+            this.gcDataRole.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvDataRole});
             // 
-            // gvRole
+            // gvDataRole
             // 
-            this.gvRole.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn4,
-            this.gridColumn5,
-            this.gridColumn6});
-            this.gvRole.GridControl = this.gcRole;
-            this.gvRole.Name = "gvRole";
-            this.gvRole.OptionsBehavior.Editable = false;
-            this.gvRole.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "OU_ID";
-            this.gridColumn4.FieldName = "OU_ID";
-            this.gridColumn4.Name = "gridColumn4";
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "角色ID";
-            this.gridColumn5.FieldName = "Role_ID";
-            this.gridColumn5.Name = "gridColumn5";
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "角色";
-            this.gridColumn6.FieldName = "RoleDesc";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 0;
-            // 
-            // groupControl2
-            // 
-            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl2.Controls.Add(this.gcUser);
-            this.groupControl2.Location = new System.Drawing.Point(310, 16);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(229, 178);
-            this.groupControl2.TabIndex = 1;
-            this.groupControl2.Text = "包含用户";
-            // 
-            // gcUser
-            // 
-            this.gcUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcUser.Location = new System.Drawing.Point(6, 28);
-            this.gcUser.MainView = this.gvUser;
-            this.gcUser.Name = "gcUser";
-            this.gcUser.Size = new System.Drawing.Size(214, 145);
-            this.gcUser.TabIndex = 8;
-            this.gcUser.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvUser});
-            // 
-            // gvUser
-            // 
-            this.gvUser.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvDataRole.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gvDataRole.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvDataRole.Appearance.Row.Options.UseTextOptions = true;
+            this.gvDataRole.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvDataRole.Appearance.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gvDataRole.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3});
-            this.gvUser.GridControl = this.gcUser;
-            this.gvUser.Name = "gvUser";
-            this.gvUser.OptionsBehavior.Editable = false;
-            this.gvUser.OptionsView.ShowGroupPanel = false;
+            this.gridColumn2});
+            this.gvDataRole.EmptyForegroundText = null;
+            this.gvDataRole.GridControl = this.gcDataRole;
+            this.gvDataRole.IndicatorWidth = 28;
+            this.gvDataRole.LocatedColumn = null;
+            this.gvDataRole.Name = "gvDataRole";
+            this.gvDataRole.OptionsBehavior.Editable = false;
+            this.gvDataRole.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseUp;
+            this.gvDataRole.OptionsCustomization.AllowColumnMoving = false;
+            this.gvDataRole.OptionsDetail.EnableMasterViewMode = false;
+            this.gvDataRole.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Classic;
+            this.gvDataRole.OptionsNavigation.EnterMoveNextColumn = true;
+            this.gvDataRole.OptionsPrint.AutoWidth = false;
+            this.gvDataRole.OptionsSelection.CheckBoxSelectorColumnWidth = 35;
+            this.gvDataRole.OptionsSelection.MultiSelect = true;
+            this.gvDataRole.OptionsSelection.UseIndicatorForSelection = false;
+            this.gvDataRole.OptionsView.ColumnAutoWidth = false;
+            this.gvDataRole.OptionsView.EnableAppearanceEvenRow = true;
+            this.gvDataRole.OptionsView.EnableAppearanceOddRow = true;
+            this.gvDataRole.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+            this.gvDataRole.OptionsView.ShowFooter = true;
+            this.gvDataRole.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "OUID";
-            this.gridColumn1.FieldName = "OU_ID";
+            this.gridColumn1.Caption = "Id";
+            this.gridColumn1.FieldName = "Id";
             this.gridColumn1.Name = "gridColumn1";
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "用户ID";
-            this.gridColumn2.FieldName = "User_ID";
+            this.gridColumn2.Caption = "角色";
+            this.gridColumn2.FieldName = "RoleName";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "RoleName", "{0}")});
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
+            this.gridColumn2.Width = 128;
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl2.Controls.Add(this.gcDataUser);
+            this.groupControl2.Location = new System.Drawing.Point(226, 16);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(229, 255);
+            this.groupControl2.TabIndex = 1;
+            this.groupControl2.Text = "包含用户";
+            // 
+            // gcDataUser
+            // 
+            this.gcDataUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcDataUser.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.gcDataUser.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.gcDataUser.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.gcDataUser.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.gcDataUser.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            this.gcDataUser.EmbeddedNavigator.TextStringFormat = "记录 {0} / {1}";
+            this.gcDataUser.Location = new System.Drawing.Point(2, 21);
+            this.gcDataUser.MainView = this.gvDataUser;
+            this.gcDataUser.Name = "gcDataUser";
+            this.gcDataUser.Size = new System.Drawing.Size(225, 232);
+            this.gcDataUser.TabIndex = 0;
+            this.gcDataUser.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvDataUser});
+            // 
+            // gvDataUser
+            // 
+            this.gvDataUser.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gvDataUser.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvDataUser.Appearance.Row.Options.UseTextOptions = true;
+            this.gvDataUser.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvDataUser.Appearance.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gvDataUser.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn3,
+            this.gridColumn4});
+            this.gvDataUser.EmptyForegroundText = null;
+            this.gvDataUser.GridControl = this.gcDataUser;
+            this.gvDataUser.IndicatorWidth = 28;
+            this.gvDataUser.LocatedColumn = null;
+            this.gvDataUser.Name = "gvDataUser";
+            this.gvDataUser.OptionsBehavior.Editable = false;
+            this.gvDataUser.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseUp;
+            this.gvDataUser.OptionsCustomization.AllowColumnMoving = false;
+            this.gvDataUser.OptionsDetail.EnableMasterViewMode = false;
+            this.gvDataUser.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Classic;
+            this.gvDataUser.OptionsNavigation.EnterMoveNextColumn = true;
+            this.gvDataUser.OptionsPrint.AutoWidth = false;
+            this.gvDataUser.OptionsSelection.CheckBoxSelectorColumnWidth = 35;
+            this.gvDataUser.OptionsSelection.MultiSelect = true;
+            this.gvDataUser.OptionsSelection.UseIndicatorForSelection = false;
+            this.gvDataUser.OptionsView.ColumnAutoWidth = false;
+            this.gvDataUser.OptionsView.EnableAppearanceEvenRow = true;
+            this.gvDataUser.OptionsView.EnableAppearanceOddRow = true;
+            this.gvDataUser.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+            this.gvDataUser.OptionsView.ShowFooter = true;
+            this.gvDataUser.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn3
             // 
-            this.gridColumn3.Caption = "用户";
-            this.gridColumn3.FieldName = "UserDesc";
+            this.gridColumn3.Caption = "Id";
+            this.gridColumn3.FieldName = "Id";
             this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 0;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "姓名";
+            this.gridColumn4.FieldName = "FullName";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "FullName", "{0}")});
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 0;
+            this.gridColumn4.Width = 130;
             // 
             // groupControl1
             // 
@@ -261,7 +303,7 @@
             this.groupControl1.Controls.Add(this.txtCreatTime);
             this.groupControl1.Location = new System.Drawing.Point(8, 16);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(296, 351);
+            this.groupControl1.Size = new System.Drawing.Size(212, 403);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "机构详细信息";
             // 
@@ -287,7 +329,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtHandNo.Location = new System.Drawing.Point(92, 139);
             this.txtHandNo.Name = "txtHandNo";
-            this.txtHandNo.Size = new System.Drawing.Size(184, 20);
+            this.txtHandNo.Size = new System.Drawing.Size(100, 20);
             this.txtHandNo.TabIndex = 13;
             // 
             // tlPID
@@ -303,7 +345,7 @@
             this.tlPID.Properties.NullText = "无";
             this.tlPID.Properties.TreeList = this.tlParent;
             this.tlPID.Properties.ValueMember = "Id";
-            this.tlPID.Size = new System.Drawing.Size(184, 20);
+            this.tlPID.Size = new System.Drawing.Size(100, 20);
             this.tlPID.TabIndex = 12;
             // 
             // tlParent
@@ -348,7 +390,7 @@
             // sbtnSave
             // 
             this.sbtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnSave.Location = new System.Drawing.Point(178, 314);
+            this.sbtnSave.Location = new System.Drawing.Point(94, 235);
             this.sbtnSave.Name = "sbtnSave";
             this.sbtnSave.Size = new System.Drawing.Size(98, 27);
             this.sbtnSave.TabIndex = 11;
@@ -393,7 +435,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSortCode.Location = new System.Drawing.Point(92, 174);
             this.txtSortCode.Name = "txtSortCode";
-            this.txtSortCode.Size = new System.Drawing.Size(184, 20);
+            this.txtSortCode.Size = new System.Drawing.Size(100, 20);
             this.txtSortCode.TabIndex = 2;
             // 
             // txtName
@@ -402,7 +444,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.Location = new System.Drawing.Point(92, 69);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(184, 20);
+            this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 1;
             // 
             // txtID
@@ -412,7 +454,7 @@
             this.txtID.Location = new System.Drawing.Point(92, 34);
             this.txtID.Name = "txtID";
             this.txtID.Properties.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(184, 20);
+            this.txtID.Size = new System.Drawing.Size(100, 20);
             this.txtID.TabIndex = 0;
             // 
             // txtCreatTime
@@ -424,28 +466,28 @@
             this.txtCreatTime.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtCreatTime.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtCreatTime.Properties.ReadOnly = true;
-            this.txtCreatTime.Size = new System.Drawing.Size(184, 20);
+            this.txtCreatTime.Size = new System.Drawing.Size(100, 20);
             this.txtCreatTime.TabIndex = 18;
             // 
             // DepartmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 376);
+            this.ClientSize = new System.Drawing.Size(687, 428);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "DepartmentForm";
-            this.Text = "组织机构管理";
+            this.Text = "部门管理";
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tlDepartment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gcRole)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvRole)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcDataRole)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDataRole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gcUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcDataUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDataUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
@@ -465,10 +507,6 @@
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraGrid.GridControl gcRole;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvRole;
-        private DevExpress.XtraGrid.GridControl gcUser;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvUser;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.SimpleButton sbtnSave;
         private DevExpress.XtraEditors.LabelControl labelControl4;
@@ -487,13 +525,15 @@
         private DevExpress.XtraEditors.TextEdit txtCreatTime;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraTreeList.Columns.TreeListColumn col_Name;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
+        private Utility.CustomControls.CustomGridControl gcDataRole;
+        private Utility.CustomControls.CustomGridView gvDataRole;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private Utility.CustomControls.CustomGridControl gcDataUser;
+        private Utility.CustomControls.CustomGridView gvDataUser;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
     }
 }

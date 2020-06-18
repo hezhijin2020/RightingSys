@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace RightingSys.WinForm.AppPublic.AutoService
+﻿namespace RightingSys.WinForm.Utility.AutoService
 {
     public class FileUnit
     {
@@ -12,6 +7,5 @@ namespace RightingSys.WinForm.AppPublic.AutoService
         public string FileVersion { get; set; } = "1.0.1";
         public string LastTime { get; set; } = "2020-01-01";
         public bool IsFlag { get; set; } = true;
-       
     }
 }

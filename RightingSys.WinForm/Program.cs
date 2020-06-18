@@ -1,6 +1,6 @@
 ﻿using DevExpress.Skins;
 using DevExpress.UserSkins;
-using RightingSys.WinForm.AppPublic.AutoService;
+using RightingSys.WinForm.Utility.AutoService;
 using RightingSys.WinForm.Utility.cls;
 using System;
 using System.Diagnostics;
@@ -48,12 +48,12 @@ namespace RightingSys.WinForm
                     }
                     else
                     {
-                        MessageBox.Show("已经有一个实例正在运行!", "提示");
+                        clsPublic.ShowMessage("已经有一个实例正在运行!", "提示");
                     }
                 }
             }
             catch(Exception ex) {
-                MessageBox.Show(ex.GetType().Name.ToString());
+                clsPublic.ShowMessage(ex.GetType().Name.ToString());
             }
         }
 
@@ -77,7 +77,7 @@ namespace RightingSys.WinForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show("程序异常信息："+ex.Message,"提示");
+                clsPublic.ShowMessage("程序异常信息："+ex.Message,"提示");
                 throw;
             }
         }
@@ -94,7 +94,7 @@ namespace RightingSys.WinForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                clsPublic.ShowMessage(ex.Message);
                 result = false;
             }
             return result;

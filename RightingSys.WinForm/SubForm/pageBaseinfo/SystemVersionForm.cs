@@ -1,4 +1,5 @@
-﻿using RightingSys.WinForm.AppPublic.AutoService;
+﻿
+using RightingSys.WinForm.Utility.AutoService;
 using System;
 using System.Collections.Generic;
 using System.IO;

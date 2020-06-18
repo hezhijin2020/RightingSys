@@ -55,21 +55,21 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                 Guid Id = (Guid)gvRole.GetFocusedRowCellValue("Id");
                 if (roleMg.ExistsUserOrDepartmentById(Id))
                 {
-                    MessageBox.Show("该角色包含用户或部门，不能删除！");
+                    clsPublic.ShowMessage("该角色包含用户或部门，不能删除！");
                     return;
                 }
                 else
                 {
-                    if (MessageBox.Show("是否删除该角色，删除将不能恢复？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (clsPublic.GetMessageBoxYesNoResult("是否删除该角色，删除将不能恢复？", "提示"))
                     {
                         if (roleMg.Delete(Id))
                         {
                             tlFunc.RefreshDataSource(); Query();
-                            MessageBox.Show("删除成功！");
+                            clsPublic.ShowMessage("删除成功！");
                         }
                         else
                         {
-                            MessageBox.Show("删除失败！");
+                            clsPublic.ShowMessage("删除失败！");
                         }
                     }
                 }
@@ -82,7 +82,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
         {
             if (txtName.Text.Trim() == "")
             {
-                MessageBox.Show("角色名不能为空", "提示");
+                clsPublic.ShowMessage("角色名不能为空", "提示");
                 txtName.Focus();
                 return;
             }
@@ -97,7 +97,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                 {
                     if (roleMg.ExistsRoleByName(txtName.Text.Trim()))
                     {
-                        MessageBox.Show("角色名已存在，请重新输入！", "提示");
+                        clsPublic.ShowMessage("角色名已存在，请重新输入！", "提示");
                         txtName.Focus();
                         return;
                     }
@@ -106,11 +106,11 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                     {
                         tlFunc.RefreshDataSource();
                         Query();
-                        MessageBox.Show("新增成功", "提示");
+                        clsPublic.ShowMessage("新增成功", "提示");
                     }
                     else
                     {
-                        MessageBox.Show("修改失败", "提示");
+                        clsPublic.ShowMessage("修改失败", "提示");
                     }
                 }
                 else
@@ -119,11 +119,11 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
                     if (roleMg.Modify(model))
                     {
                         tlFunc.RefreshDataSource();Query();
-                        MessageBox.Show("修改成功", "提示");
+                        clsPublic.ShowMessage("修改成功", "提示");
                     }
                     else
                     {
-                        MessageBox.Show("修改失败", "提示");
+                        clsPublic.ShowMessage("修改失败", "提示");
                     }
                 }
             }
@@ -131,7 +131,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
 
         private void gvRole_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (RightIsChange && MessageBox.Show("授权信息改变是否保存？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (RightIsChange && clsPublic.GetMessageBoxYesNoResult("授权信息改变是否保存？", "提示"))
             {
                 sbtnSaveFunc_Click(null, null);
             }
@@ -277,9 +277,9 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             RecursionNodes(tlFunc.Nodes, ref dt);
             dt.AcceptChanges();
             if (roleMg.SaveRighting(dt, RoleId.ToString()))
-            { MessageBox.Show("授权成功！"); }
+            { clsPublic.ShowMessage("授权成功！"); }
             else
-            { MessageBox.Show("授权失败！"); }
+            { clsPublic.ShowMessage("授权失败！"); }
             RightIsChange = false;
         }
 
@@ -326,7 +326,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             }
             else
             {
-                MessageBox.Show("当前没有选择任何角色！");
+                clsPublic.ShowMessage("当前没有选择任何角色！");
             }
         }
         #endregion
@@ -344,7 +344,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             }
             else
             {
-                MessageBox.Show("当前没有选择任何角色！");
+                clsPublic.ShowMessage("当前没有选择任何角色！");
             }
         }
 
