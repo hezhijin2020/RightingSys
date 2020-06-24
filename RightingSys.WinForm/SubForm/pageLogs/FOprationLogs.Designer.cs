@@ -89,6 +89,7 @@
             this.gvData.IndicatorWidth = 28;
             this.gvData.LocatedColumn = null;
             this.gvData.Name = "gvData";
+            this.gvData.OptionsBehavior.Editable = false;
             this.gvData.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseUp;
             this.gvData.OptionsCustomization.AllowColumnMoving = false;
             this.gvData.OptionsDetail.EnableMasterViewMode = false;
@@ -187,8 +188,6 @@
             this.gridColumn10.Caption = "SQL语句";
             this.gridColumn10.FieldName = "SqlCommand";
             this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 9;
             // 
             // gridColumn11
             // 
@@ -196,7 +195,7 @@
             this.gridColumn11.FieldName = "CreateTime";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 10;
+            this.gridColumn11.VisibleIndex = 9;
             // 
             // groupControl1
             // 

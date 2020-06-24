@@ -1058,5 +1058,25 @@ namespace RightingSys.WinForm
         {
             MdiShow2(new RightingSys.WinForm.SubForm.pageHelper.AboutForm());
         }
+
+        private void btnJobRecord_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btnJobFiles_ItemClick(object sender, ItemClickEventArgs e)
+        {
+             MdiShow(new RightingSys.WinForm.SubForm.pageJob.JobFilesForm(), btnJobFiles.Tag);
+        }
+
+        private void btnJobFileCategory_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MdiShow(new RightingSys.WinForm.SubForm.pageJob.JobFileCategoryForm(), btnJobFileCategory.Tag);
+        }
+
+        private void btnJobCategory_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MdiShow(new RightingSys.WinForm.SubForm.pageJob.JobCategoryForm(), btnJobCategory.Tag);
+        }
     }
 }

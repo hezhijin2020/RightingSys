@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlackIPService.cs" />
+    <Compile Include="JobService.cs" />
+    <Compile Include="JobFilesService.cs" />
     <Compile Include="LoginLogService.cs" />
     <Compile Include="OperationLogService.cs" />
     <Compile Include="SystemService.cs" />

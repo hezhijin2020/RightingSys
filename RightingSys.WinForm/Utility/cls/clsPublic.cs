@@ -3142,7 +3142,8 @@ namespace RightingSys.WinForm.Utility.cls
         /// <returns></returns>
         public static string CompressImage(string sFile, int flag = 90, int size = 300, bool sfsc = true)
         {
-            string tempFile = Application.StartupPath + "\\jpgtemp\\temp.jpg";
+            string tempFile = clsPublic.AppDir + "\\jpgtemp\\temp.jpg";
+            clsPublic.CheckFolderExistsViaFileName(tempFile);
             //如果是第一次调用，原始图像的大小小于要压缩的大小，则直接复制文件，并且返回true
             FileInfo firstFileInfo = new FileInfo(sFile);
             System.Drawing.Image iSource = System.Drawing.Image.FromFile(sFile);
@@ -3226,7 +3227,7 @@ namespace RightingSys.WinForm.Utility.cls
                 }
                 return tempFile;
             }
-            catch
+            catch(IOException ioe)
             {
                 return "";
             }

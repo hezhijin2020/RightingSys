@@ -42,25 +42,6 @@ namespace RightingSys.BLL
         }
 
 
-        /// <summary>
-        /// 新增用户信息到规则
-        /// </summary>
-        /// <param name="list">用户列表</param>
-        /// <returns></returns>
-        public bool AddUserForBlackIP(List<Models.ACL_BlackIP_User> list)
-        {
-            return Sev.AddUserForBlackIP(list);
-        }
-
-        /// <summary>
-        /// 移除用户信息
-        /// </summary>
-        /// <param name="Id">明细Id</param>
-        /// <returns></returns>
-        public bool RemoveUserForBlackIP(Guid Id)
-        {
-            return Sev.RemoveUserForBlackIP(Id);
-        }
 
         /// <summary>
         /// 获取所有的规则信息

@@ -153,6 +153,8 @@ namespace RightingSys.WinForm.Utility.CustomControls
             this.Appearance.Row.TextOptions.HAlignment = HorzAlignment.Center;
             this.Appearance.Row.TextOptions.VAlignment = VertAlignment.Center;
 
+            // 不可编辑列设定
+            this.OptionsBehavior.Editable = false;
            // 可编辑列设定
           // SetEditableColumns();
          }

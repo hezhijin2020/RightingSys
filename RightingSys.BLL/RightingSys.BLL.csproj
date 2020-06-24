@@ -44,6 +44,8 @@
     <Compile Include="DepartmentManager.cs" />
     <Compile Include="FingerPrintManager.cs" />
     <Compile Include="FunctionManager.cs" />
+    <Compile Include="JobManager.cs" />
+    <Compile Include="JobFilesManager.cs" />
     <Compile Include="LoginLogManager.cs" />
     <Compile Include="OperationLogManager.cs" />
     <Compile Include="OrderMealManager.cs" />

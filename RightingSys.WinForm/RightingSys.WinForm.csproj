@@ -55,20 +55,37 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v17.2.Drawing, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.PivotGrid.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v17.2.Export, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v17.2.UI, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Xpo.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPdfViewer.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPivotGrid.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v17.2.Extensions, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraScheduler.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="itextsharp, Version=4.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AssetsSys.WinForm\Src\RightingSys.WinForm\bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="libzkfpcsharp, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\libzkfpcsharp.dll</HintPath>
@@ -101,12 +118,47 @@
     <Compile Include="SubForm\pageHelper\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForm\pageJob\JobCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobCategoryForm.designer.cs">
+      <DependentUpon>JobCategoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobFileCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobFileCategoryForm.designer.cs">
+      <DependentUpon>JobFileCategoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobFilesEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobFilesEditForm.Designer.cs">
+      <DependentUpon>JobFilesEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobFilesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobFilesForm.Designer.cs">
+      <DependentUpon>JobFilesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility\cls\BitmapFormat.cs" />
     <Compile Include="Utility\cls\clsPublicLogs.cs" />
     <Compile Include="Utility\AutoService\FileUnit.cs" />
     <Compile Include="Utility\AutoService\IniFiles.cs" />
     <Compile Include="Utility\AutoService\XMLFile.cs" />
     <Compile Include="Utility\AutoService\XmlFiles.cs" />
+    <Compile Include="Utility\clsPdf\CanvasRectangle.cs" />
+    <Compile Include="Utility\clsPdf\HeaderAndFooterEvent.cs" />
+    <Compile Include="Utility\clsPdf\PdfBase.cs" />
+    <Compile Include="Utility\clsPdf\PdfImage.cs" />
+    <Compile Include="Utility\clsPdf\PdfPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Utility\clsPdf\PdfPageMerge.cs" />
+    <Compile Include="Utility\clsPdf\PdfTable.cs" />
+    <Compile Include="Utility\clsPdf\PdfText.cs" />
+    <Compile Include="Utility\clsPdf\PdfWatermark.cs" />
     <Compile Include="Utility\ToolForm\UserFingerAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +311,18 @@
     <EmbeddedResource Include="SubForm\pageHelper\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageJob\JobCategoryForm.resx">
+      <DependentUpon>JobCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageJob\JobFileCategoryForm.resx">
+      <DependentUpon>JobFileCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageJob\JobFilesEditForm.resx">
+      <DependentUpon>JobFilesEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageJob\JobFilesForm.resx">
+      <DependentUpon>JobFilesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utility\ToolForm\UserFingerAdd.resx">
       <DependentUpon>UserFingerAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -360,7 +424,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DevReport\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightingSys.BLL\RightingSys.BLL.csproj">
       <Project>{02858f09-9e1d-4ec2-abec-d3345cbf18eb}</Project>

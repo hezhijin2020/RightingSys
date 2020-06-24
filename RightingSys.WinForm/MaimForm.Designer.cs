@@ -76,6 +76,13 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnJobFiles = new DevExpress.XtraBars.BarButtonItem();
+            this.btnJobRecord = new DevExpress.XtraBars.BarButtonItem();
+            this.设备信息 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnJobCategory = new DevExpress.XtraBars.BarButtonItem();
+            this.btnJobFileCategory = new DevExpress.XtraBars.BarButtonItem();
+            this.btnJobRecordQuery = new DevExpress.XtraBars.BarButtonItem();
+            this.btnJobAnalyze = new DevExpress.XtraBars.BarButtonItem();
             this.pageEditor = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.groupOpDate = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupCommit = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -89,6 +96,10 @@
             this.groupBaseSetup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.pageJob = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.pgJobs = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.pgJobAnalyze = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.pgJobSetup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pageSystemLogs = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.groupLogs = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pageHelper = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -97,6 +108,7 @@
             this.ntyAlert = new System.Windows.Forms.NotifyIcon(this.components);
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -151,15 +163,23 @@
             this.barButtonItem3,
             this.barButtonItem4,
             this.barButtonItem5,
-            this.barButtonItem6});
+            this.barButtonItem6,
+            this.btnJobFiles,
+            this.btnJobRecord,
+            this.设备信息,
+            this.btnJobCategory,
+            this.btnJobFileCategory,
+            this.btnJobRecordQuery,
+            this.btnJobAnalyze});
             this.MainRibbon.Location = new System.Drawing.Point(0, 0);
-            this.MainRibbon.MaxItemId = 30;
+            this.MainRibbon.MaxItemId = 37;
             this.MainRibbon.Name = "MainRibbon";
             this.MainRibbon.PageHeaderItemLinks.Add(this.skinRibbon);
             this.MainRibbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.pageEditor,
             this.pageSystem,
             this.pageBaseinfo,
+            this.pageJob,
             this.pageSystemLogs,
             this.pageHelper});
             this.MainRibbon.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
@@ -592,6 +612,65 @@
             this.barButtonItem6.Id = 29;
             this.barButtonItem6.Name = "barButtonItem6";
             // 
+            // btnJobFiles
+            // 
+            this.btnJobFiles.Caption = "档案管理";
+            this.btnJobFiles.Id = 30;
+            this.btnJobFiles.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnJobFiles.ImageOptions.Image")));
+            this.btnJobFiles.Name = "btnJobFiles";
+            this.btnJobFiles.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnJobFiles.Tag = "468a3b8c-e387-4a8b-8e49-09eb1154ceeb";
+            this.btnJobFiles.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnJobFiles_ItemClick);
+            // 
+            // btnJobRecord
+            // 
+            this.btnJobRecord.Caption = "工作记录";
+            this.btnJobRecord.Id = 31;
+            this.btnJobRecord.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnJobRecord.ImageOptions.Image")));
+            this.btnJobRecord.Name = "btnJobRecord";
+            this.btnJobRecord.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnJobRecord.Tag = "e03e5ad2-12a2-4b33-9e07-114e9b268395";
+            this.btnJobRecord.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnJobRecord_ItemClick);
+            // 
+            // 设备信息
+            // 
+            this.设备信息.Caption = "barButtonItem9";
+            this.设备信息.Id = 32;
+            this.设备信息.Name = "设备信息";
+            // 
+            // btnJobCategory
+            // 
+            this.btnJobCategory.Caption = "工作类别";
+            this.btnJobCategory.Id = 33;
+            this.btnJobCategory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnJobCategory.ImageOptions.Image")));
+            this.btnJobCategory.Name = "btnJobCategory";
+            this.btnJobCategory.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnJobCategory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnJobCategory_ItemClick);
+            // 
+            // btnJobFileCategory
+            // 
+            this.btnJobFileCategory.Caption = "档案类别";
+            this.btnJobFileCategory.Id = 34;
+            this.btnJobFileCategory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnJobFileCategory.ImageOptions.Image")));
+            this.btnJobFileCategory.Name = "btnJobFileCategory";
+            this.btnJobFileCategory.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnJobFileCategory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnJobFileCategory_ItemClick);
+            // 
+            // btnJobRecordQuery
+            // 
+            this.btnJobRecordQuery.Caption = "工作查询";
+            this.btnJobRecordQuery.Id = 35;
+            this.btnJobRecordQuery.Name = "btnJobRecordQuery";
+            // 
+            // btnJobAnalyze
+            // 
+            this.btnJobAnalyze.Caption = "工作分析";
+            this.btnJobAnalyze.Id = 36;
+            this.btnJobAnalyze.Name = "btnJobAnalyze";
+            // 
             // pageEditor
             // 
             this.pageEditor.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -699,6 +778,37 @@
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "其它";
             // 
+            // pageJob
+            // 
+            this.pageJob.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.pgJobs,
+            this.pgJobAnalyze,
+            this.pgJobSetup});
+            this.pageJob.Name = "pageJob";
+            this.pageJob.Tag = "502741c0-a559-4077-975d-e3c31bd641e5";
+            this.pageJob.Text = "日常工作";
+            // 
+            // pgJobs
+            // 
+            this.pgJobs.ItemLinks.Add(this.btnJobRecord);
+            this.pgJobs.ItemLinks.Add(this.btnJobFiles);
+            this.pgJobs.Name = "pgJobs";
+            this.pgJobs.Text = "IT部工作记录";
+            // 
+            // pgJobAnalyze
+            // 
+            this.pgJobAnalyze.ItemLinks.Add(this.btnJobRecordQuery);
+            this.pgJobAnalyze.ItemLinks.Add(this.btnJobAnalyze);
+            this.pgJobAnalyze.Name = "pgJobAnalyze";
+            this.pgJobAnalyze.Text = "工作分析";
+            // 
+            // pgJobSetup
+            // 
+            this.pgJobSetup.ItemLinks.Add(this.btnJobCategory);
+            this.pgJobSetup.ItemLinks.Add(this.btnJobFileCategory);
+            this.pgJobSetup.Name = "pgJobSetup";
+            this.pgJobSetup.Text = "设置";
+            // 
             // pageSystemLogs
             // 
             this.pageSystemLogs.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -754,6 +864,11 @@
             // 
             this.tabMdiManager.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InActiveTabPageHeaderAndOnMouseHover;
             this.tabMdiManager.MdiParent = this;
+            // 
+            // ribbonPage3
+            // 
+            this.ribbonPage3.Name = "ribbonPage3";
+            this.ribbonPage3.Text = "ribbonPage3";
             // 
             // MainForm
             // 
@@ -849,5 +964,17 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.BarButtonItem btnJobFiles;
+        private DevExpress.XtraBars.BarButtonItem btnJobRecord;
+        private DevExpress.XtraBars.BarButtonItem 设备信息;
+        private DevExpress.XtraBars.Ribbon.RibbonPage pageJob;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup pgJobs;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
+        private DevExpress.XtraBars.BarButtonItem btnJobCategory;
+        private DevExpress.XtraBars.BarButtonItem btnJobFileCategory;
+        private DevExpress.XtraBars.BarButtonItem btnJobRecordQuery;
+        private DevExpress.XtraBars.BarButtonItem btnJobAnalyze;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup pgJobAnalyze;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup pgJobSetup;
     }
 }

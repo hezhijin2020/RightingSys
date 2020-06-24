@@ -15,6 +15,14 @@ namespace RightingSys.Models
         /// </summary>
         public Guid Id { get; set; }
 
+        //操作员ID
+        public Guid OperatorId { get; set; }
+
+        /// <summary>
+        /// 操作员
+        /// </summary>
+        public string OperatorName { get; set; }
+
         /// <summary>
         /// 创建时间
         /// </summary>

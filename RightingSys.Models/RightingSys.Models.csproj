@@ -58,6 +58,10 @@
     <Compile Include="clsSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlHelper.cs" />
+    <Compile Include="ys_JobFileCategory.cs" />
+    <Compile Include="ys_JobCategory.cs" />
+    <Compile Include="ys_JobFiles.cs" />
+    <Compile Include="ys_JobRecord.cs" />
     <Compile Include="ys_OrderMeal.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

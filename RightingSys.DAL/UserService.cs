@@ -19,6 +19,7 @@ namespace RightingSys.DAL
                 new SqlParameter("@CreateTime",model.CreateTime),
                 new SqlParameter("@IsRemoved",model.IsRemoved)
             };
+            
 
             return Models.SqlHelper.ExecuteNoQuery(@"INSERT INTO [dbo].[ACL_User]
            ([Id]
@@ -54,6 +55,8 @@ namespace RightingSys.DAL
             };
 
 
+           // Models.SqlHelper.AddNewOperatorLog("修改用户信息", "ACL_User", "修改");
+
             return Models.SqlHelper.ExecuteNoQuery(@"UPDATE [dbo].[ACL_User]
                 SET  [LoginName] = @LoginName
                     ,[LoginPwd] = @LoginPwd
@@ -68,6 +71,9 @@ namespace RightingSys.DAL
         public bool Delete(Guid Id)
         {
             string sqlText = string.Format("Delete ACL_User where Id='{0}'", Id);
+
+            Models.SqlHelper.AddNewOperatorLog("删除用户信息", "ACL_User", "删除", sqlText);
+
             return Models.SqlHelper.ExecuteNoQuery(sqlText) > 0 ? true : false;
         }
 
@@ -92,6 +98,7 @@ from ACL_User as a left join ACL_Department as b on a.DepartmentId = b.Id
 where a.IsRemoved = 0 ";
             System.Data.DataTable dt = Models.SqlHelper.ExecuteDataTable(sqlText);
             list = Models.SqlHelper.DataTableToList<Models.ACL_User>(dt).ToList();
+            
             return list;
         }
 
