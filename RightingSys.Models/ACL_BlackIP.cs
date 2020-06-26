@@ -25,17 +25,7 @@ namespace RightingSys.Models
         /// </summary>
         public string EndIP { get; set; }
 
-        /// <summary>
-        /// 操作员ID
-        /// </summary>
-        public Guid OperatorId { get; set; }
 
-        /// <summary>
-        /// /// <summary>
-        /// 操作员
-        /// </summary>
-        /// </summary>
-        public string OperatorName { get; set; }
 
         /// <summary>
         /// 描述

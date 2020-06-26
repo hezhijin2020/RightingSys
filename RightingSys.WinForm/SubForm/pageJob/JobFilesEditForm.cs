@@ -115,14 +115,14 @@ namespace RightingSys.WinForm.SubForm.pageJob
                 {
                     if (opfile.FileNames.Length > 1)
                     {
-                        MessageBox.Show("PDF上传的文件，只能选单个文件", Text); return;
+                        clsPublic.ShowMessage("PDF上传的文件，只能选单个文件", Text); return;
                     }
                     else
                     {
                         FileInfo info = new FileInfo(opfile.FileName);
                         if ((info.Length / (1024 * 1024)) > 5)
                         {
-                            MessageBox.Show("PDF上传的文件不能超过5M" + (info.Length / (1024 * 1024)), Text); return;
+                            clsPublic.ShowMessage("PDF上传的文件不能超过5M" + (info.Length / (1024 * 1024)), Text); return;
 
                         }
                         else
@@ -199,7 +199,7 @@ namespace RightingSys.WinForm.SubForm.pageJob
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                clsPublic.ShowMessage(e.Message);
                 return "";
             }
             finally

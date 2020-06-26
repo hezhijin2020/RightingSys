@@ -118,6 +118,30 @@
     <Compile Include="SubForm\pageHelper\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForm\pageJob\BranchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageJob\BranchForm.Designer.cs">
+      <DependentUpon>BranchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobAnalyzeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobAnalyzeForm.Designer.cs">
+      <DependentUpon>JobAnalyzeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobQueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobQueryForm.Designer.cs">
+      <DependentUpon>JobQueryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobSolutionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobSolutionForm.designer.cs">
+      <DependentUpon>JobSolutionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForm\pageJob\JobCategoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +165,12 @@
     </Compile>
     <Compile Include="SubForm\pageJob\JobFilesForm.Designer.cs">
       <DependentUpon>JobFilesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobRecordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageJob\JobRecordForm.Designer.cs">
+      <DependentUpon>JobRecordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\cls\BitmapFormat.cs" />
     <Compile Include="Utility\cls\clsPublicLogs.cs" />
@@ -311,6 +341,18 @@
     <EmbeddedResource Include="SubForm\pageHelper\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageJob\BranchForm.resx">
+      <DependentUpon>BranchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageJob\JobAnalyzeForm.resx">
+      <DependentUpon>JobAnalyzeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageJob\JobQueryForm.resx">
+      <DependentUpon>JobQueryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageJob\JobSolutionForm.resx">
+      <DependentUpon>JobSolutionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubForm\pageJob\JobCategoryForm.resx">
       <DependentUpon>JobCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -322,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\pageJob\JobFilesForm.resx">
       <DependentUpon>JobFilesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageJob\JobRecordForm.resx">
+      <DependentUpon>JobRecordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utility\ToolForm\UserFingerAdd.resx">
       <DependentUpon>UserFingerAdd.cs</DependentUpon>
@@ -347,6 +392,7 @@
     <EmbeddedResource Include="Utility\ToolForm\RoleByUser_Selectlist.resx">
       <DependentUpon>RoleByUser_Selectlist.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="dbbak\bak.bak" />
     <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="SubForm\pageBaseinfo\FBlackIP.resx">
       <DependentUpon>FBlackIP.cs</DependentUpon>

@@ -9,19 +9,30 @@ namespace RightingSys.BLL
 
         DAL.JobService sev = new DAL.JobService();
         /// <summary>
-        /// 新增档案
+        /// 新增工作记录
         /// </summary>
         /// <param name="model">实体</param>
         /// <returns></returns>
-        public bool AddNew(Models.ys_JobFiles model)
+        public bool AddNew(Models.ys_JobRecord model)
         {
             return sev.AddNew(model);
         }
 
+
         /// <summary>
-        /// 档案删除( 伪删除)
+        /// 修改工作记录
         /// </summary>
-        /// <param name="Id">档案ID</param>
+        /// <param name="model">实体</param>
+        /// <returns></returns>
+        public bool Modify(Models.ys_JobRecord model)
+        {
+            return sev.Modify(model);
+        }
+
+        /// <summary>
+        /// 工作记录删除( 伪删除)
+        /// </summary>
+        /// <param name="Id">工作记录ID</param>
         /// <returns></returns>
         public bool Delete(Guid Id)
         {
@@ -29,12 +40,21 @@ namespace RightingSys.BLL
         }
 
         /// <summary>
-        /// 获取所有的档案列表
+        /// 获取所有的工作记录列表
         /// </summary>
         /// <returns></returns>
-        public List<Models.ys_JobFiles> GetAllList()
+        public List<Models.ys_JobRecord> GetAllList()
         {
             return sev.GetAllList().Where(a => a.IsRemoved == false).ToList();
+        }
+
+        /// <summary>
+        /// 获取未完成的工作记录列表
+        /// </summary>
+        /// <returns></returns>
+        public List<Models.ys_JobRecord> GetNotFinishList()
+        {
+            return sev.GetAllList().Where(a => a.IsRemoved == false && a.IsFinish==false).ToList();
         }
 
 
@@ -46,48 +66,48 @@ namespace RightingSys.BLL
         /// <param name="startDay">开始日期</param>
         /// <param name="endDay">结束日期</param>
         /// <returns></returns>
-        public List<Models.ys_JobFiles> GetList(Guid CategoryId, Guid StaffId, DateTime startDay, DateTime endDay)
+        public List<Models.ys_JobRecord> GetList(string BranchId, Guid CategoryId, DateTime startDay, DateTime endDay)
         {
             //只有日期 
-            if (CategoryId == Guid.Empty && StaffId == Guid.Empty && startDay != null & endDay != null)
+            if (CategoryId == Guid.Empty && BranchId == "" && startDay != null & endDay != null)
             {
                 return sev.GetAllList().Where(a => a.IsRemoved == false
                 && a.CreateTime >= startDay
                 && a.CreateTime <= endDay).ToList();
             }//有用户
-            else if (StaffId == Guid.Empty && StaffId != Guid.Empty && startDay != null & endDay != null)
+            else if (CategoryId == Guid.Empty && BranchId != "" && startDay != null & endDay != null)
             {
                 return sev.GetAllList().Where(a =>
                 a.IsRemoved == false
                 && a.CreateTime >= startDay
                 && a.CreateTime <= endDay
-                && a.JobFileStaffId == StaffId).ToList();
+                && a.BranchId == BranchId).ToList();
             }//有用户有系统
-            else if (CategoryId != Guid.Empty && StaffId != Guid.Empty && startDay != null & endDay != null)
+            else if (CategoryId != Guid.Empty && BranchId != "" && startDay != null & endDay != null)
             {
                 return sev.GetAllList().Where(a =>
                 a.IsRemoved == false
                 && a.CreateTime >= startDay
                 && a.CreateTime <= endDay
-                && a.JobFileStaffId == StaffId
-                && a.JobFileCategoryId == CategoryId).ToList();
+                && a.BranchId == BranchId
+                && a.CategoryId == CategoryId).ToList();
             }//只有系统
-            else if (CategoryId != Guid.Empty && StaffId == Guid.Empty && startDay != null & endDay != null)
+            else if (CategoryId != Guid.Empty && BranchId == "" && startDay != null & endDay != null)
             {
                 return sev.GetAllList().Where(a =>
                 a.IsRemoved == false
                 && a.CreateTime >= startDay
                 && a.CreateTime <= endDay
-                && a.JobFileCategoryId == CategoryId).ToList();
+                && a.CategoryId == CategoryId).ToList();
             }
             return null;
         }
 
         /// <summary>
-        /// 获取单年指定ID的档案记录
+        /// 获取单年指定ID的工作记录记录
         /// </summary>
         /// <returns></returns>
-        public Models.ys_JobFiles GetOneById(Guid Id)
+        public Models.ys_JobRecord GetOneById(Guid Id)
         {
             return sev.GetAllList().FirstOrDefault(a=>a.Id==Id);
         }
@@ -143,6 +163,15 @@ namespace RightingSys.BLL
             return sev.GetAllListCategory().Where(a => a.IsRemoved == false).ToList();
         }
         #endregion
+
+        /// <summary>
+        /// 获取机构信息
+        /// </summary>
+        /// <returns></returns>
+        public System.Data.DataTable GetDtBranch()
+        {
+           return sev.GetDtBranch();
+        }
 
 
     }

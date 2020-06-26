@@ -1,5 +1,7 @@
-﻿using RightingSys.WinForm.Utility.cls;
+﻿using DevExpress.XtraPdfViewer;
+using RightingSys.WinForm.Utility.cls;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace RightingSys.WinForm.SubForm.pageJob
@@ -99,10 +101,20 @@ namespace RightingSys.WinForm.SubForm.pageJob
         }
 
 
-
+        /// <summary>
+        /// 打印
+        /// </summary>
         public override void Print()
         {
-           
+            if (gvData.FocusedRowHandle >= 0)
+            {
+                Guid Id = clsPublic.GetObjGUID(gvData.GetFocusedRowCellValue("Id"));
+                Models.ys_JobFiles md = manager.GetOneById(Id);
+                PdfViewer pdfView = new PdfViewer();
+                pdfView.LoadDocument(new MemoryStream(md.FileImage));
+                pdfView.ZoomMode = PdfZoomMode.FitToWidth;
+                pdfView.Print();
+            }
         }
     }
 }

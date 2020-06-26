@@ -2218,28 +2218,28 @@ namespace RightingSys.WinForm.Utility.cls
             double result = 0.0;
             try
             {
-                System.TimeSpan timeSpan = new System.TimeSpan(startDate.Ticks - endDate.Ticks);
+                System.TimeSpan timeSpan = new System.TimeSpan(endDate.Ticks- startDate.Ticks);
                 switch (howtocompare)
                 {
-                    case "m ":
+                    case "m":
                         result = System.Convert.ToDouble(timeSpan.TotalMinutes);
                         goto IL_17B;
-                    case "s ":
+                    case "s":
                         result = System.Convert.ToDouble(timeSpan.TotalSeconds);
                         goto IL_17B;
-                    case "t ":
+                    case "t":
                         result = System.Convert.ToDouble(timeSpan.Ticks);
                         goto IL_17B;
-                    case "mm ":
+                    case "mm":
                         result = System.Convert.ToDouble(timeSpan.TotalMilliseconds);
                         goto IL_17B;
-                    case "yyyy ":
+                    case "yyyy":
                         result = System.Convert.ToDouble(timeSpan.TotalDays / 365.0);
                         goto IL_17B;
                     case "MM":
                         result = System.Convert.ToDouble(timeSpan.TotalDays / 365.0 * 12.0);
                         goto IL_17B;
-                    case "q ":
+                    case "q":
                         result = System.Convert.ToDouble(timeSpan.TotalDays / 365.0 / 4.0);
                         goto IL_17B;
                 }

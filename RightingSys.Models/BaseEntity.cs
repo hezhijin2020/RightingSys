@@ -23,6 +23,7 @@ namespace RightingSys.Models
         /// </summary>
         public string OperatorName { get; set; }
 
+
         /// <summary>
         /// 创建时间
         /// </summary>

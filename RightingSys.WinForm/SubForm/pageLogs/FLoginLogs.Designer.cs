@@ -59,7 +59,6 @@ namespace RightingSys.WinForm.SubForm.pageLogs
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dStartday = new DevExpress.XtraEditors.DateEdit();
             this.dEndday = new DevExpress.XtraEditors.DateEdit();
-            this.dataNavigator1 = new DevExpress.XtraEditors.DataNavigator();
             ((System.ComponentModel.ISupportInitialize)(this.gcData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -88,7 +87,7 @@ namespace RightingSys.WinForm.SubForm.pageLogs
             this.gcData.Location = new System.Drawing.Point(12, 79);
             this.gcData.MainView = this.gvData;
             this.gcData.Name = "gcData";
-            this.gcData.Size = new System.Drawing.Size(621, 198);
+            this.gcData.Size = new System.Drawing.Size(621, 230);
             this.gcData.TabIndex = 0;
             this.gcData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvData});
@@ -400,28 +399,11 @@ namespace RightingSys.WinForm.SubForm.pageLogs
             this.dEndday.Size = new System.Drawing.Size(100, 20);
             this.dEndday.TabIndex = 3;
             // 
-            // dataNavigator1
-            // 
-            this.dataNavigator1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataNavigator1.CustomButtons.AddRange(new DevExpress.XtraEditors.NavigatorCustomButton[] {
-            new DevExpress.XtraEditors.NavigatorCustomButton(),
-            new DevExpress.XtraEditors.NavigatorCustomButton(),
-            new DevExpress.XtraEditors.NavigatorCustomButton(),
-            new DevExpress.XtraEditors.NavigatorCustomButton(),
-            new DevExpress.XtraEditors.NavigatorCustomButton()});
-            this.dataNavigator1.Location = new System.Drawing.Point(12, 285);
-            this.dataNavigator1.Name = "dataNavigator1";
-            this.dataNavigator1.Size = new System.Drawing.Size(621, 24);
-            this.dataNavigator1.TabIndex = 2;
-            this.dataNavigator1.Text = "dataNavigator1";
-            // 
             // FLoginLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(645, 321);
-            this.Controls.Add(this.dataNavigator1);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.gcData);
             this.Name = "FLoginLogs";
@@ -474,6 +456,5 @@ namespace RightingSys.WinForm.SubForm.pageLogs
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
-        private DevExpress.XtraEditors.DataNavigator dataNavigator1;
     }
 }

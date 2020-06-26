@@ -872,8 +872,7 @@ namespace RightingSys.WinForm
                         }
                         else
                         {
-                            this.MainRibbon.Items[i].Visibility = (this.OperFuncVeifyNew(Guid.Parse(this.MainRibbon.Items[i].Tag.ToString().Trim()))?BarItemVisibility.Always:BarItemVisibility.Never);
-                            //this.MainRibbon.Items[i].Visibility = (this.OperFuncVeify(this.MainRibbon.Items[i].Tag.ToString().Trim()) ? BarItemVisibility.Always : BarItemVisibility.Never);
+                            this.MainRibbon.Items[i].Visibility = (this.OperFuncVeifyNew(Guid.Parse(this.MainRibbon.Items[i].Tag.ToString().Trim())) ? BarItemVisibility.Always : BarItemVisibility.Never);
                         }
                     }
                 }
@@ -886,7 +885,6 @@ namespace RightingSys.WinForm
                     }
                     else
                     {
-                       // ribbonPage.Visible = this.OperFuncVeify(ribbonPage.Tag.ToString().Trim());
                         ribbonPage.Visible = this.OperFuncVeifyNew(Guid.Parse(ribbonPage.Tag.ToString().Trim()));
                     }
                     if (ribbonPage.Visible)
@@ -901,8 +899,7 @@ namespace RightingSys.WinForm
             }
             catch (System.Exception ex)
             {
-               // DBhelper.OpSysLog.WriteErrorLog(this.Text, ex.Message);
-               // DBhelper.clsPublic.ShowException(ex, this.Text);
+                throw ex;
             }
             finally
             {
@@ -910,11 +907,6 @@ namespace RightingSys.WinForm
                 this.pageSystem.Visible = true;
                 this.pageHelper.Visible = true;
                 this.MainRibbon.SelectedPage = this.pageSystem;
-                //if (this.btnFunction.Visibility == BarItemVisibility.Always && (!Session.CurrentUserIsAdmin() || !YsposAppSetting.Instance.FuncMainMode))
-                //{
-                   // this.btnFunction.Visibility = BarItemVisibility.Never;
-                //}
-                //this.PageFund.Visible = false;
             }
         }
 
@@ -1054,29 +1046,74 @@ namespace RightingSys.WinForm
             //MdiShow(new RightingSys.WinForm.SubForm.FingerPrint.OrderMealAnalysisForm(), btnMenuManager.Tag);
         }
 
+        /// <summary>
+        /// 关于
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAbout_ItemClick(object sender, ItemClickEventArgs e)
         {
             MdiShow2(new RightingSys.WinForm.SubForm.pageHelper.AboutForm());
         }
 
+        /// <summary>
+        /// 工作记录
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnJobRecord_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            MdiShow(new RightingSys.WinForm.SubForm.pageJob.JobRecordForm(), btnJobRecord.Tag);
         }
 
+        /// <summary>
+        /// 档案管理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnJobFiles_ItemClick(object sender, ItemClickEventArgs e)
         {
              MdiShow(new RightingSys.WinForm.SubForm.pageJob.JobFilesForm(), btnJobFiles.Tag);
         }
 
+        /// <summary>
+        /// 档案类别
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnJobFileCategory_ItemClick(object sender, ItemClickEventArgs e)
         {
             MdiShow(new RightingSys.WinForm.SubForm.pageJob.JobFileCategoryForm(), btnJobFileCategory.Tag);
         }
 
+        /// <summary>
+        /// 工作类别
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnJobCategory_ItemClick(object sender, ItemClickEventArgs e)
         {
             MdiShow(new RightingSys.WinForm.SubForm.pageJob.JobCategoryForm(), btnJobCategory.Tag);
+        }
+
+        /// <summary>
+        /// 店铺信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnBranch_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MdiShow(new RightingSys.WinForm.SubForm.pageJob.BranchForm(), btnBranch.Tag);
+        }
+
+        private void btnJobRecordQuery_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MdiShow(new RightingSys.WinForm.SubForm.pageJob.JobQueryForm(), btnJobRecordQuery.Tag);
+        }
+
+        private void btnJobAnalyze_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MdiShow(new RightingSys.WinForm.SubForm.pageJob.JobAnalyzeForm(), btnJobAnalyze.Tag);
         }
     }
 }

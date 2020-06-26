@@ -9,103 +9,149 @@ namespace RightingSys.DAL
     public  class JobService
     {
         /// <summary>
-        /// 新增档案
+        /// 新增工作记录
         /// </summary>
         /// <param name="model">实体</param>
         /// <returns></returns>
-        public bool AddNew(Models.ys_JobFiles model)
+        public bool AddNew(Models.ys_JobRecord model)
         {
-            string sqlText = @"INSERT INTO [RightingSys].[dbo].[ys_JobFiles]
+            string sqlText = @"INSERT INTO [RightingSys].[dbo].[ys_JobRecord]
            ([Id]
-           ,[JobFileName]
-           ,[JobFileCategoryId]
-           ,[JobFileCategoryName]
-           ,[JobFileStaffId]
-           ,[JobFileStaffName]
-           ,[FileImage]
-           ,[OperatorId]
-           ,[OperatorName]
-           ,[AuditorId]
-           ,[AuditorName]
-           ,[Auditorday]
+           ,[BranchId]
+           ,[BranchName]
+           ,[StaffId]
+           ,[StaffName]
+           ,[CategoryId]
+           ,[CategoryName]
+           ,[Contact]
+           ,[ContactNumber]
            ,[Description]
-           ,[CreateTime]
-           ,[IsRemoved])
-     VALUES
-           (@Id
-           ,@JobFileName
-           ,@JobFileCategoryId
-           ,@JobFileCategoryName
-           ,@JobFileStaffId
-           ,@JobFileStaffName
-           ,@FileImage
-           ,@OperatorId
-           ,@OperatorName
-           ,@AuditorId
-           ,@AuditorName
-           ,@Auditorday
+           ,[CreatorId]
+           ,[CreatorName])
+     VALUES(@Id
+           ,@BranchId
+           ,@BranchName
+           ,@StaffId
+           ,@StaffName
+           ,@CategoryId
+           ,@CategoryName
+           ,@Contact
+           ,@ContactNumber
            ,@Description
-           ,@CreateTime
-           ,@IsRemoved)";
+           ,@CreatorId
+           ,@CreatorName)";
 
             SqlParameter[] Params = new SqlParameter[] {
-                new SqlParameter("@Id",model.Id),
-                new SqlParameter("@JobFileName",model.JobFileName),
-                new SqlParameter("@JobFileCategoryId",model.JobFileCategoryId),
-                new SqlParameter("@JobFileCategoryName",model.JobFileCategoryName),
-                new SqlParameter("@JobFileStaffId",model.JobFileStaffId),
-                new SqlParameter("@JobFileStaffName",model.JobFileStaffName),
-                new SqlParameter("@FileImage",model.FileImage),
-                new SqlParameter("@OperatorId",model.OperatorId),
-                new SqlParameter("@OperatorName",model.OperatorName),
-                new SqlParameter("@AuditorId",model.AuditorId),
-                new SqlParameter("@AuditorName",model.AuditorName),
-                new SqlParameter("@Auditorday",model.Auditorday),
+                new SqlParameter("@Id",model.Id=Guid.NewGuid()),
+                new SqlParameter("@BranchId",model.BranchId),
+                new SqlParameter("@BranchName",model.BranchName),
+                new SqlParameter("@StaffId",model.StaffId),
+                new SqlParameter("@StaffName",model.StaffName),
+                new SqlParameter("@CategoryId",model.CategoryId),
+                new SqlParameter("@CategoryName",model.CategoryName=""),
+                new SqlParameter("@Contact",model.Contact),
+                new SqlParameter("@ContactNumber",model.ContactNumber=""),
                 new SqlParameter("@Description",model.Description),
-                new SqlParameter("@CreateTime",model.CreateTime),
-                new SqlParameter("@IsRemoved",model.IsRemoved)
-            };
-
+                new SqlParameter("@CreatorId",model.CreatorId),
+                new SqlParameter("@CreatorName",model.CreatorName) };
 
             return Models.SqlHelper.ExecuteNoQuery(sqlText, Params)>0;
         }
 
+
         /// <summary>
-        /// 档案删除( 伪删除)
+        /// 修改工作记录
         /// </summary>
-        /// <param name="Id">档案ID</param>
+        /// <param name="model">实体</param>
+        /// <returns></returns>
+        public bool Modify(Models.ys_JobRecord model)
+        {
+            string sqlText = @"UPDATE [RightingSys].[dbo].[ys_JobRecord]
+                               SET [BranchId] = @BranchId
+                                  ,[BranchName] = @BranchName
+                                  ,[StaffId] = @StaffId
+                                  ,[StaffName] = @StaffName
+                                  ,[CategoryId] = @CategoryId
+                                  ,[CategoryName] = @CategoryName
+                                  ,[Contact] = @Contact
+                                  ,[ContactNumber] = @ContactNumber
+                                  ,[Description] = @Description
+                                  ,[CreateTime]=@CreateTime
+                                  ,[Solution] = @Solution
+                                  ,[OperatorId] = @OperatorId
+                                  ,[OperatorName] = @OperatorName
+                                  ,[FinishTime] = @FinishTime
+                                  ,[TotalMins] = @TotalMins
+                                  ,[IsFinish] = @IsFinish
+                             WHERE [Id] = @Id";
+
+            SqlParameter[] Params = new SqlParameter[] {
+                new SqlParameter("@Id",model.Id),
+                new SqlParameter("@BranchId",model.BranchId),
+                new SqlParameter("@BranchName",model.BranchName),
+                new SqlParameter("@StaffId",model.StaffId),
+                new SqlParameter("@StaffName",model.StaffName),
+                new SqlParameter("@CategoryId",model.CategoryId),
+                new SqlParameter("@CategoryName",model.CategoryName),
+                new SqlParameter("@Contact",model.Contact),
+                new SqlParameter("@ContactNumber",model.ContactNumber),
+                new SqlParameter("@Description",model.Description),
+                new SqlParameter("@Solution",model.Solution),
+                new SqlParameter("@OperatorId",model.OperatorId),
+                new SqlParameter("@OperatorName",model.OperatorName),
+                new SqlParameter("@FinishTime",model.FinishTime),
+                new SqlParameter("@TotalMins",model.TotalMins),
+                new SqlParameter("@IsFinish", model.IsFinish),
+                new SqlParameter("@CreateTime", model.CreateTime),
+            };
+
+            return Models.SqlHelper.ExecuteNoQuery(sqlText, Params) > 0;
+        }
+
+
+
+
+        /// <summary>
+        /// 工作记录删除( 伪删除)
+        /// </summary>
+        /// <param name="Id">工作记录ID</param>
         /// <returns></returns>
         public bool Delete(Guid Id)
         {
-            string sqlText = @"UPDATE  [RightingSys].[dbo].[ys_JobFiles] SET [IsRemoved]=1  WHERE [Id]=@Id";
+            string sqlText = @"UPDATE  [RightingSys].[dbo].[ys_JobRecord] SET [IsRemoved]=1  WHERE [Id]=@Id";
             return Models.SqlHelper.ExecuteNoQuery(sqlText, new SqlParameter("@Id", Id)) > 0;
         }
 
         /// <summary>
-        /// 获取所有的档案列表
+        /// 获取所有的工作记录列表
         /// </summary>
         /// <returns></returns>
-        public IList<Models.ys_JobFiles> GetAllList()
+        public IList<Models.ys_JobRecord> GetAllList()
         {
             string sqlText = @"SELECT [Id]
-      ,[JobFileName]
-      ,[JobFileCategoryId]
-      ,[JobFileCategoryName]
-      ,[JobFileStaffId]
-      ,[JobFileStaffName]
-      ,[FileImage]
+      ,[BranchId]
+      ,[BranchName]
+      ,[StaffId]
+      ,[StaffName]
+      ,[CategoryId]
+      ,[CategoryName]
+      ,[Contact]
+      ,[ContactNumber]
+      ,[Description]
+      ,[CreatorId]
+      ,[CreatorName]
+      ,[CreateTime]
+      ,[Solution]
       ,[OperatorId]
       ,[OperatorName]
-      ,[AuditorId]
-      ,[AuditorName]
-      ,[Auditorday]
-      ,[Description]
-      ,[CreateTime]
+      ,[FinishTime]
+      ,[TotalMins]
+      ,[IsFinish]
       ,[IsRemoved]
-  FROM [RightingSys].[dbo].[ys_JobFiles]";
+  FROM [RightingSys].[dbo].[ys_JobRecord]";
             System.Data.DataTable dt = Models.SqlHelper.ExecuteDataTable(sqlText);
 
-            return Models.SqlHelper.DataTableToList<Models.ys_JobFiles>(dt);
+            return Models.SqlHelper.DataTableToList<Models.ys_JobRecord>(dt);
         }
 
 
@@ -206,5 +252,20 @@ namespace RightingSys.DAL
         
         }
         #endregion
+
+
+        /// <summary>
+        /// 获取机构信息
+        /// </summary>
+        /// <returns></returns>
+        public System.Data.DataTable GetDtBranch()
+        {
+            string sqlText = @"select  RTRIM(a.branchcode) BranchId,a.[NAME] BranchDesc,a.keeperclientid ClientId,b.clientdesc ClientDesc,a.updatedate Wno
+            from ys_branch as a  left join ys_client  as b on a.keeperclientid=b.clientid
+            where a.branchcode is not null and b.ManAgentClientID='AHUN'
+            order by a.branchcode asc";
+
+            return Models.SqlHelper.ExecuteDataTable(sqlText);
+        }
     }
 }

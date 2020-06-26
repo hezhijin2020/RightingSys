@@ -95,7 +95,7 @@
             // sbtnSave
             // 
             this.sbtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnSave.Location = new System.Drawing.Point(203, 74);
+            this.sbtnSave.Location = new System.Drawing.Point(201, 74);
             this.sbtnSave.Name = "sbtnSave";
             this.sbtnSave.Size = new System.Drawing.Size(75, 23);
             this.sbtnSave.TabIndex = 8;
@@ -104,7 +104,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(26, 51);
+            this.labelControl3.Location = new System.Drawing.Point(21, 51);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(24, 14);
             this.labelControl3.TabIndex = 6;
@@ -112,7 +112,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(26, 21);
+            this.labelControl1.Location = new System.Drawing.Point(21, 21);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(24, 14);
             this.labelControl1.TabIndex = 4;
@@ -123,14 +123,14 @@
             this.tl_PID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tl_PID.EditValue = "";
-            this.tl_PID.Location = new System.Drawing.Point(59, 18);
+            this.tl_PID.Location = new System.Drawing.Point(51, 18);
             this.tl_PID.Name = "tl_PID";
             this.tl_PID.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.tl_PID.Properties.DisplayMember = "JobCategoryName";
             this.tl_PID.Properties.TreeList = this.treeListLookUpEdit1TreeList;
             this.tl_PID.Properties.ValueMember = "Id";
-            this.tl_PID.Size = new System.Drawing.Size(222, 20);
+            this.tl_PID.Size = new System.Drawing.Size(225, 20);
             this.tl_PID.TabIndex = 3;
             // 
             // treeListLookUpEdit1TreeList
@@ -160,9 +160,9 @@
             // 
             this.txtFullName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFullName.Location = new System.Drawing.Point(56, 48);
+            this.txtFullName.Location = new System.Drawing.Point(51, 48);
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(222, 20);
+            this.txtFullName.Size = new System.Drawing.Size(225, 20);
             this.txtFullName.TabIndex = 0;
             // 
             // JobCategoryForm

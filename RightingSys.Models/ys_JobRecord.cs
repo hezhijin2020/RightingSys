@@ -8,7 +8,7 @@ namespace RightingSys.Models
     /// <summary>
     /// 工作记录
     /// </summary>
-    public class ys_JobRecord
+    public class ys_JobRecord:BaseEntity
     {
         /// <summary>
         /// 机构编号
@@ -70,6 +70,17 @@ namespace RightingSys.Models
         /// 是否完成
         /// </summary>
         public bool IsFinish { get; set; } = false;
+
+        /// <summary>
+        /// 联系电话
+        /// </summary>
+        public string ContactNumber { get; set; }
+        /// <summary>
+        /// 联系人
+        /// </summary>
+        public string Contact { get; set; }
+
+
 
     }
 }

@@ -1,11 +1,5 @@
 ﻿using RightingSys.WinForm.Utility.cls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace RightingSys.WinForm.SubForm.pageBaseinfo
@@ -31,7 +25,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             txtRemark.Text = model.SystemDescription;
         }
 
-        public bool Save()
+        public bool PerSave()
         {
             bool count = false;
             if (txtsysName.Text.Trim()=="")
@@ -71,7 +65,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
 
         private void btnNewAdd_Click(object sender, EventArgs e)
         {
-            if (Save())
+            if (PerSave())
             {
                 txtsysID.Text = "";
                 txtsysName.Text = "";
@@ -83,7 +77,7 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (Save())
+            if (PerSave())
             {
                 DialogResult = DialogResult.OK;
             }
