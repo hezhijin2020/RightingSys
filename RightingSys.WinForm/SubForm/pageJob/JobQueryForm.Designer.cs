@@ -31,6 +31,10 @@
             this.gcData = new RightingSys.WinForm.Utility.CustomControls.CustomGridControl();
             this.gvData = new RightingSys.WinForm.Utility.CustomControls.CustomGridView();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.label7 = new DevExpress.XtraEditors.LabelControl();
+            this.tlJobCategory = new DevExpress.XtraEditors.TreeListLookUpEdit();
+            this.treeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
+            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.cbBranch = new RightingSys.WinForm.Utility.CustomControls.CustomGridLookUpEdit();
             this.customGridLookUpEdit1View = new RightingSys.WinForm.Utility.CustomControls.CustomGridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -42,22 +46,31 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.dEnd = new DevExpress.XtraEditors.DateEdit();
             this.dStart = new DevExpress.XtraEditors.DateEdit();
-            this.label7 = new DevExpress.XtraEditors.LabelControl();
-            this.tlJobCategory = new DevExpress.XtraEditors.TreeListLookUpEdit();
-            this.treeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
-            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tlJobCategory.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBranch.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customGridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dEnd.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dEnd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dStart.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dStart.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tlJobCategory.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
             this.SuspendLayout();
             // 
             // gcData
@@ -86,6 +99,20 @@
             this.gvData.Appearance.Row.Options.UseTextOptions = true;
             this.gvData.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gvData.Appearance.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gvData.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn9,
+            this.gridColumn10,
+            this.gridColumn11,
+            this.gridColumn12,
+            this.gridColumn13,
+            this.gridColumn14,
+            this.gridColumn15,
+            this.gridColumn16,
+            this.gridColumn17,
+            this.gridColumn18});
             this.gvData.EmptyForegroundText = null;
             this.gvData.GridControl = this.gcData;
             this.gvData.IndicatorWidth = 28;
@@ -105,6 +132,7 @@
             this.gvData.OptionsView.EnableAppearanceEvenRow = true;
             this.gvData.OptionsView.EnableAppearanceOddRow = true;
             this.gvData.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+            this.gvData.OptionsView.ShowFooter = true;
             this.gvData.OptionsView.ShowGroupPanel = false;
             // 
             // panelControl1
@@ -122,6 +150,52 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(742, 40);
             this.panelControl1.TabIndex = 2;
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(223, 12);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(24, 14);
+            this.label7.TabIndex = 82;
+            this.label7.Text = "类别";
+            // 
+            // tlJobCategory
+            // 
+            this.tlJobCategory.Location = new System.Drawing.Point(253, 10);
+            this.tlJobCategory.Name = "tlJobCategory";
+            this.tlJobCategory.Properties.AllowMouseWheel = false;
+            this.tlJobCategory.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.tlJobCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.tlJobCategory.Properties.DisplayMember = "JobCategoryName";
+            this.tlJobCategory.Properties.ImmediatePopup = true;
+            this.tlJobCategory.Properties.NullText = "";
+            this.tlJobCategory.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.tlJobCategory.Properties.TreeList = this.treeListLookUpEdit1TreeList;
+            this.tlJobCategory.Properties.ValueMember = "Id";
+            this.tlJobCategory.Size = new System.Drawing.Size(169, 20);
+            this.tlJobCategory.TabIndex = 83;
+            this.tlJobCategory.Tag = false;
+            // 
+            // treeListLookUpEdit1TreeList
+            // 
+            this.treeListLookUpEdit1TreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.treeListColumn1});
+            this.treeListLookUpEdit1TreeList.KeyFieldName = "Id";
+            this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(171, -167);
+            this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndentAsRowStyle = true;
+            this.treeListLookUpEdit1TreeList.ParentFieldName = "ParentId";
+            this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(400, 200);
+            this.treeListLookUpEdit1TreeList.TabIndex = 0;
+            // 
+            // treeListColumn1
+            // 
+            this.treeListColumn1.Caption = "类别";
+            this.treeListColumn1.FieldName = "JobCategoryName";
+            this.treeListColumn1.Name = "treeListColumn1";
+            this.treeListColumn1.Visible = true;
+            this.treeListColumn1.VisibleIndex = 0;
             // 
             // cbBranch
             // 
@@ -242,51 +316,111 @@
             this.dStart.Size = new System.Drawing.Size(100, 20);
             this.dStart.TabIndex = 1;
             // 
-            // label7
+            // gridColumn6
             // 
-            this.label7.Location = new System.Drawing.Point(223, 12);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(24, 14);
-            this.label7.TabIndex = 82;
-            this.label7.Text = "类别";
+            this.gridColumn6.Caption = "店铺编号";
+            this.gridColumn6.FieldName = "BranchId";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "BranchId", "{0}")});
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 0;
             // 
-            // tlJobCategory
+            // gridColumn7
             // 
-            this.tlJobCategory.Location = new System.Drawing.Point(253, 10);
-            this.tlJobCategory.Name = "tlJobCategory";
-            this.tlJobCategory.Properties.AllowMouseWheel = false;
-            this.tlJobCategory.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
-            this.tlJobCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.tlJobCategory.Properties.DisplayMember = "JobCategoryName";
-            this.tlJobCategory.Properties.ImmediatePopup = true;
-            this.tlJobCategory.Properties.NullText = "";
-            this.tlJobCategory.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.tlJobCategory.Properties.TreeList = this.treeListLookUpEdit1TreeList;
-            this.tlJobCategory.Properties.ValueMember = "Id";
-            this.tlJobCategory.Size = new System.Drawing.Size(169, 20);
-            this.tlJobCategory.TabIndex = 83;
-            this.tlJobCategory.Tag = false;
+            this.gridColumn7.Caption = "店铺名称";
+            this.gridColumn7.FieldName = "BranchName";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 1;
             // 
-            // treeListLookUpEdit1TreeList
+            // gridColumn8
             // 
-            this.treeListLookUpEdit1TreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.treeListColumn1});
-            this.treeListLookUpEdit1TreeList.KeyFieldName = "Id";
-            this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(171, -167);
-            this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
-            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndentAsRowStyle = true;
-            this.treeListLookUpEdit1TreeList.ParentFieldName = "ParentId";
-            this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(400, 200);
-            this.treeListLookUpEdit1TreeList.TabIndex = 0;
+            this.gridColumn8.Caption = "职员";
+            this.gridColumn8.FieldName = "StaffName";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 2;
             // 
-            // treeListColumn1
+            // gridColumn9
             // 
-            this.treeListColumn1.Caption = "类别";
-            this.treeListColumn1.FieldName = "JobCategoryName";
-            this.treeListColumn1.Name = "treeListColumn1";
-            this.treeListColumn1.Visible = true;
-            this.treeListColumn1.VisibleIndex = 0;
+            this.gridColumn9.Caption = "联系方式";
+            this.gridColumn9.FieldName = "Contact";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 3;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "描述信息";
+            this.gridColumn10.FieldName = "Description";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 4;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "登记人员";
+            this.gridColumn11.FieldName = "CreatorName";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 5;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "登记时间";
+            this.gridColumn12.FieldName = "CreateTime";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 6;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "类别";
+            this.gridColumn13.FieldName = "CategoryName";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 7;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "解决方案";
+            this.gridColumn14.FieldName = "Solution";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 8;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "处理人员";
+            this.gridColumn15.FieldName = "OperatorName";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 9;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "完成时间";
+            this.gridColumn16.FieldName = "FinishTime";
+            this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.Visible = true;
+            this.gridColumn16.VisibleIndex = 10;
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "总用时";
+            this.gridColumn17.FieldName = "TotalMins";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 11;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "状态";
+            this.gridColumn18.FieldName = "IsFinish";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 12;
             // 
             // JobQueryForm
             // 
@@ -296,20 +430,20 @@
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.gcData);
             this.Name = "JobQueryForm";
-            this.Text = "工作记录";
+            this.Text = "工作记录查询";
             ((System.ComponentModel.ISupportInitialize)(this.gcData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tlJobCategory.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBranch.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customGridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dEnd.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dEnd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dStart.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dStart.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tlJobCategory.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -333,5 +467,18 @@
         private DevExpress.XtraEditors.TreeListLookUpEdit tlJobCategory;
         private DevExpress.XtraTreeList.TreeList treeListLookUpEdit1TreeList;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
     }
 }

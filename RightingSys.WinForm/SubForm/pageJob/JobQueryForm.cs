@@ -1,12 +1,5 @@
 ﻿using RightingSys.WinForm.Utility.cls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace RightingSys.WinForm.SubForm.pageJob
 {
@@ -22,6 +15,8 @@ namespace RightingSys.WinForm.SubForm.pageJob
             tlJobCategory.Properties.DataSource = manager.GetAllListCategory();
             dStart.DateTime = DateTime.Now.Date.AddDays(-7);
             dEnd.DateTime = DateTime.Now.Date;
+
+            Query();
 
         }
 

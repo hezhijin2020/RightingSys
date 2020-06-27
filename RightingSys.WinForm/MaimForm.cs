@@ -1106,14 +1106,34 @@ namespace RightingSys.WinForm
             MdiShow(new RightingSys.WinForm.SubForm.pageJob.BranchForm(), btnBranch.Tag);
         }
 
+        /// <summary>
+        /// 工作记录查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnJobRecordQuery_ItemClick(object sender, ItemClickEventArgs e)
         {
             MdiShow(new RightingSys.WinForm.SubForm.pageJob.JobQueryForm(), btnJobRecordQuery.Tag);
         }
 
+        /// <summary>
+        /// 工作分析
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnJobAnalyze_ItemClick(object sender, ItemClickEventArgs e)
         {
             MdiShow(new RightingSys.WinForm.SubForm.pageJob.JobAnalyzeForm(), btnJobAnalyze.Tag);
+        }
+
+        /// <summary>
+        /// 工作计划
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnWorkPlan_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MdiShow(new RightingSys.WinForm.SubForm.pageJob.WeekPlanForm(), btnWorkPlan.Tag);
         }
     }
 }

@@ -54,6 +54,7 @@
     <Compile Include="RoleManager.cs" />
     <Compile Include="SystemManager.cs" />
     <Compile Include="UserManager.cs" />
+    <Compile Include="WorkPlanManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightingSys.DAL\RightingSys.DAL.csproj">

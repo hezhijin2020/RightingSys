@@ -78,6 +78,7 @@
             this.btnJobRecordQuery = new DevExpress.XtraBars.BarButtonItem();
             this.btnJobAnalyze = new DevExpress.XtraBars.BarButtonItem();
             this.btnBranch = new DevExpress.XtraBars.BarButtonItem();
+            this.btnWorkPlan = new DevExpress.XtraBars.BarButtonItem();
             this.pageEditor = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.groupOpDate = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupCommit = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -161,9 +162,10 @@
             this.btnJobFileCategory,
             this.btnJobRecordQuery,
             this.btnJobAnalyze,
-            this.btnBranch});
+            this.btnBranch,
+            this.btnWorkPlan});
             this.MainRibbon.Location = new System.Drawing.Point(0, 0);
-            this.MainRibbon.MaxItemId = 38;
+            this.MainRibbon.MaxItemId = 39;
             this.MainRibbon.Name = "MainRibbon";
             this.MainRibbon.PageHeaderItemLinks.Add(this.skinRibbon);
             this.MainRibbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -649,6 +651,17 @@
             this.btnBranch.Tag = "f57db3bb-ecb9-4646-a7e0-1aeb00e832b3";
             this.btnBranch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBranch_ItemClick);
             // 
+            // btnWorkPlan
+            // 
+            this.btnWorkPlan.Caption = "工作计划";
+            this.btnWorkPlan.Id = 38;
+            this.btnWorkPlan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnWorkPlan.ImageOptions.Image")));
+            this.btnWorkPlan.Name = "btnWorkPlan";
+            this.btnWorkPlan.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnWorkPlan.Tag = "e21ed94b-c572-472a-9715-66b26a2fea71";
+            this.btnWorkPlan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnWorkPlan_ItemClick);
+            // 
             // pageEditor
             // 
             this.pageEditor.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -771,6 +784,7 @@
             // 
             this.pgJobs.ItemLinks.Add(this.btnJobRecord);
             this.pgJobs.ItemLinks.Add(this.btnJobFiles);
+            this.pgJobs.ItemLinks.Add(this.btnWorkPlan);
             this.pgJobs.Name = "pgJobs";
             this.pgJobs.Text = "IT部工作记录";
             // 
@@ -957,5 +971,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup pgJobSetup;
         private DevExpress.XtraBars.BarButtonItem btnBranch;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup pgOther;
+        private DevExpress.XtraBars.BarButtonItem btnWorkPlan;
     }
 }

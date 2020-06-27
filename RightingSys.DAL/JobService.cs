@@ -81,7 +81,7 @@ namespace RightingSys.DAL
                                   ,[OperatorId] = @OperatorId
                                   ,[OperatorName] = @OperatorName
                                   ,[FinishTime] = @FinishTime
-                                  ,[TotalMins] = @TotalMins
+                                  ,[TotalMins] = DATEDIFF(N,@CreateTime,ISNULL(@FinishTime,GETDATE()))
                                   ,[IsFinish] = @IsFinish
                              WHERE [Id] = @Id";
 
@@ -100,7 +100,7 @@ namespace RightingSys.DAL
                 new SqlParameter("@OperatorId",model.OperatorId),
                 new SqlParameter("@OperatorName",model.OperatorName),
                 new SqlParameter("@FinishTime",model.FinishTime),
-                new SqlParameter("@TotalMins",model.TotalMins),
+                //new SqlParameter("@TotalMins",model.TotalMins),
                 new SqlParameter("@IsFinish", model.IsFinish),
                 new SqlParameter("@CreateTime", model.CreateTime),
             };
@@ -145,7 +145,7 @@ namespace RightingSys.DAL
       ,[OperatorId]
       ,[OperatorName]
       ,[FinishTime]
-      ,[TotalMins]
+      ,[TotalMins]=DATEDIFF(N,CreateTime,ISNULL(FinishTime,GETDATE()))
       ,[IsFinish]
       ,[IsRemoved]
   FROM [RightingSys].[dbo].[ys_JobRecord]";
@@ -264,6 +264,25 @@ namespace RightingSys.DAL
             from ys_branch as a  left join ys_client  as b on a.keeperclientid=b.clientid
             where a.branchcode is not null and b.ManAgentClientID='AHUN'
             order by a.branchcode asc";
+
+            return Models.SqlHelper.ExecuteDataTable(sqlText);
+        }
+
+        /// <summary>
+        /// 分析
+        /// </summary>
+        /// <returns></returns>
+        public System.Data.DataTable GetDtAnalyzeJob(string Where)
+        {
+            string sqlText = string.Format(@"select a.BranchId,a.BranchName,e.ClientDesc,a.Contact,a.[Description],a.CreatorName,a.CreateTime,a.CategoryName,a.Solution,a.OperatorName, a.FinishTime,TotalMins,1 QTY,h.DepartmentName,a.StaffName
+            from ys_JobRecord as a  left join ( 
+            select  RTRIM(c.branchcode) BranchId,c.[NAME] BranchDesc,c.keeperclientid ClientId,d.Clientdesc,c.updatedate Wno
+            from ys_branch as c  left join ys_client  as d on c.keeperclientid=d.clientid
+            where c.branchcode is not null and d.ManAgentClientID='AHUN'
+            ) as e on a.BranchId=e.BranchId
+            left join (select f.Id,f.FullName,f.DepartmentId,g.DepartmentName from ACL_User as f left join ACL_Department as g on f.DepartmentId=g.Id) as h 
+            on a.StaffId=h.Id
+            where a.IsRemoved=0 and a.IsFinish=1 {0}",Where);
 
             return Models.SqlHelper.ExecuteDataTable(sqlText);
         }

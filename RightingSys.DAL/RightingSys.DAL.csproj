@@ -54,6 +54,7 @@
     <Compile Include="OrderMealService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkPlanService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightingSys.Models\RightingSys.Models.csproj">

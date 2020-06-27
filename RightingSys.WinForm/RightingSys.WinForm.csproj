@@ -172,6 +172,12 @@
     <Compile Include="SubForm\pageJob\JobRecordForm.Designer.cs">
       <DependentUpon>JobRecordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForm\pageJob\WeekPlanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageJob\WeekPlanForm.Designer.cs">
+      <DependentUpon>WeekPlanForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility\cls\BitmapFormat.cs" />
     <Compile Include="Utility\cls\clsPublicLogs.cs" />
     <Compile Include="Utility\AutoService\FileUnit.cs" />
@@ -367,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\pageJob\JobRecordForm.resx">
       <DependentUpon>JobRecordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageJob\WeekPlanForm.resx">
+      <DependentUpon>WeekPlanForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utility\ToolForm\UserFingerAdd.resx">
       <DependentUpon>UserFingerAdd.cs</DependentUpon>

@@ -54,7 +54,14 @@ namespace RightingSys.BLL
         /// <returns></returns>
         public List<Models.ys_JobRecord> GetNotFinishList()
         {
-            return sev.GetAllList().Where(a => a.IsRemoved == false && a.IsFinish==false).ToList();
+            List<Models.ys_JobRecord> jobs = sev.GetAllList().Where(a => a.IsRemoved == false && a.IsFinish == false).ToList();
+            //var nowtime = DateTime.Now;
+            //for(int i=0;i<jobs.Count;i++)
+            //{
+            //    var diff = nowtime - jobs[i].CreateTime;
+            //    jobs[i].TotalMins = System.Convert.ToInt32(diff.Minutes);
+            //}
+            return jobs;
         }
 
 
@@ -173,6 +180,13 @@ namespace RightingSys.BLL
            return sev.GetDtBranch();
         }
 
-
+        /// <summary>
+        /// 分析
+        /// </summary>
+        /// <returns></returns>
+        public System.Data.DataTable GetDtAnalyzeJob(string  Where)
+        {
+           return sev.GetDtAnalyzeJob(Where);
+        }
     }
 }

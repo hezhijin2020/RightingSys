@@ -470,7 +470,7 @@
             // gridColumn7
             // 
             this.gridColumn7.Caption = "已用时";
-            this.gridColumn7.FieldName = "TotolMins";
+            this.gridColumn7.FieldName = "TotalMins";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;

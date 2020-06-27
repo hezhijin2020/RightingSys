@@ -17,7 +17,7 @@ namespace RightingSys.WinForm.SubForm.pageJob
         /// </summary>
         public JobRecordForm()
         {
-            InitializeComponent();
+            InitializeComponent();Query();
 
             lkpStaff.Properties.DataSource = userManager.GetAllList();
             lkpBranch.Properties.DataSource = manager.GetDtBranch();
