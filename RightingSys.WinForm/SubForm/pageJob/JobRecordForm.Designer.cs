@@ -265,6 +265,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 0;
+            this.gridColumn12.Width = 227;
             // 
             // gridColumn13
             // 
@@ -273,14 +274,13 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 1;
+            this.gridColumn13.Width = 467;
             // 
             // gridColumn14
             // 
             this.gridColumn14.Caption = "客户编码";
             this.gridColumn14.FieldName = "ClientId";
             this.gridColumn14.Name = "gridColumn14";
-            this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 2;
             // 
             // gridColumn15
             // 
@@ -288,15 +288,14 @@
             this.gridColumn15.FieldName = "ClientDesc";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 3;
+            this.gridColumn15.VisibleIndex = 2;
+            this.gridColumn15.Width = 206;
             // 
             // gridColumn16
             // 
             this.gridColumn16.Caption = "更新时间";
             this.gridColumn16.FieldName = "Wno";
             this.gridColumn16.Name = "gridColumn16";
-            this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 4;
             // 
             // labelControl5
             // 

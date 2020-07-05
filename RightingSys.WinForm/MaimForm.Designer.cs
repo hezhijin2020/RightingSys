@@ -106,6 +106,7 @@
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.btnStickyBook = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -163,9 +164,10 @@
             this.btnJobRecordQuery,
             this.btnJobAnalyze,
             this.btnBranch,
-            this.btnWorkPlan});
+            this.btnWorkPlan,
+            this.btnStickyBook});
             this.MainRibbon.Location = new System.Drawing.Point(0, 0);
-            this.MainRibbon.MaxItemId = 39;
+            this.MainRibbon.MaxItemId = 40;
             this.MainRibbon.Name = "MainRibbon";
             this.MainRibbon.PageHeaderItemLinks.Add(this.skinRibbon);
             this.MainRibbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -785,6 +787,7 @@
             this.pgJobs.ItemLinks.Add(this.btnJobRecord);
             this.pgJobs.ItemLinks.Add(this.btnJobFiles);
             this.pgJobs.ItemLinks.Add(this.btnWorkPlan);
+            this.pgJobs.ItemLinks.Add(this.btnStickyBook);
             this.pgJobs.Name = "pgJobs";
             this.pgJobs.Text = "IT部工作记录";
             // 
@@ -868,6 +871,16 @@
             // 
             this.ribbonPage3.Name = "ribbonPage3";
             this.ribbonPage3.Text = "ribbonPage3";
+            // 
+            // btnStickyBook
+            // 
+            this.btnStickyBook.Caption = "信息登记";
+            this.btnStickyBook.Id = 39;
+            this.btnStickyBook.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.btnStickyBook.Name = "btnStickyBook";
+            this.btnStickyBook.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnStickyBook.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStickyBook_ItemClick);
             // 
             // MainForm
             // 
@@ -972,5 +985,6 @@
         private DevExpress.XtraBars.BarButtonItem btnBranch;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup pgOther;
         private DevExpress.XtraBars.BarButtonItem btnWorkPlan;
+        private DevExpress.XtraBars.BarButtonItem btnStickyBook;
     }
 }

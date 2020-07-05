@@ -111,7 +111,8 @@ namespace RightingSys.WinForm.SubForm.pageJob
         {
             if (rbtnGS.Checked)
             {
-                lkpBranch.EditValue = "GAHN_BM   ";
+                lkpBranch.EditValue = "GAHN_BM";
+
                 lkpStaff.Enabled = true;
                 lkpBranch.Enabled = false;
 

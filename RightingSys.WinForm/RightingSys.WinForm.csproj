@@ -57,6 +57,8 @@
     <Reference Include="DevExpress.BonusSkins.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v17.2.UI, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Office.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Pdf.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Pdf.v17.2.Drawing, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -65,6 +67,7 @@
     <Reference Include="DevExpress.RichEdit.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v17.2.Export, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Spreadsheet.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v17.2.UI, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Xpo.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -74,13 +77,17 @@
     <Reference Include="DevExpress.XtraGauges.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPdfViewer.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPivotGrid.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v17.2.Extensions, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v17.2.Extensions, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpreadsheet.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="itextsharp, Version=4.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
       <SpecificVersion>False</SpecificVersion>
@@ -172,6 +179,12 @@
     <Compile Include="SubForm\pageJob\JobRecordForm.Designer.cs">
       <DependentUpon>JobRecordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForm\pageJob\StickyBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\pageJob\StickyBookForm.Designer.cs">
+      <DependentUpon>StickyBookForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForm\pageJob\WeekPlanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +208,12 @@
     <Compile Include="Utility\clsPdf\PdfTable.cs" />
     <Compile Include="Utility\clsPdf\PdfText.cs" />
     <Compile Include="Utility\clsPdf\PdfWatermark.cs" />
+    <Compile Include="Utility\CustomControls\CustomRichEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utility\CustomControls\CustomRichEditControl.Designer.cs">
+      <DependentUpon>CustomRichEditControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility\ToolForm\UserFingerAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -374,8 +393,14 @@
     <EmbeddedResource Include="SubForm\pageJob\JobRecordForm.resx">
       <DependentUpon>JobRecordForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\pageJob\StickyBookForm.resx">
+      <DependentUpon>StickyBookForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubForm\pageJob\WeekPlanForm.resx">
       <DependentUpon>WeekPlanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utility\CustomControls\CustomRichEditControl.resx">
+      <DependentUpon>CustomRichEditControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utility\ToolForm\UserFingerAdd.resx">
       <DependentUpon>UserFingerAdd.cs</DependentUpon>

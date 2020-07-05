@@ -2,6 +2,7 @@
 using RightingSys.WinForm.Utility.cls;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace RightingSys.WinForm.SubForm.pageJob
@@ -29,6 +30,8 @@ namespace RightingSys.WinForm.SubForm.pageJob
 
             tlDepartment.EditValue = Models.SqlHelper.Session._DepartmentId;
 
+            Query();
+
         }
 
         /// <summary>
@@ -36,7 +39,7 @@ namespace RightingSys.WinForm.SubForm.pageJob
         /// </summary>
         public override void InitFeatureButton()
         {
-            base.SetFeatureButton(new FeatureButton[] { FeatureButton.Query, FeatureButton.Export, FeatureButton.Next, FeatureButton.Previous });
+            base.SetFeatureButton(new FeatureButton[] { FeatureButton.Query, FeatureButton.Export,FeatureButton.Print,FeatureButton.Next, FeatureButton.Previous });
         }
 
         /// <summary>
@@ -80,15 +83,69 @@ namespace RightingSys.WinForm.SubForm.pageJob
         /// </summary>
         public override void Export()
         {
-            SaveFileDialog fileDialog = new SaveFileDialog();
-            fileDialog.Title = "导出Excel";
-            fileDialog.Filter = "Excel文件(*.xls)|*.xls";
-            DialogResult dialogResult = fileDialog.ShowDialog(this);
-            if (dialogResult == DialogResult.OK)
+            //SaveFileDialog fileDialog = new SaveFileDialog();
+            //fileDialog.Title = "导出Excel";
+            //fileDialog.Filter = "Excel文件(*.xls)|*.xls";
+            //DialogResult dialogResult = fileDialog.ShowDialog(this);
+            //if (dialogResult == DialogResult.OK)
+            //{
+            //    DevExpress.XtraPrinting.XlsExportOptions options = new DevExpress.XtraPrinting.XlsExportOptions();
+            //    gvData.ExportToXls(fileDialog.FileName);
+            //    DevExpress.XtraEditors.XtraMessageBox.Show("保存成功！", "提示");
+            //}
+
+            //SaveFileDialog fileDialog = new SaveFileDialog();
+            //fileDialog.Title = "导出Excel";
+            //fileDialog.Filter = "Excel文件(*.xls)|*.xls";
+            //DialogResult dialogResult = fileDialog.ShowDialog(this);
+            //if (dialogResult == DialogResult.OK)
+            //{
+            //    DevExpress.XtraPrinting.XlsExportOptions options = new DevExpress.XtraPrinting.XlsExportOptions();
+            //    //gcTjbb为我的GridControl名，使用时可以替换成你的
+            //    gcData.ExportToXls(fileDialog.FileName);
+            //    DevExpress.XtraEditors.XtraMessageBox.Show("导出成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+
+
+
+            BandedGridViewToExcel(gvData, "周工作计划", "计划");
+        }
+
+
+
+        /// <summary>
+        /// BandGridView导出为Excel表格
+        /// </summary>
+        /// <param name="bgv">将列分组的表格数据视图</param>
+        /// <param name="FileName">文件名</param>
+        /// <param name="SheetName">工作表名</param>
+        public void BandedGridViewToExcel(DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bgv, string FileName, string SheetName = "")
+        {
+            SaveFileDialog sDialog = new SaveFileDialog();
+            sDialog.Filter = "Excel 工作簿(*.xlsx)|*.xlsx|Excel 97-2003 工作簿(*.xls)|*.xls";
+            if (FileName.Trim() != "")
+                sDialog.FileName = FileName;
+            if (sDialog.ShowDialog() == DialogResult.OK)
             {
-                DevExpress.XtraPrinting.XlsExportOptions options = new DevExpress.XtraPrinting.XlsExportOptions();
-                gcData.ExportToXls(fileDialog.FileName);
-                DevExpress.XtraEditors.XtraMessageBox.Show("保存成功！", "提示");
+                DevExpress.XtraPrinting.XlsxExportOptionsEx op = new DevExpress.XtraPrinting.XlsxExportOptionsEx();
+                op.ExportType = DevExpress.Export.ExportType.WYSIWYG;  //保留导出表格的样式
+                if (SheetName.Trim() != "")
+                    op.SheetName = SheetName;//工作簿名称
+                bgv.AppearancePrint.BandPanel.Font = new Font("微软雅黑", 10);
+                bgv.AppearancePrint.BandPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                bgv.AppearancePrint.Row.Font = new System.Drawing.Font("微软雅黑", 10);
+                bgv.AppearancePrint.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                bgv.OptionsPrint.PrintHeader = false; //是否打印行头
+                bgv.OptionsPrint.AutoWidth = false;//获取或设置输出/导出输出中的列的宽度是否会自动改变，以便视图与页面宽度相匹配。
+                try
+                {
+                    bgv.ExportToXlsx(sDialog.FileName, op);
+                    MessageBox.Show("导出成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("导出失败，失败原因：" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -435,8 +492,8 @@ namespace RightingSys.WinForm.SubForm.pageJob
                 {
                     return;
                 }
-                var DeptId = clsPublic.GetObjGUID(gvData.GetFocusedRowCellValue("DepartmentId"));
-                if (DeptId != Models.SqlHelper.Session._DepartmentId)
+                var DeptId = clsPublic.GetObjectString(gvData.GetFocusedRowCellValue("DepartmentName"));
+                if (DeptId != Models.SqlHelper.Session._DepartmentName)
                 {
                     e.Column.OptionsColumn.AllowEdit = false;
                     clsPublic.ShowMessage("系统不允许更改非本部人员行程计划！");

@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RightingSysManager.cs" />
     <Compile Include="RoleManager.cs" />
+    <Compile Include="StikyBookManager.cs" />
     <Compile Include="SystemManager.cs" />
     <Compile Include="UserManager.cs" />
     <Compile Include="WorkPlanManager.cs" />

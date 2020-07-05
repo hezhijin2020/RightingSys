@@ -147,7 +147,7 @@
             this.gcData.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.FocusMemoEdit,
             this.repositoryItemComboBox1});
-            this.gcData.Size = new System.Drawing.Size(758, 294);
+            this.gcData.Size = new System.Drawing.Size(531, 102);
             this.gcData.TabIndex = 1;
             this.gcData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvData});
@@ -1337,7 +1337,7 @@
             this.panelControl1.Controls.Add(this.tlDepartment);
             this.panelControl1.Location = new System.Drawing.Point(12, 13);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(757, 49);
+            this.panelControl1.Size = new System.Drawing.Size(530, 49);
             this.panelControl1.TabIndex = 2;
             // 
             // labelControl3
@@ -1424,7 +1424,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(781, 372);
+            this.ClientSize = new System.Drawing.Size(554, 180);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.gcData);
             this.Name = "WeekPlanForm";

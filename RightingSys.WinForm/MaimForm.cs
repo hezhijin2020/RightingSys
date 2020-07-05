@@ -1135,5 +1135,15 @@ namespace RightingSys.WinForm
         {
             MdiShow(new RightingSys.WinForm.SubForm.pageJob.WeekPlanForm(), btnWorkPlan.Tag);
         }
+
+        /// <summary>
+        /// 信息登记本
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnStickyBook_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MdiShow(new RightingSys.WinForm.SubForm.pageJob.StickyBookForm(), btnStickyBook.Tag);
+        }
     }
 }
