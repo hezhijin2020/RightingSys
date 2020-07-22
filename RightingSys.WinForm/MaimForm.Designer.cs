@@ -79,6 +79,8 @@
             this.btnJobAnalyze = new DevExpress.XtraBars.BarButtonItem();
             this.btnBranch = new DevExpress.XtraBars.BarButtonItem();
             this.btnWorkPlan = new DevExpress.XtraBars.BarButtonItem();
+            this.btnStickyBook = new DevExpress.XtraBars.BarButtonItem();
+            this.btnStaffTasks = new DevExpress.XtraBars.BarButtonItem();
             this.pageEditor = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.groupOpDate = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupCommit = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -106,7 +108,6 @@
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.btnStickyBook = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -165,9 +166,10 @@
             this.btnJobAnalyze,
             this.btnBranch,
             this.btnWorkPlan,
-            this.btnStickyBook});
+            this.btnStickyBook,
+            this.btnStaffTasks});
             this.MainRibbon.Location = new System.Drawing.Point(0, 0);
-            this.MainRibbon.MaxItemId = 40;
+            this.MainRibbon.MaxItemId = 41;
             this.MainRibbon.Name = "MainRibbon";
             this.MainRibbon.PageHeaderItemLinks.Add(this.skinRibbon);
             this.MainRibbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -664,6 +666,26 @@
             this.btnWorkPlan.Tag = "e21ed94b-c572-472a-9715-66b26a2fea71";
             this.btnWorkPlan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnWorkPlan_ItemClick);
             // 
+            // btnStickyBook
+            // 
+            this.btnStickyBook.Caption = "信息登记";
+            this.btnStickyBook.Id = 39;
+            this.btnStickyBook.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnStickyBook.ImageOptions.Image")));
+            this.btnStickyBook.Name = "btnStickyBook";
+            this.btnStickyBook.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnStickyBook.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStickyBook_ItemClick);
+            // 
+            // btnStaffTasks
+            // 
+            this.btnStaffTasks.Caption = "工作任务";
+            this.btnStaffTasks.Id = 40;
+            this.btnStaffTasks.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnStaffTasks.ImageOptions.Image")));
+            this.btnStaffTasks.Name = "btnStaffTasks";
+            this.btnStaffTasks.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnStaffTasks.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStaffTasks_ItemClick);
+            // 
             // pageEditor
             // 
             this.pageEditor.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -788,6 +810,7 @@
             this.pgJobs.ItemLinks.Add(this.btnJobFiles);
             this.pgJobs.ItemLinks.Add(this.btnWorkPlan);
             this.pgJobs.ItemLinks.Add(this.btnStickyBook);
+            this.pgJobs.ItemLinks.Add(this.btnStaffTasks);
             this.pgJobs.Name = "pgJobs";
             this.pgJobs.Text = "IT部工作记录";
             // 
@@ -871,16 +894,6 @@
             // 
             this.ribbonPage3.Name = "ribbonPage3";
             this.ribbonPage3.Text = "ribbonPage3";
-            // 
-            // btnStickyBook
-            // 
-            this.btnStickyBook.Caption = "信息登记";
-            this.btnStickyBook.Id = 39;
-            this.btnStickyBook.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.btnStickyBook.Name = "btnStickyBook";
-            this.btnStickyBook.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.btnStickyBook.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStickyBook_ItemClick);
             // 
             // MainForm
             // 
@@ -986,5 +999,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup pgOther;
         private DevExpress.XtraBars.BarButtonItem btnWorkPlan;
         private DevExpress.XtraBars.BarButtonItem btnStickyBook;
+        private DevExpress.XtraBars.BarButtonItem btnStaffTasks;
     }
 }

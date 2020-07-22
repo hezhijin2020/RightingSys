@@ -59,6 +59,7 @@ namespace RightingSys.WinForm.SubForm.pageLogs
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dStartday = new DevExpress.XtraEditors.DateEdit();
             this.dEndday = new DevExpress.XtraEditors.DateEdit();
+            this.customPageControl1 = new DevComponents.Controls.CustomPageControl();
             ((System.ComponentModel.ISupportInitialize)(this.gcData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -87,7 +88,7 @@ namespace RightingSys.WinForm.SubForm.pageLogs
             this.gcData.Location = new System.Drawing.Point(12, 79);
             this.gcData.MainView = this.gvData;
             this.gcData.Name = "gcData";
-            this.gcData.Size = new System.Drawing.Size(621, 230);
+            this.gcData.Size = new System.Drawing.Size(781, 206);
             this.gcData.TabIndex = 0;
             this.gcData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvData});
@@ -217,7 +218,7 @@ namespace RightingSys.WinForm.SubForm.pageLogs
             this.groupControl1.Controls.Add(this.dEndday);
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(621, 61);
+            this.groupControl1.Size = new System.Drawing.Size(781, 61);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "筛选条件";
             // 
@@ -399,11 +400,26 @@ namespace RightingSys.WinForm.SubForm.pageLogs
             this.dEndday.Size = new System.Drawing.Size(100, 20);
             this.dEndday.TabIndex = 3;
             // 
+            // customPageControl1
+            // 
+            this.customPageControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.customPageControl1.Location = new System.Drawing.Point(12, 287);
+            this.customPageControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.customPageControl1.Name = "customPageControl1";
+            this.customPageControl1.PageIndex = 1;
+            this.customPageControl1.PageMaxSize = 100;
+            this.customPageControl1.PageSize = 100;
+            this.customPageControl1.Size = new System.Drawing.Size(781, 31);
+            this.customPageControl1.TabIndex = 2;
+            this.customPageControl1.TotalCount = 0;
+            // 
             // FLoginLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 321);
+            this.ClientSize = new System.Drawing.Size(805, 330);
+            this.Controls.Add(this.customPageControl1);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.gcData);
             this.Name = "FLoginLogs";
@@ -456,5 +472,6 @@ namespace RightingSys.WinForm.SubForm.pageLogs
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevComponents.Controls.CustomPageControl customPageControl1;
     }
 }

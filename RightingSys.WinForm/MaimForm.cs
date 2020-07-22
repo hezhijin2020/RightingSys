@@ -981,7 +981,7 @@ namespace RightingSys.WinForm
         }
         private void btnLoginLog_ItemClick(object sender, ItemClickEventArgs e)
         {
-            MdiShow(new RightingSys.WinForm.SubForm.pageLogs.FLoginLogs(), btnLoginLog .Tag);
+            MdiShow(new SubForm.pageLogs.FLoginLogs(), btnLoginLog .Tag);
         }
         private void btnOpLog_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -1144,6 +1144,16 @@ namespace RightingSys.WinForm
         private void btnStickyBook_ItemClick(object sender, ItemClickEventArgs e)
         {
             MdiShow(new RightingSys.WinForm.SubForm.pageJob.StickyBookForm(), btnStickyBook.Tag);
+        }
+
+        /// <summary>
+        /// 工作任务
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnStaffTasks_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MdiShow(new RightingSys.WinForm.SubForm.pageJob.StaffTasksForm(), btnStaffTasks.Tag);
         }
     }
 }

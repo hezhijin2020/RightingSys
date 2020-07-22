@@ -21,6 +21,7 @@ namespace RightingSys.WinForm.SubForm.pageJob
             
             lkpBranch.Properties.DataSource = jobManager.GetDtBranch();
             lkpBranch.EditValue = "GAHN_BM";
+            Query();
         }
 
         /// <summary>

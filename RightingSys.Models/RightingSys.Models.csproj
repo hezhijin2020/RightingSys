@@ -63,6 +63,7 @@
     <Compile Include="ys_JobFiles.cs" />
     <Compile Include="ys_JobRecord.cs" />
     <Compile Include="ys_OrderMeal.cs" />
+    <Compile Include="ys_StaffTasks.cs" />
     <Compile Include="ys_StickyBook.cs" />
     <Compile Include="ys_WorkPlan.cs" />
   </ItemGroup>

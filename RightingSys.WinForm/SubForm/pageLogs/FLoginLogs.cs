@@ -15,6 +15,7 @@ namespace RightingSys.WinForm.SubForm.pageLogs
         public FLoginLogs()
         {
             InitializeComponent();
+            customPageControl1.OnPageChanged += OnPageChangeds;
 
             #region 控件初始化
 
@@ -27,6 +28,11 @@ namespace RightingSys.WinForm.SubForm.pageLogs
 
             #endregion
 
+        }
+
+        public void OnPageChangeds(object sender, EventArgs args)
+        {
+            Query();
         }
 
         /// <summary>
@@ -44,7 +50,9 @@ namespace RightingSys.WinForm.SubForm.pageLogs
         {
             Guid systemId = clsPublic.GetObjGUID(lkupSystem.EditValue);
             Guid userId = clsPublic.GetObjGUID(lkupUser.EditValue);
-            gcData.DataSource = LoginLog.GetList(systemId, userId ,dStartday.DateTime.Date,dEndday.DateTime.AddDays(1));
+
+            customPageControl1.DrawControl(LoginLog.GetList(systemId, userId, dStartday.DateTime.Date, dEndday.DateTime.AddDays(1)).Count);
+            gcData.DataSource = LoginLog.GetListByPage(systemId, userId, dStartday.DateTime.Date, dEndday.DateTime.AddDays(1), customPageControl1.PageSize, customPageControl1.PageIndex); ;
         }
 
         /// <summary>

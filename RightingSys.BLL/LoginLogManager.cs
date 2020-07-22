@@ -23,41 +23,56 @@ namespace RightingSys.BLL
         /// <param name="startDay">开始日期</param>
         /// <param name="endDay">结束日期</param>
         /// <returns></returns>
-        public List<Models.ACL_LoginLog> GetList(Guid SystemId,Guid UserId,DateTime startDay,DateTime endDay)
+        public List<Models.ACL_LoginLog> GetList(Guid systemId,Guid userId,DateTime startDay,DateTime endDay)
         {
             //只有日期 
-            if (SystemId ==Guid.Empty && UserId ==Guid.Empty && startDay != null & endDay != null)
+            if (systemId ==Guid.Empty && userId ==Guid.Empty && startDay != null & endDay != null)
             {
                 return Sev.GetAllList().Where(a => a.IsRemoved == false 
                 && a.CreateTime>=startDay
                 && a.CreateTime <= endDay).ToList();
             }//有用户
-            else if (SystemId == Guid.Empty && UserId != Guid.Empty && startDay != null & endDay != null)
+            else if (systemId == Guid.Empty && userId != Guid.Empty && startDay != null & endDay != null)
             {
                 return Sev.GetAllList().Where(a =>
                 a.IsRemoved == false
                 && a.CreateTime >= startDay 
                 && a.CreateTime <= endDay
-                && a.UserId==UserId).ToList();
+                && a.UserId==userId).ToList();
             }//有用户有系统
-            else if (SystemId != Guid.Empty && UserId != Guid.Empty && startDay != null & endDay != null)
+            else if (systemId != Guid.Empty && userId != Guid.Empty && startDay != null & endDay != null)
             {
                 return Sev.GetAllList().Where(a => 
                 a.IsRemoved == false 
                 && a.CreateTime >= startDay
                 && a.CreateTime <= endDay
-                && a.UserId==UserId
-                && a.SystemId==SystemId).ToList();
+                && a.UserId==userId
+                && a.SystemId==systemId).ToList();
             }//只有系统
-            else if (SystemId != Guid.Empty && UserId == Guid.Empty && startDay != null & endDay != null)
+            else if (systemId != Guid.Empty && userId == Guid.Empty && startDay != null & endDay != null)
             {
                 return Sev.GetAllList().Where(a => 
                 a.IsRemoved == false 
                 && a.CreateTime >= startDay
                 && a.CreateTime <= endDay
-                && a.SystemId==SystemId).ToList();
+                && a.SystemId==systemId).ToList();
             }
             return null;
+        }
+
+        /// <summary>
+        /// 获取分页数据
+        /// </summary>
+        /// <param name="systemId"></param>
+        /// <param name="userId"></param>
+        /// <param name="startDay"></param>
+        /// <param name="endDay"></param>
+        /// <param name="pageSize">每页记录数</param>
+        /// <param name="PageNum">第多少页</param>
+        /// <returns></returns>
+        public List<Models.ACL_LoginLog> GetListByPage(Guid systemId, Guid userId, DateTime startDay, DateTime endDay, int pageSize, int PageNum)
+        {
+            return GetList(systemId, userId, startDay, endDay).Skip(pageSize*(PageNum-1)).Take(pageSize).ToList();
         }
 
         /// <summary>

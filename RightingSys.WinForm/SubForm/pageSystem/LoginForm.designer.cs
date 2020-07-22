@@ -176,7 +176,7 @@
             this.separatorControl2.Size = new System.Drawing.Size(344, 8);
             this.separatorControl2.TabIndex = 17;
             // 
-            // FLogin
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -201,7 +201,7 @@
             this.MaximumSize = new System.Drawing.Size(360, 216);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(352, 201);
-            this.Name = "FLogin";
+            this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登录";
             this.Load += new System.EventHandler(this.FLogin_Load);

@@ -66,7 +66,7 @@ namespace RightingSys.WinForm
         {
             try
             {
-                Process.Start(Application.StartupPath + "\\AutoUpdate.exe");
+               
                 Process[] processesByName = Process.GetProcessesByName("RightingSys.exe");
                 Process[] array = processesByName;
                 for (int i = 0; i < array.Length; i++)
@@ -74,6 +74,8 @@ namespace RightingSys.WinForm
                     Process process = array[i];
                     process.Kill();
                 }
+
+                Process.Start(Application.StartupPath + "\\AutoUpdate.exe");
             }
             catch (Exception ex)
             {
@@ -125,14 +127,14 @@ namespace RightingSys.WinForm
         /// </summary>
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-           // clsPublic.appLogs.LogError(null, e.Exception as Exception);
+            clsPublicLogs.LogError(null, e.Exception as Exception);
         }
         /// <summary>
         /// 处理未捕获的异常
         /// </summary>
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-           // clsPublic.appLogs.LogError(null, e.ExceptionObject as Exception);
+           clsPublicLogs.LogError(null, e.ExceptionObject as Exception);
         }
         #endregion
     }

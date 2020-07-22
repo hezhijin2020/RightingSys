@@ -45,6 +45,7 @@
     <Compile Include="JobFilesService.cs" />
     <Compile Include="LoginLogService.cs" />
     <Compile Include="OperationLogService.cs" />
+    <Compile Include="StaffTasksService.cs" />
     <Compile Include="StikyBookService.cs" />
     <Compile Include="SystemService.cs" />
     <Compile Include="FunctionSerivce.cs" />

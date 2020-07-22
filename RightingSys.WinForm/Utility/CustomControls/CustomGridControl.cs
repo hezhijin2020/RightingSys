@@ -156,7 +156,7 @@ namespace RightingSys.WinForm.Utility.CustomControls
             // 不可编辑列设定
             this.OptionsBehavior.Editable = false;
            // 可编辑列设定
-          // SetEditableColumns();
+            SetEditableColumns(null);
          }
      
          /// <summary>
@@ -621,9 +621,15 @@ namespace RightingSys.WinForm.Utility.CustomControls
         /// 模糊匹配的字符串
         /// </summary>
         protected virtual internal string GetExtraFilterText { get { return ExtraFilterText; } }
+
         #endregion
 
+        private void InitializeComponent()
+        {
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
+        }
     }
 
     [ToolboxItem(true)]

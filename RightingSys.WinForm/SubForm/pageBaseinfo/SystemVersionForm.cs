@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
+using RightingSys.WinForm.Utility.cls;
 
 namespace RightingSys.WinForm.SubForm.pageBaseinfo
 {
@@ -76,7 +77,14 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
             model.URL = txtUrl.Text;
             model.Version = txtVersion.Text;
             model.LastTime = LastTime;
-            WriteVersionToDB(model);
+            if (WriteVersionToDB(model))
+            {
+                clsPublic.ShowMessage("成功", Text);
+            }
+            else
+            {
+                clsPublic.ShowMessage("失败",Text);
+            }
         }
 
       
@@ -107,9 +115,9 @@ namespace RightingSys.WinForm.SubForm.pageBaseinfo
 
         #region
 
-        public void WriteVersionToDB(Models.ACL_System model)
+        public bool WriteVersionToDB(Models.ACL_System model)
         {
-            systemMg.ModifyVersion(model);
+           return systemMg.ModifyVersion(model);
         }
         #endregion 
     }
